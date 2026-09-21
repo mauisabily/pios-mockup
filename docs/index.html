@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIOS BizGrowth Engine - Dokumentasi & Laporan Pembangunan</title>
+    <meta name="description" content="Dokumentasi rasmi pembangunan dan penyatuan reka bentuk responsif PIOS untuk rujukan Owner Sistem.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-body: #0a0f1d;
+            --bg-card: #111827;
+            --bg-card-hover: #162032;
+            --border-color: #1f293d;
+            --primary: #2563eb;
+            --teal: #14b8a6;
+            --teal-dark: #134e4a;
+            --orange: #f97316;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-full: 9999px;
+            --shadow-card: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 0;
+            margin: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Top Navbar */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10, 15, 29, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.15rem;
+        }
+
+        .badge-live {
+            background: rgba(20, 184, 166, 0.2);
+            border: 1px solid #14b8a6;
+            color: #5eead4;
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: #fff;
+        }
+
+        /* Hero Header */
+        .hero {
+            padding: 60px 24px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(37, 99, 235, 0.15);
+            border: 1px solid rgba(37, 99, 235, 0.4);
+            color: #60a5fa;
+            font-size: 0.85rem;
+            padding: 6px 14px;
+            border-radius: var(--radius-full);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .hero-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.75rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #ffffff 40%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 800px;
+            margin: 0 auto 32px;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px 80px;
+        }
+
+        /* Metadata & Credentials Card */
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            box-shadow: var(--shadow-card);
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .card:hover {
+            border-color: rgba(37, 99, 235, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px;
+        }
+
+        .card-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-icon.blue { background: rgba(37, 99, 235, 0.2); color: #60a5fa; }
+        .card-icon.teal { background: rgba(20, 184, 166, 0.2); color: #2dd4bf; }
+        .card-icon.orange { background: rgba(249, 115, 22, 0.2); color: #fb923c; }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .data-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .data-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            font-size: 0.9rem;
+            gap: 16px;
+        }
+
+        .data-label {
+            color: var(--text-muted);
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .data-value {
+            color: #fff;
+            font-weight: 600;
+            text-align: right;
+            word-break: break-word;
+        }
+
+        .data-value a {
+            color: #38bdf8;
+            text-decoration: none;
+        }
+        .data-value a:hover {
+            text-decoration: underline;
+        }
+
+        /* Credentials Box (Highlight for Owner) */
+        .credentials-card {
+            background: linear-gradient(145deg, rgba(20, 184, 166, 0.1) 0%, rgba(15, 23, 42, 0.8) 100%);
+            border: 1px solid rgba(20, 184, 166, 0.35);
+        }
+
+        .credential-box {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: var(--radius-md);
+            padding: 12px 16px;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .credential-code {
+            font-family: 'JetBrains Mono', monospace;
+            color: #5eead4;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .copy-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: #fff;
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .copy-btn:hover {
+            background: var(--teal);
+            color: #000;
+            font-weight: 700;
+        }
+
+        /* Section Headings */
+        .section-header {
+            margin: 50px 0 24px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.65rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .section-badge {
+            background: rgba(255, 255, 255, 0.06);
+            padding: 4px 12px;
+            border-radius: var(--radius-full);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Work Breakdown Table */
+        .table-responsive {
+            overflow-x: auto;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-card);
+            margin-bottom: 40px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.9rem;
+            background: var(--bg-card);
+        }
+
+        th, td {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background: #0d1424;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.5px;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .pill {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .pill.success { background: rgba(16, 185, 129, 0.2); color: #34d399; }
+        .pill.blue { background: rgba(37, 99, 235, 0.2); color: #60a5fa; }
+        .pill.orange { background: rgba(249, 115, 22, 0.2); color: #fb923c; }
+
+        /* Screenshot Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 28px;
+            margin-bottom: 40px;
+        }
+
+        .gallery-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .gallery-image-wrapper {
+            background: #050811;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 280px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .gallery-img {
+            max-width: 100%;
+            height: auto;
+            max-height: 380px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-img:hover {
+            transform: scale(1.02);
+        }
+
+        .gallery-info {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            justify-content: space-between;
+        }
+
+        .gallery-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .gallery-desc {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* Technical Architecture Grid */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .tech-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 20px;
+        }
+
+        .tech-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #38bdf8;
+            margin-bottom: 8px;
+        }
+
+        .tech-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        .footer {
+            border-top: 1px solid var(--border-color);
+            padding: 40px 24px;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        .footer strong {
+            color: #fff;
+        }
+
+        /* Action bar */
+        .action-bar {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: #fff;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            .nav-links {
+                display: none;
+            }
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header class="navbar">
+        <a href="#" class="navbar-brand">
+            <span style="color: #38bdf8;">PIOS</span> Documentation
+        </a>
+        <div class="badge-live">Production Ready (1 Codebase)</div>
+        <nav class="nav-links">
+            <a href="#kredensial" class="nav-link">Kredensial</a>
+            <a href="#skop" class="nav-link">Skop Pembangunan</a>
+            <a href="#galeri" class="nav-link">Tangkapan Skrin</a>
+            <a href="#spesifikasi" class="nav-link">Spesifikasi</a>
+            <a href="../index.html" class="nav-link" style="color: #38bdf8;" target="_blank">Buka Login ↗</a>
+            <a href="../dashboard.html" class="nav-link" style="color: #34d399;" target="_blank">Buka Dashboard ↗</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-tag">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            Dokumentasi Rasmi Pembangunan Sistem
+        </div>
+        <h1 class="hero-title">PIOS BizGrowth Engine</h1>
+        <p class="hero-subtitle">
+            Laporan lengkap penyatuan reka bentuk responsif bagi paparan Desktop dan Mobile (Login, Dashboard & Navigasi Penuh) dalam <strong>1 kod tunggal</strong> mengikut spesifikasi Figma rasmi.
+        </p>
+        <div class="action-bar" style="flex-wrap: wrap;">
+            <a href="../index.html" class="btn btn-primary" target="_blank">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg>
+                Uji Login (index.html)
+            </a>
+            <a href="../dashboard.html" class="btn btn-primary" style="background: #14b8a6; box-shadow: 0 4px 14px rgba(20, 184, 166, 0.4);" target="_blank">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="20" x2="18" y2="10"></line>
+                    <line x1="12" y1="20" x2="12" y2="4"></line>
+                    <line x1="6" y1="20" x2="6" y2="14"></line>
+                </svg>
+                Uji Dashboard (dashboard.html)
+            </a>
+            <a href="https://www.figma.com/proto/EiQNeIuQNHOFacXfWL4N6a/BizGrowth-Engine?node-id=343-3227&m=dev&scaling=scale-down&content-scaling=fixed&page-id=0%3A1" class="btn btn-secondary" target="_blank">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+                Rujukan Prototaip Figma
+            </a>
+        </div>
+    </section>
+
+    <!-- Main Content Container -->
+    <main class="container">
+
+        <!-- 3-Column Metadata Overview -->
+        <div class="meta-grid">
+            
+            <!-- Card 1: Waktu & Status Kerja -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon blue">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                    </div>
+                    <div class="card-title">Rekod Waktu & Status</div>
+                </div>
+                <ul class="data-list">
+                    <li class="data-item">
+                        <span class="data-label">Tarikh Mula:</span>
+                        <span class="data-value">21 September 2026</span>
+                    </li>
+                    <li class="data-item">
+                        <span class="data-label">Waktu Mula Kerja:</span>
+                        <span class="data-value">16:15 MYT (+08:00)</span>
+                    </li>
+                    <li class="data-item">
+                        <span class="data-label">Waktu Selesai:</span>
+                        <span class="data-value">22:15 MYT (+08:00)</span>
+                    </li>
+                    <li class="data-item">
+                        <span class="data-label">Status Semasa:</span>
+                        <span class="data-value"><span class="pill success">100% Selesai (Login & Dashboard)</span></span>
+                    </li>
+                    <li class="data-item">
+                        <span class="data-label">Versi:</span>
+                        <span class="data-value">v1.2.0 (Unified Responsive)</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Card 2: Kredensial & Rujukan Pantas -->
+            <div class="card credentials-card" id="kredensial">
+                <div class="card-header">
+                    <div class="card-icon teal">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                        </svg>
+                    </div>
+                    <div class="card-title">Kredensial & Akses Ujian</div>
+                </div>
+                <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 8px;">
+                    Gunakan kredensial ini untuk menguji borang log masuk:
+                </div>
+                
+                <div style="margin-bottom: 12px;">
+                    <span style="font-size: 0.75rem; color: #5eead4; text-transform: uppercase; font-weight: 600;">PIOS ID Contoh:</span>
+                    <div class="credential-box">
+                        <span class="credential-code" id="credId">PIO-8823</span>
+                        <button class="copy-btn" onclick="copyText('credId')">Salin</button>
+                    </div>
+                </div>
+
+                <div>
+                    <span style="font-size: 0.75rem; color: #5eead4; text-transform: uppercase; font-weight: 600;">Kata Laluan Contoh:</span>
+                    <div class="credential-box">
+                        <span class="credential-code" id="credPass">secret123</span>
+                        <button class="copy-btn" onclick="copyText('credPass')">Salin</button>
+                    </div>
+                </div>
+
+                <div style="margin-top: 14px; font-size: 0.8rem; color: var(--text-muted);">
+                    ⚡ <em>Nota: Log masuk yang berjaya akan menghala terus ke Dashboard perniagaan (dashboard.html).</em>
+                </div>
+            </div>
+
+            <!-- Card 3: Rujukan Pautan & Figma -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon orange">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                        </svg>
+                    </div>
+                    <div class="card-title">Rujukan & Pautan Rasmi</div>
+                </div>
+                <ul class="data-list">
+                    <li class="data-item">
+                        <span class="data-label">Aplikasi Login:</span>
+                        <span class="data-value"><a href="../index.html" target="_blank">index.html</a></span>
+                    </li>
+                    <li class="data-item">
+                        <span class="data-label">Aplikasi Dashboard:</span>
+                        <span class="data-value"><a href="../dashboard.html" target="_blank">dashboard.html</a></span>
+                    </li>
+                    <li class="data-item">
+                        <span class="data-label">Fail Gaya CSS:</span>
+                        <span class="data-value">style.css, dashboard.css</span>
+                    </li>
+                    <li class="data-item">
+                        <span class="data-label">Fail Logik JS:</span>
+                        <span class="data-value">script.js, dashboard.js</span>
+                    </li>
+                    <li class="data-item">
+                        <span class="data-label">Figma Mobile:</span>
+                        <span class="data-value"><span class="pill orange">343-3227 / 3.1_dashboard / 3.0_nav</span></span>
+                    </li>
+                    <li class="data-item">
+                        <span class="data-label">Figma Desktop:</span>
+                        <span class="data-value"><span class="pill blue">Login_Screen / BO_dashboard</span></span>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Section: Skop & Objektif Kerja -->
+        <div class="section-header" id="skop">
+            <h2 class="section-title">Skop Kerja & Penambahbaikan</h2>
+            <span class="section-badge">Ringkasan Eksekutif</span>
+        </div>
+
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Komponen</th>
+                        <th>Keadaan Asal (Sebelum)</th>
+                        <th>Penambahbaikan (Selepas)</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Struktur Kod Login</strong></td>
+                        <td>2 fail berasingan (<code>index.html</code> dan <code>mobile.html</code>) yang memerlukan penyelenggaraan berganda.</td>
+                        <td><strong>1 Fail Tunggal (<code>index.html</code>)</strong> yang responsif sepenuhnya. Fail <code>mobile.html</code> kini dihalakan (redirect) secara automatik ke <code>index.html</code>.</td>
+                        <td><span class="pill success">Selesai</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Dashboard Responsif (<code>dashboard.html</code>)</strong></td>
+                        <td>Tiada halaman dashboard bersepadu sebelumnya.</td>
+                        <td>Dibina <strong>1 fail tunggal responsif dengan tema warna seragam (Forest Teal #134C49)</strong>: Paparan Desktop (Figma <code>BO_dashboard</code>) dengan sidebar Forest Teal `#134C49`, latar kelabu lembut `#F1F5F9`, 6 kad KPI putih `#FFFFFF` (MTD badges), Customer Pipeline, dan Recent Activity 8 baris, berserta suis tema Dark/Light; Paparan Mobile (Figma <code>3.1_dashboard</code>) dengan header Forest Teal dan 2-lajur KPI.</td>
+                        <td><span class="pill success">Selesai</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Menu Navigasi Skrin Penuh (<code>3.0_nav_dashboard</code>)</strong></td>
+                        <td>Drawer separuh skrin.</td>
+                        <td>Dinaik taraf menjadi <strong>Overlay Skrin Penuh (100% Fullscreen)</strong> mengikut reka bentuk rasmi Figma: Logo PIOS, butang tutup (X), senarai pautan navigasi utama dan sub-item Register Customer, suis mod gelap (Dark mode switch), dan profil pengguna Lenny Muller beserta butang log keluar.</td>
+                        <td><span class="pill success">Selesai</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sistem CSS & Reka Letak</strong></td>
+                        <td>Koordinat statik tegar (<code>position: absolute; left: 880px; top: 520px;</code>) yang pecah pada skrin berlainan.</td>
+                        <td>Sistem susun atur moden menggunakan <strong>CSS Grid, Flexbox, dan Media Queries</strong> yang cair mengikut saiz skrin (fluid & adaptive).</td>
+                        <td><span class="pill success">Selesai</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Aset Imej & Logo</strong></td>
+                        <td>Tag imej kosong tanpa sumber (<code>&lt;img alt=""&gt;</code>) dan tiada fail logo di dalam repositori.</td>
+                        <td>Aset logo maskot PIOS, kad wira oren, avatar Lenny Muller, dan logo header diekstrak terus daripada Figma beresolusi tinggi dengan <strong>latar belakang telus (transparent)</strong>.</td>
+                        <td><span class="pill success">Selesai</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Interaktiviti & Pengesahan</strong></td>
+                        <td>Borang statik tanpa fungsi intip kata laluan, validasi medan, atau status pemuatan (loading).</td>
+                        <td>Dilengkapi fungsi toggle mata (show/hide password), validasi medan mandatori (PIOS ID & Password), animasi butang login, navigasi menu fullscreen, toggle dark mode, dan integrasi pautan lengkap.</td>
+                        <td><span class="pill success">Selesai</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Section: Galeri Bukti Visual & Tangkapan Skrin -->
+        <div class="section-header" id="galeri">
+            <h2 class="section-title">Galeri Pengesahan Visual (Tangkapan Skrin)</h2>
+            <span class="section-badge">Pengesahan Desktop & Mobile</span>
+        </div>
+
+        <div class="gallery-grid">
+            
+            <!-- Screenshot: Desktop Dashboard -->
+            <div class="gallery-item">
+                <div class="gallery-image-wrapper">
+                    <img src="./images/dash_desktop.png" alt="Paparan Desktop Dashboard PIOS" class="gallery-img">
+                </div>
+                <div class="gallery-info">
+                    <div class="gallery-title">1. Dashboard Desktop (Tema Forest Teal Seragam)</div>
+                    <p class="gallery-desc">
+                        Diselaraskan mengikut tema warna mobile: Sidebar berona Forest Teal <code>#134C49</code>, latar kelabu lembut <code>#F1F5F9</code>, 6 kad KPI putih bersih <code>#FFFFFF</code> dengan metrik warna-warni, Customer Pipeline, suapan Recent Activity 8 entri berlabel status, dan suis penukar mod Dark/Light.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Screenshot: Mobile Dashboard -->
+            <div class="gallery-item">
+                <div class="gallery-image-wrapper">
+                    <img src="./images/dash_mobile.png" alt="Paparan Mobile Dashboard PIOS" class="gallery-img">
+                </div>
+                <div class="gallery-info">
+                    <div class="gallery-title">2. Dashboard Mobile (Figma 3.1_dashboard)</div>
+                    <p class="gallery-desc">
+                        Header Forest Teal <code>#134C49</code> dengan butang navigasi kembali <code>← Dashboard</code> dan menu hamburger. Badan kad berwarna cerah <code>#FFFFFF</code> atas latar kelabu lembut <code>#F1F5F9</code> dengan grid 2-lajur KPI.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Screenshot: Dashboard Fullscreen Navigation -->
+            <div class="gallery-item">
+                <div class="gallery-image-wrapper">
+                    <img src="./images/dash_fullscreen_menu.png" alt="Menu Penuh Dashboard PIOS" class="gallery-img">
+                </div>
+                <div class="gallery-info">
+                    <div class="gallery-title">3. Menu Skrin Penuh Dashboard (Figma 3.0_nav_dashboard)</div>
+                    <p class="gallery-desc">
+                        Overlay 100% penuh mengikut rekabentuk Figma: Header logo PIOS & butang tutup (X), pautan navigasi dengan Dashboard aktif, sub-menu Register Customer, toggle suis Dark mode, dan profil Lenny Muller.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Screenshot: Login Screen Desktop -->
+            <div class="gallery-item">
+                <div class="gallery-image-wrapper">
+                    <img src="./images/desktop_view.png" alt="Paparan Desktop Login PIOS" class="gallery-img">
+                </div>
+                <div class="gallery-info">
+                    <div class="gallery-title">4. Login Desktop 2 Lajur (Figma Login_Screen)</div>
+                    <p class="gallery-desc">
+                        Latar belakang Dark Navy <code>#0B121F</code>, kad wira bergelombang oren metalik di sebelah kiri, logo maskot PIOS di tengah, dan butang biru korporat <code>#2563EB</code>.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Screenshot: Login Screen Mobile -->
+            <div class="gallery-item">
+                <div class="gallery-image-wrapper">
+                    <img src="./images/mobile_view.png" alt="Paparan Mobile Login PIOS" class="gallery-img">
+                </div>
+                <div class="gallery-info">
+                    <div class="gallery-title">5. Login Mobile (Figma 2.0_login - 343-3227)</div>
+                    <p class="gallery-desc">
+                        Latar belakang Deep Teal <code>#134C49</code>, bar header dengan logo PIOS dan ikon hamburger, logo maskot berpusat, borang kad putih, dan butang teal <code>#14B8A6</code>.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Screenshot: Login Fullscreen Navigation -->
+            <div class="gallery-item">
+                <div class="gallery-image-wrapper">
+                    <img src="./images/login_fullscreen_menu.png" alt="Menu Penuh Login PIOS" class="gallery-img">
+                </div>
+                <div class="gallery-info">
+                    <div class="gallery-title">6. Menu Skrin Penuh pada Halaman Login</div>
+                    <p class="gallery-desc">
+                        Memaparkan reka bentuk menu skrin penuh yang disepadukan pada halaman login, membolehkan pengguna mengakses direktori sistem secara menyeluruh.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Screenshot: Password Toggle & Form Interaction -->
+            <div class="gallery-item">
+                <div class="gallery-image-wrapper">
+                    <img src="./images/desktop_form_interaction.png" alt="Interaksi Toggle Password" class="gallery-img">
+                </div>
+                <div class="gallery-info">
+                    <div class="gallery-title">7. Interaksi Borang & Toggle Password</div>
+                    <p class="gallery-desc">
+                        Pengguna boleh menekan ikon mata untuk melihat kata laluan sebenar atau menutupnya semula, memudahkan rujukan dan input pengguna semasa log masuk.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Screenshot: Login Response Feedback -->
+            <div class="gallery-item">
+                <div class="gallery-image-wrapper">
+                    <img src="./images/login_feedback.png" alt="Maklum Balas Log Masuk" class="gallery-img">
+                </div>
+                <div class="gallery-info">
+                    <div class="gallery-title">8. Status Log Masuk & Maklum Balas</div>
+                    <p class="gallery-desc">
+                        Semasa butang Login ditekan, status pemuatan (spinner) dipaparkan dan diikuti dengan mesej selamat datang serta pengalihan automatik ke Dashboard perniagaan.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Section: Spesifikasi Teknikal -->
+        <div class="section-header" id="spesifikasi">
+            <h2 class="section-title">Spesifikasi Teknikal & Reka Bentuk</h2>
+            <span class="section-badge">Design System & Code Specs</span>
+        </div>
+
+        <div class="tech-grid">
+            <div class="tech-card">
+                <div class="tech-title">🎨 Palet Warna Desktop</div>
+                <div class="tech-desc">
+                    • Latar Belakang: <code>#0B121F</code> (Dark Navy)<br>
+                    • Butang Utama: <code>#2563EB</code> (Royal Blue)<br>
+                    • Hover Butang: <code>#1D4ED8</code><br>
+                    • Aksen Gelombang: <code>#F97316</code> (Orange Glow)
+                </div>
+            </div>
+
+            <div class="tech-card">
+                <div class="tech-title">🌿 Palet Warna Mobile</div>
+                <div class="tech-desc">
+                    • Latar Belakang: <code>#134C49</code> (Forest Teal)<br>
+                    • Latar Drawer: <code>#0E3B38</code> (Deep Teal)<br>
+                    • Butang Utama: <code>#14B8A6</code> (Mint Teal)<br>
+                    • Hover Butang: <code>#0D9488</code>
+                </div>
+            </div>
+
+            <div class="tech-card">
+                <div class="tech-title">🔤 Tipografi Google Fonts</div>
+                <div class="tech-desc">
+                    • <strong>Poppins</strong> (500, 600, 700, 800) untuk tajuk wira dan penjenamaan.<br>
+                    • <strong>Inter</strong> (400, 500, 600, 700) untuk teks label, input borang, dan elemen antara muka.
+                </div>
+            </div>
+
+            <div class="tech-card">
+                <div class="tech-title">📱 Titik Putus Responsif (Breakpoints)</div>
+                <div class="tech-desc">
+                    • <strong>Skrin Komputer & Laptop:</strong> ≥ 992px (Desktop 2-Lajur / Sidebar)<br>
+                    • <strong>Tablet & Telefon Pintar:</strong> &lt; 992px (Mobile Teal & Menu Penuh)<br>
+                    • <strong>Skrin Kompak:</strong> ≤ 380px (Penyesuaian padding & font)
+                </div>
+            </div>
+
+            <div class="tech-card">
+                <div class="tech-title">📊 Palet Warna Dashboard</div>
+                <div class="tech-desc">
+                    • Latar Desktop: <code>#0B1220</code> (Navy Gelap) & Sidebar <code>#080E1A</code><br>
+                    • Header Mobile: <code>#134C49</code> & Badan Kad <code>#FFFFFF</code> atas <code>#F1F5F9</code><br>
+                    • KPI Metrik: Teal <code>#10B981</code>, Biru <code>#3B82F6</code>, Kuning <code>#F59E0B</code>, Ungu <code>#A855F7</code>, Jingga <code>#F97316</code>
+                </div>
+            </div>
+
+            <div class="tech-card">
+                <div class="tech-title">⚡ Interaktiviti Penuh Dashboard</div>
+                <div class="tech-desc">
+                    • Menu Skrin Penuh dengan butang tutup lancar dan pautan aktif.<br>
+                    • Suis Mod Gelap (Dark mode switch) dengan memori keutamaan tema.<br>
+                    • Profil pengguna Lenny Muller beserta fungsi Log Keluar ke Login.
+                </div>
+            </div>
+        </div>
+
+        <!-- Panduan Menjalankan Sistem -->
+        <div class="card" style="margin-top: 20px;">
+            <div class="card-header">
+                <div class="card-icon blue">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="4 17 10 11 4 5"></polyline>
+                        <line x1="12" y1="19" x2="20" y2="19"></line>
+                    </svg>
+                </div>
+                <div class="card-title">Panduan Menjalankan Kod Tempatan (Local Execution)</div>
+            </div>
+            <div style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.7;">
+                <p style="margin-bottom: 10px;">
+                    Untuk melihat atau menguji sistem pada mesin tempatan:
+                </p>
+                <ol style="margin-left: 24px; margin-bottom: 16px;">
+                    <li style="margin-bottom: 6px;">
+                        <strong>Buka Terus dalam Pelayar:</strong> Klik dua kali pada fail <code style="color: #38bdf8;">index.html</code> dalam folder projek untuk membukanya terus dalam pelayar (Chrome, Edge, Safari, Firefox).
+                    </li>
+                    <li style="margin-bottom: 6px;">
+                        <strong>Melalui Pelayan Tempatan (Node.js):</strong>
+                        <div style="background: #050811; padding: 10px 16px; border-radius: 6px; font-family: monospace; color: #5eead4; margin: 8px 0;">
+                            npx -y serve . -p 3000
+                        </div>
+                        Kemudian buka alamat <code style="color: #38bdf8;">http://localhost:3000/</code> pada pelayar.
+                    </li>
+                    <li>
+                        <strong>Ujian Responsif:</strong> Tekan kekunci <kbd style="background: #1e293b; padding: 2px 6px; border-radius: 4px;">F12</kbd> (Developer Tools) dan klik ikon <em>Toggle Device Toolbar</em> (Ctrl+Shift+M) untuk melihat peralihan automatik antara Desktop dan Mobile.
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p><strong>PIOS BizGrowth Engine</strong> • Sistem Pengurusan & Pangkalan Data Perniagaan</p>
+        <p style="margin-top: 6px; font-size: 0.8rem;">Direkodkan pada 21 September 2026. Hak Cipta Terpelihara.</p>
+    </footer>
+
+    <!-- Copy to Clipboard Script -->
+    <script>
+        function copyText(elementId) {
+            const text = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = event.target;
+                const origText = btn.innerText;
+                btn.innerText = 'Disalin!';
+                btn.style.background = '#10B981';
+                btn.style.color = '#fff';
+                setTimeout(() => {
+                    btn.innerText = origText;
+                    btn.style.background = '';
+                    btn.style.color = '';
+                }, 1800);
+            });
+        }
+    </script>
+</body>
+</html>

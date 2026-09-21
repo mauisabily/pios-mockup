@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>PIOS - Dashboard</title>
+    <meta name="description" content="PIOS BizGrowth Engine Business Owner Dashboard">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Dashboard Stylesheet -->
+    <link rel="stylesheet" href="./assets/css/dashboard.css">
+</head>
+<body class="dashboard-body">
+
+    <!-- ==========================================================================
+         Mobile Top Header (Shown only on Mobile < 992px)
+         Matches Figma 3.1_dashboard
+         ========================================================================== -->
+    <header class="mobile-dash-header">
+        <div class="mobile-dash-left">
+            <a href="./index.html" class="back-btn" aria-label="Back to Login / Home">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+            </a>
+            <span class="mobile-dash-title">Dashboard</span>
+        </div>
+        <button class="mobile-menu-toggle-btn" id="mobileMenuToggleBtn" aria-label="Toggle Fullscreen Menu" aria-expanded="false">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+    </header>
+
+    <!-- ==========================================================================
+         Fullscreen Mobile Navigation Menu (Matches Figma 3.0_nav_dashboard)
+         ========================================================================== -->
+    <div class="fullscreen-menu" id="fullscreenMenu" aria-hidden="true">
+        <div class="fs-menu-header">
+            <a href="./index.html" class="fs-logo-link">
+                <img src="./assets/images/header_logo.png" alt="PIOS BizGrowth Engine" class="fs-header-logo">
+            </a>
+            <button class="fs-menu-close-btn" id="fsMenuCloseBtn" aria-label="Close Menu">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+
+        <nav class="fs-nav-list">
+            <a href="./dashboard.html" class="fs-nav-item active">
+                <svg class="fs-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <line x1="18" y1="20" x2="18" y2="10"></line>
+                    <line x1="12" y1="20" x2="12" y2="4"></line>
+                    <line x1="6" y1="20" x2="6" y2="14"></line>
+                </svg>
+                <span>Dashboard</span>
+            </a>
+
+            <div class="fs-nav-group">
+                <a href="#customer" class="fs-nav-item">
+                    <svg class="fs-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                    <span>Customer</span>
+                </a>
+                <a href="#register-customer" class="fs-nav-subitem">
+                    <svg class="fs-nav-subicon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="8.5" cy="7" r="4"></circle>
+                        <line x1="20" y1="8" x2="20" y2="14"></line>
+                        <line x1="23" y1="11" x2="17" y2="11"></line>
+                    </svg>
+                    <span>Register Customer</span>
+                </a>
+            </div>
+
+            <a href="#products" class="fs-nav-item">
+                <svg class="fs-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                </svg>
+                <span>Products</span>
+            </a>
+
+            <a href="#transaction" class="fs-nav-item">
+                <svg class="fs-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="12" y1="1" x2="12" y2="23"></line>
+                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                </svg>
+                <span>Transaction</span>
+            </a>
+
+            <a href="#fees" class="fs-nav-item">
+                <svg class="fs-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                    <line x1="1" y1="10" x2="23" y2="10"></line>
+                </svg>
+                <span>Fees</span>
+            </a>
+
+            <a href="#reports" class="fs-nav-item">
+                <svg class="fs-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                <span>Reports</span>
+            </a>
+        </nav>
+
+        <div class="fs-menu-footer">
+            <div class="fs-darkmode-row">
+                <div class="fs-darkmode-label">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <span>Dark mode</span>
+                </div>
+                <label class="fs-switch">
+                    <input type="checkbox" id="fsDarkModeToggle">
+                    <span class="fs-slider"></span>
+                </label>
+            </div>
+
+            <div class="fs-user-profile">
+                <img src="./assets/images/lenny_avatar.png" alt="Lenny Muller" class="fs-user-avatar">
+                <span class="fs-user-name">Lenny Muller</span>
+                <a href="./index.html" class="fs-logout-btn" aria-label="Log Out">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+         Desktop Layout Wrapper (Sidebar + Main Content)
+         Matches Figma BO_dashboard
+         ========================================================================== -->
+    <div class="dash-layout">
+
+        <!-- Desktop Sidebar (Hidden on Mobile) -->
+        <aside class="desktop-sidebar">
+            <div class="sidebar-brand">
+                <img src="./assets/images/header_logo.png" alt="PIOS BizGrowth Engine" class="sidebar-logo">
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="./dashboard.html" class="sidebar-item active">
+                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="20" x2="18" y2="10"></line>
+                        <line x1="12" y1="20" x2="12" y2="4"></line>
+                        <line x1="6" y1="20" x2="6" y2="14"></line>
+                    </svg>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#customer" class="sidebar-item">
+                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                    <span>Customer</span>
+                </a>
+                <a href="#products" class="sidebar-item">
+                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                        <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                        <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                    </svg>
+                    <span>Products</span>
+                </a>
+                <a href="#transaction" class="sidebar-item">
+                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="12" y1="1" x2="12" y2="23"></line>
+                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                    </svg>
+                    <span>Transaction</span>
+                </a>
+                <a href="#fees" class="sidebar-item">
+                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                        <line x1="1" y1="10" x2="23" y2="10"></line>
+                    </svg>
+                    <span>Fees</span>
+                </a>
+                <a href="#reports" class="sidebar-item">
+                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                    <span>Reports</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-user">
+                    <img src="./assets/images/lenny_avatar.png" alt="Lenny Muller" class="user-avatar-img">
+                    <span class="user-name-text">Lenny Muller</span>
+                </div>
+                <a href="./index.html" class="sidebar-logout-btn" title="Logout">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="dash-main">
+
+            <!-- Desktop Header Bar (Hidden on Mobile) -->
+            <div class="dash-topbar">
+                <div class="topbar-left">
+                    <h1 class="dash-heading">Dashboard</h1>
+                    <p class="dash-subheading">Your customers, products, promotions and transactions at a glance</p>
+                </div>
+                <div class="topbar-right">
+                    <span class="topbar-date">Fri, Aug 21, 2026</span>
+                    <div class="system-status-badge">
+                        <span class="status-dot"></span>
+                        <span>System Active</span>
+                    </div>
+                    <button class="theme-toggle-btn" id="desktopThemeToggleBtn" aria-label="Toggle Dark / Light Theme" title="Toggle Dark / Light Theme">
+                        <svg class="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                    </button>
+                    <button class="notif-bell-btn" aria-label="Notifications" title="Notifications">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                        </svg>
+                        <span class="notif-badge-dot"></span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- ==================================================================
+                 6 Metric / KPI Cards (Desktop 3x2 Grid, Mobile 2x3 Grid)
+                 ================================================================== -->
+            <section class="kpi-grid" aria-label="Key Performance Indicators">
+                
+                <!-- Card 1: Total Customers -->
+                <article class="kpi-card">
+                    <div class="kpi-card-header">
+                        <div class="kpi-icon-wrapper teal-circle">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                                <circle cx="12" cy="12" r="9" stroke="#10B981" stroke-width="2.5"/>
+                                <circle cx="12" cy="12" r="4" fill="#10B981"/>
+                            </svg>
+                        </div>
+                        <span class="mtd-badge desktop-only">MTD</span>
+                    </div>
+                    <div class="kpi-value text-teal">203</div>
+                    <div class="kpi-title">Total Customers</div>
+                    <div class="kpi-subtitle">+8 this month</div>
+                </article>
+
+                <!-- Card 2: Prospects -->
+                <article class="kpi-card">
+                    <div class="kpi-card-header">
+                        <div class="kpi-icon-wrapper blue-hexagon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2.2">
+                                <polygon points="12 2 21 7.5 21 16.5 12 22 3 16.5 3 7.5 12 2"/>
+                            </svg>
+                        </div>
+                        <span class="mtd-badge desktop-only">MTD</span>
+                    </div>
+                    <div class="kpi-value text-blue">38</div>
+                    <div class="kpi-title">Prospects</div>
+                    <div class="kpi-subtitle">19% of pipeline</div>
+                </article>
+
+                <!-- Card 3: VIP Customers -->
+                <article class="kpi-card">
+                    <div class="kpi-card-header">
+                        <div class="kpi-icon-wrapper yellow-star">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="#F59E0B">
+                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                            </svg>
+                        </div>
+                        <span class="mtd-badge desktop-only">MTD</span>
+                    </div>
+                    <div class="kpi-value text-yellow">24</div>
+                    <div class="kpi-title">VIP Customers</div>
+                    <div class="kpi-subtitle">11.8% of total</div>
+                </article>
+
+                <!-- Card 4: Products -->
+                <article class="kpi-card">
+                    <div class="kpi-card-header">
+                        <div class="kpi-icon-wrapper purple-pentagon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="#A855F7">
+                                <polygon points="12 2 22 9.5 18 21 6 21 2 9.5 12 2"/>
+                            </svg>
+                        </div>
+                        <span class="mtd-badge desktop-only">MTD</span>
+                    </div>
+                    <div class="kpi-value text-purple">31</div>
+                    <div class="kpi-title">Products</div>
+                    <div class="kpi-subtitle">3 added this month</div>
+                </article>
+
+                <!-- Card 5: Active Promotions -->
+                <article class="kpi-card">
+                    <div class="kpi-card-header">
+                        <div class="kpi-icon-wrapper green-diamond">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5">
+                                <rect x="5" y="5" width="14" height="14" transform="rotate(45 12 12)"/>
+                            </svg>
+                        </div>
+                        <span class="mtd-badge desktop-only">MTD</span>
+                    </div>
+                    <div class="kpi-value text-green">12</div>
+                    <div class="kpi-title">Active Promotions</div>
+                    <div class="kpi-subtitle">4 expiring soon</div>
+                </article>
+
+                <!-- Card 6: Open Orders -->
+                <article class="kpi-card">
+                    <div class="kpi-card-header">
+                        <div class="kpi-icon-wrapper orange-diamond">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="#F97316">
+                                <polygon points="12 3 20 12 12 21 12 3"/>
+                                <polygon points="12 3 4 12 12 21 12 3" opacity="0.3"/>
+                            </svg>
+                        </div>
+                        <span class="mtd-badge desktop-only">MTD</span>
+                    </div>
+                    <div class="kpi-value text-orange">18</div>
+                    <div class="kpi-title">Open Orders</div>
+                    <div class="kpi-subtitle">5 awaiting payment</div>
+                </article>
+
+            </section>
+
+            <!-- ==================================================================
+                 Bottom Section: Customer Pipeline & Recent Activity
+                 ================================================================== -->
+            <div class="dash-bottom-grid">
+
+                <!-- Left Card: Customer Pipeline -->
+                <section class="dash-card customer-pipeline-card" aria-label="Customer Pipeline">
+                    <div class="dash-card-header">
+                        <h2 class="dash-card-title">Customer Pipeline</h2>
+                        <span class="pipeline-total-badge">203 total</span>
+                    </div>
+
+                    <div class="pipeline-items-list">
+                        <!-- Contact -->
+                        <div class="pipeline-item">
+                            <div class="pipeline-item-label-row">
+                                <span class="pipeline-stage-name">Contact</span>
+                                <span class="pipeline-stage-count">52</span>
+                            </div>
+                            <div class="pipeline-bar-track">
+                                <div class="pipeline-bar-fill bar-contact" style="width: 25.6%;"></div>
+                            </div>
+                            <div class="pipeline-pct-label text-slate">25.6% of pipeline</div>
+                        </div>
+
+                        <!-- Prospect -->
+                        <div class="pipeline-item">
+                            <div class="pipeline-item-label-row">
+                                <span class="pipeline-stage-name">Prospect</span>
+                                <span class="pipeline-stage-count">38</span>
+                            </div>
+                            <div class="pipeline-bar-track">
+                                <div class="pipeline-bar-fill bar-prospect" style="width: 18.7%;"></div>
+                            </div>
+                            <div class="pipeline-pct-label text-blue">18.7% of pipeline</div>
+                        </div>
+
+                        <!-- Customer -->
+                        <div class="pipeline-item">
+                            <div class="pipeline-item-label-row">
+                                <span class="pipeline-stage-name">Customer</span>
+                                <span class="pipeline-stage-count">89</span>
+                            </div>
+                            <div class="pipeline-bar-track">
+                                <div class="pipeline-bar-fill bar-customer" style="width: 43.8%;"></div>
+                            </div>
+                            <div class="pipeline-pct-label text-teal">43.8% of pipeline</div>
+                        </div>
+
+                        <!-- VIP -->
+                        <div class="pipeline-item">
+                            <div class="pipeline-item-label-row">
+                                <span class="pipeline-stage-name">VIP</span>
+                                <span class="pipeline-stage-count">24</span>
+                            </div>
+                            <div class="pipeline-bar-track">
+                                <div class="pipeline-bar-fill bar-vip" style="width: 11.8%;"></div>
+                            </div>
+                            <div class="pipeline-pct-label text-yellow">11.8% of pipeline</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Right Card: Recent Activity (Desktop only in Figma) -->
+                <section class="dash-card recent-activity-card desktop-only" aria-label="Recent Activity">
+                    <div class="dash-card-header">
+                        <h2 class="dash-card-title">Recent Activity</h2>
+                        <span class="activity-subtitle-badge">Today & yesterday</span>
+                    </div>
+
+                    <div class="activity-list">
+                        <!-- Activity 1 -->
+                        <div class="activity-row">
+                            <span class="activity-time">10:22 AM</span>
+                            <div class="activity-info">
+                                <div class="activity-main-text">New order received</div>
+                                <div class="activity-sub-text">Carmen Reyes — Premium Wellness Pack</div>
+                            </div>
+                            <span class="activity-badge badge-order">Order</span>
+                        </div>
+
+                        <!-- Activity 2 -->
+                        <div class="activity-row">
+                            <span class="activity-time">09:58 AM</span>
+                            <div class="activity-info">
+                                <div class="activity-main-text">Payment confirmed</div>
+                                <div class="activity-sub-text">Nathan Buckley — $480</div>
+                            </div>
+                            <span class="activity-badge badge-paid">Paid</span>
+                        </div>
+
+                        <!-- Activity 3 -->
+                        <div class="activity-row">
+                            <span class="activity-time">09:34 AM</span>
+                            <div class="activity-info">
+                                <div class="activity-main-text">Promotion sent via WhatsApp</div>
+                                <div class="activity-sub-text">Mega Discount — 14 customers</div>
+                            </div>
+                            <span class="activity-badge badge-sent">Sent</span>
+                        </div>
+
+                        <!-- Activity 4 -->
+                        <div class="activity-row">
+                            <span class="activity-time">09:11 AM</span>
+                            <div class="activity-info">
+                                <div class="activity-main-text">Customer response received</div>
+                                <div class="activity-sub-text">Fatima Al-Amin — Interested in Starter Pack</div>
+                            </div>
+                            <span class="activity-badge badge-response">Response</span>
+                        </div>
+
+                        <!-- Activity 5 -->
+                        <div class="activity-row">
+                            <span class="activity-time">08:47 AM</span>
+                            <div class="activity-info">
+                                <div class="activity-main-text">New customer added</div>
+                                <div class="activity-sub-text">Wei Zhang — Contact</div>
+                            </div>
+                            <span class="activity-badge badge-new">New</span>
+                        </div>
+
+                        <!-- Activity 6 -->
+                        <div class="activity-row">
+                            <span class="activity-time">Yesterday</span>
+                            <div class="activity-info">
+                                <div class="activity-main-text">Invoice generated</div>
+                                <div class="activity-sub-text">Andre Dumont — INV-2026-0214</div>
+                            </div>
+                            <span class="activity-badge badge-invoice">Invoice</span>
+                        </div>
+
+                        <!-- Activity 7 -->
+                        <div class="activity-row">
+                            <span class="activity-time">Yesterday</span>
+                            <div class="activity-info">
+                                <div class="activity-main-text">Order delivered</div>
+                                <div class="activity-sub-text">Mei Lin — Business Growth Bundle</div>
+                            </div>
+                            <span class="activity-badge badge-delivered">Delivered</span>
+                        </div>
+
+                        <!-- Activity 8 -->
+                        <div class="activity-row">
+                            <span class="activity-time">2 days ago</span>
+                            <div class="activity-info">
+                                <div class="activity-main-text">VIP upgrade</div>
+                                <div class="activity-sub-text">Olivia Hartman — upgraded from Customer</div>
+                            </div>
+                            <span class="activity-badge badge-vip">VIP</span>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Dashboard JavaScript -->
+    <script src="./assets/js/dashboard.js"></script>
+</body>
+</html>
