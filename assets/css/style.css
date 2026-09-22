@@ -634,6 +634,26 @@ body {
         gap: 10px;
     }
 
+    .dark-mode-label .moon-icon,
+    .dark-mode-label .fs-icon-moon {
+        display: block;
+    }
+
+    .dark-mode-label .sun-icon,
+    .dark-mode-label .fs-icon-sun {
+        display: none;
+    }
+
+    body.dark-mode-active .dark-mode-label .moon-icon,
+    body.dark-mode-active .dark-mode-label .fs-icon-moon {
+        display: none !important;
+    }
+
+    body.dark-mode-active .dark-mode-label .sun-icon,
+    body.dark-mode-active .dark-mode-label .fs-icon-sun {
+        display: block !important;
+    }
+
     /* Switch Slider */
     .switch {
         position: relative;

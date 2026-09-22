@@ -159,13 +159,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 4. Dark Mode Toggle Interaction ---
     const darkModeToggle = document.getElementById('darkModeToggle');
+    function setIndexDarkMode(isDark) {
+        if (isDark) {
+            document.body.classList.add('dark-mode-active');
+            if (darkModeToggle) darkModeToggle.checked = true;
+        } else {
+            document.body.classList.remove('dark-mode-active');
+            if (darkModeToggle) darkModeToggle.checked = false;
+        }
+        try {
+            localStorage.setItem('pios_theme', isDark ? 'dark' : 'light');
+        } catch (err) {}
+    }
+
     if (darkModeToggle) {
         darkModeToggle.addEventListener('change', (e) => {
-            if (!e.target.checked) {
-                console.log('Dark mode disabled');
-            } else {
-                console.log('Dark mode enabled');
-            }
+            setIndexDarkMode(e.target.checked);
         });
     }
+
+    try {
+        const savedTheme = localStorage.getItem('pios_theme');
+        if (savedTheme === 'dark') {
+            setIndexDarkMode(true);
+        }
+    } catch (err) {}
 });

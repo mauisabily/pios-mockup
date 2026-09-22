@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>PIOS - Dashboard</title>
     <meta name="description" content="PIOS BizGrowth Engine Business Owner Dashboard">
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap"
+        rel="stylesheet">
+
     <!-- Dashboard Stylesheet -->
     <link rel="stylesheet" href="./assets/css/dashboard.css">
 </head>
+
 <body class="dashboard-body">
 
     <!-- ==========================================================================
@@ -23,15 +27,18 @@
     <header class="mobile-dash-header">
         <div class="mobile-dash-left">
             <a href="./index.html" class="back-btn" aria-label="Back to Login / Home">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                    stroke-linecap="round" stroke-linejoin="round">
                     <line x1="19" y1="12" x2="5" y2="12"></line>
                     <polyline points="12 19 5 12 12 5"></polyline>
                 </svg>
             </a>
             <span class="mobile-dash-title">Dashboard</span>
         </div>
-        <button class="mobile-menu-toggle-btn" id="mobileMenuToggleBtn" aria-label="Toggle Fullscreen Menu" aria-expanded="false">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <button class="mobile-menu-toggle-btn" id="mobileMenuToggleBtn" aria-label="Toggle Fullscreen Menu"
+            aria-expanded="false">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
                 <line x1="3" y1="12" x2="21" y2="12"></line>
                 <line x1="3" y1="6" x2="21" y2="6"></line>
                 <line x1="3" y1="18" x2="21" y2="18"></line>
@@ -48,7 +55,8 @@
                 <img src="./assets/images/header_logo.png" alt="PIOS BizGrowth Engine" class="fs-header-logo">
             </a>
             <button class="fs-menu-close-btn" id="fsMenuCloseBtn" aria-label="Close Menu">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                    stroke-linecap="round" stroke-linejoin="round">
                     <line x1="3" y1="12" x2="21" y2="12"></line>
                     <line x1="3" y1="6" x2="21" y2="6"></line>
                     <line x1="3" y1="18" x2="21" y2="18"></line>
@@ -58,7 +66,8 @@
 
         <nav class="fs-nav-list">
             <a href="./dashboard.html" class="fs-nav-item active">
-                <svg class="fs-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <svg class="fs-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2.2">
                     <line x1="18" y1="20" x2="18" y2="10"></line>
                     <line x1="12" y1="20" x2="12" y2="4"></line>
                     <line x1="6" y1="20" x2="6" y2="14"></line>
@@ -67,8 +76,9 @@
             </a>
 
             <div class="fs-nav-group">
-                <a href="#customer" class="fs-nav-item">
-                    <svg class="fs-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <a href="./customer.html" class="fs-nav-item">
+                    <svg class="fs-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
                         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
                         <circle cx="9" cy="7" r="4"></circle>
                         <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
@@ -76,8 +86,9 @@
                     </svg>
                     <span>Customer</span>
                 </a>
-                <a href="#register-customer" class="fs-nav-subitem">
-                    <svg class="fs-nav-subicon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <a href="./customer.html#register" class="fs-nav-subitem">
+                    <svg class="fs-nav-subicon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
                         <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
                         <circle cx="8.5" cy="7" r="4"></circle>
                         <line x1="20" y1="8" x2="20" y2="14"></line>
@@ -87,33 +98,39 @@
                 </a>
             </div>
 
-            <a href="#products" class="fs-nav-item">
-                <svg class="fs-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <a href="./products.html" class="fs-nav-item">
+                <svg class="fs-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <path
+                        d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                    </path>
                     <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
                     <line x1="12" y1="22.08" x2="12" y2="12"></line>
                 </svg>
                 <span>Products</span>
             </a>
 
-            <a href="#transaction" class="fs-nav-item">
-                <svg class="fs-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <a href="./transaction.html" class="fs-nav-item">
+                <svg class="fs-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
                     <line x1="12" y1="1" x2="12" y2="23"></line>
                     <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
                 </svg>
                 <span>Transaction</span>
             </a>
 
-            <a href="#fees" class="fs-nav-item">
-                <svg class="fs-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <a href="./fees.html" class="fs-nav-item">
+                <svg class="fs-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
                     <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
                     <line x1="1" y1="10" x2="23" y2="10"></line>
                 </svg>
                 <span>Fees</span>
             </a>
 
-            <a href="#reports" class="fs-nav-item">
-                <svg class="fs-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <a href="./reports.html" class="fs-nav-item">
+                <svg class="fs-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                     <polyline points="14 2 14 8 20 8"></polyline>
                     <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -127,7 +144,10 @@
         <div class="fs-menu-footer">
             <div class="fs-darkmode-row">
                 <div class="fs-darkmode-label">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <svg class="fs-icon-moon moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="fs-icon-sun sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
                         <line x1="12" y1="1" x2="12" y2="3"></line>
                         <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -149,7 +169,7 @@
             <div class="fs-user-profile">
                 <img src="./assets/images/lenny_avatar.png" alt="Lenny Muller" class="fs-user-avatar">
                 <span class="fs-user-name">Lenny Muller</span>
-                <a href="./index.html" class="fs-logout-btn" aria-label="Log Out">
+                <a href="./login.html" class="fs-logout-btn" aria-label="Log Out">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
                         <polyline points="16 17 21 12 16 7"></polyline>
@@ -169,20 +189,25 @@
         <!-- Desktop Sidebar (Hidden on Mobile) -->
         <aside class="desktop-sidebar">
             <div class="sidebar-brand">
-                <img src="./assets/images/header_logo.png" alt="PIOS BizGrowth Engine" class="sidebar-logo">
+                <a href="./dashboard.html">
+                    <img src="./assets/images/desktop_sidebar_logo.png" alt="PIOS BizGrowth Engine"
+                        class="sidebar-logo">
+                </a>
             </div>
 
             <nav class="sidebar-nav">
                 <a href="./dashboard.html" class="sidebar-item active">
-                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
                         <line x1="18" y1="20" x2="18" y2="10"></line>
                         <line x1="12" y1="20" x2="12" y2="4"></line>
                         <line x1="6" y1="20" x2="6" y2="14"></line>
                     </svg>
                     <span>Dashboard</span>
                 </a>
-                <a href="#customer" class="sidebar-item">
-                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <a href="./customer.html" class="sidebar-item">
+                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
                         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
                         <circle cx="9" cy="7" r="4"></circle>
                         <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
@@ -190,30 +215,36 @@
                     </svg>
                     <span>Customer</span>
                 </a>
-                <a href="#products" class="sidebar-item">
-                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                <a href="./products.html" class="sidebar-item">
+                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path
+                            d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                        </path>
                         <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
                         <line x1="12" y1="22.08" x2="12" y2="12"></line>
                     </svg>
                     <span>Products</span>
                 </a>
-                <a href="#transaction" class="sidebar-item">
-                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <a href="./transaction.html" class="sidebar-item">
+                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
                         <line x1="12" y1="1" x2="12" y2="23"></line>
                         <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
                     </svg>
                     <span>Transaction</span>
                 </a>
-                <a href="#fees" class="sidebar-item">
-                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <a href="./fees.html" class="sidebar-item">
+                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
                         <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
                         <line x1="1" y1="10" x2="23" y2="10"></line>
                     </svg>
                     <span>Fees</span>
                 </a>
-                <a href="#reports" class="sidebar-item">
-                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <a href="./reports.html" class="sidebar-item">
+                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
                         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                         <polyline points="14 2 14 8 20 8"></polyline>
                         <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -229,7 +260,7 @@
                     <img src="./assets/images/lenny_avatar.png" alt="Lenny Muller" class="user-avatar-img">
                     <span class="user-name-text">Lenny Muller</span>
                 </div>
-                <a href="./index.html" class="sidebar-logout-btn" title="Logout">
+                <a href="./login.html" class="sidebar-logout-btn" title="Logout">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
                         <polyline points="16 17 21 12 16 7"></polyline>
@@ -252,10 +283,16 @@
                     <span class="topbar-date">Fri, Aug 21, 2026</span>
                     <div class="system-status-badge">
                         <span class="status-dot"></span>
-                        <span>System Active</span>
+                        <span>Business Owner</span>
                     </div>
-                    <button class="theme-toggle-btn" id="desktopThemeToggleBtn" aria-label="Toggle Dark / Light Theme" title="Toggle Dark / Light Theme">
-                        <svg class="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <button class="theme-toggle-btn" id="desktopThemeToggleBtn" aria-label="Toggle Dark / Light Theme"
+                        title="Toggle Dark / Light Theme">
+                        <svg class="theme-icon-moon moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                        <svg class="theme-icon-sun sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="5"></circle>
                             <line x1="12" y1="1" x2="12" y2="3"></line>
                             <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -268,7 +305,8 @@
                         </svg>
                     </button>
                     <button class="notif-bell-btn" aria-label="Notifications" title="Notifications">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
                             <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
                             <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
                         </svg>
@@ -281,14 +319,14 @@
                  6 Metric / KPI Cards (Desktop 3x2 Grid, Mobile 2x3 Grid)
                  ================================================================== -->
             <section class="kpi-grid" aria-label="Key Performance Indicators">
-                
+
                 <!-- Card 1: Total Customers -->
                 <article class="kpi-card">
                     <div class="kpi-card-header">
                         <div class="kpi-icon-wrapper teal-circle">
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                                <circle cx="12" cy="12" r="9" stroke="#10B981" stroke-width="2.5"/>
-                                <circle cx="12" cy="12" r="4" fill="#10B981"/>
+                                <circle cx="12" cy="12" r="9" stroke="#10B981" stroke-width="2.5" />
+                                <circle cx="12" cy="12" r="4" fill="#10B981" />
                             </svg>
                         </div>
                         <span class="mtd-badge desktop-only">MTD</span>
@@ -302,8 +340,9 @@
                 <article class="kpi-card">
                     <div class="kpi-card-header">
                         <div class="kpi-icon-wrapper blue-hexagon">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2.2">
-                                <polygon points="12 2 21 7.5 21 16.5 12 22 3 16.5 3 7.5 12 2"/>
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3B82F6"
+                                stroke-width="2.2">
+                                <polygon points="12 2 21 7.5 21 16.5 12 22 3 16.5 3 7.5 12 2" />
                             </svg>
                         </div>
                         <span class="mtd-badge desktop-only">MTD</span>
@@ -318,7 +357,8 @@
                     <div class="kpi-card-header">
                         <div class="kpi-icon-wrapper yellow-star">
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="#F59E0B">
-                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                                <polygon
+                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
                             </svg>
                         </div>
                         <span class="mtd-badge desktop-only">MTD</span>
@@ -333,7 +373,7 @@
                     <div class="kpi-card-header">
                         <div class="kpi-icon-wrapper purple-pentagon">
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="#A855F7">
-                                <polygon points="12 2 22 9.5 18 21 6 21 2 9.5 12 2"/>
+                                <polygon points="12 2 22 9.5 18 21 6 21 2 9.5 12 2" />
                             </svg>
                         </div>
                         <span class="mtd-badge desktop-only">MTD</span>
@@ -347,8 +387,9 @@
                 <article class="kpi-card">
                     <div class="kpi-card-header">
                         <div class="kpi-icon-wrapper green-diamond">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5">
-                                <rect x="5" y="5" width="14" height="14" transform="rotate(45 12 12)"/>
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10B981"
+                                stroke-width="2.5">
+                                <rect x="5" y="5" width="14" height="14" transform="rotate(45 12 12)" />
                             </svg>
                         </div>
                         <span class="mtd-badge desktop-only">MTD</span>
@@ -363,8 +404,8 @@
                     <div class="kpi-card-header">
                         <div class="kpi-icon-wrapper orange-diamond">
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="#F97316">
-                                <polygon points="12 3 20 12 12 21 12 3"/>
-                                <polygon points="12 3 4 12 12 21 12 3" opacity="0.3"/>
+                                <polygon points="12 3 20 12 12 21 12 3" />
+                                <polygon points="12 3 4 12 12 21 12 3" opacity="0.3" />
                             </svg>
                         </div>
                         <span class="mtd-badge desktop-only">MTD</span>
@@ -537,4 +578,5 @@
     <!-- Dashboard JavaScript -->
     <script src="./assets/js/dashboard.js"></script>
 </body>
+
 </html>

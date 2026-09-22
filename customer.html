@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>PIOS - Customer Management</title>
+    <meta name="description" content="PIOS BizGrowth Engine Business Owner Customer Management">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Customer Stylesheet -->
+    <link rel="stylesheet" href="./assets/css/customer.css">
+</head>
+
+<body class="customer-body">
+
+    <!-- ==========================================================================
+         Mobile Top Header (Shown only on Mobile < 992px)
+         Matches Figma Mobile Customer Screen
+         ========================================================================== -->
+    <header class="mobile-customer-header">
+        <div class="mobile-header-left">
+            <a href="./dashboard.html" class="mobile-back-btn" aria-label="Back to Dashboard">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+            </a>
+            <span class="mobile-header-title">Customer</span>
+        </div>
+        <button class="mobile-hamburger-btn" id="mobileMenuToggleBtn" aria-label="Toggle Navigation Menu">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+    </header>
+
+    <!-- ==========================================================================
+         Fullscreen Mobile Navigation Menu (Matches Figma 3.0_nav_dashboard)
+         ========================================================================== -->
+    <div class="fullscreen-menu" id="fullscreenMenu" aria-hidden="true">
+        <div class="fs-menu-header">
+            <a href="./index.html" class="fs-logo-link">
+                <img src="./assets/images/header_logo.png" alt="PIOS BizGrowth Engine" class="fs-header-logo">
+            </a>
+            <button class="fs-menu-close-btn" id="fsMenuCloseBtn" aria-label="Close Menu">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+
+        <nav class="fs-nav-list">
+            <a href="./dashboard.html" class="fs-nav-item">
+                <svg class="fs-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2.2">
+                    <line x1="18" y1="20" x2="18" y2="10"></line>
+                    <line x1="12" y1="20" x2="12" y2="4"></line>
+                    <line x1="6" y1="20" x2="6" y2="14"></line>
+                </svg>
+                <span>Dashboard</span>
+            </a>
+
+            <div class="fs-nav-group">
+                <a href="./customer.html" class="fs-nav-item">
+                    <svg class="fs-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                    <span>Customer</span>
+                </a>
+                <a href="#register-customer" class="fs-nav-subitem active" id="mobileRegisterCustomerBtn">
+                    <svg class="fs-nav-subicon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="8.5" cy="7" r="4"></circle>
+                        <line x1="20" y1="8" x2="20" y2="14"></line>
+                        <line x1="23" y1="11" x2="17" y2="11"></line>
+                    </svg>
+                    <span>Register Customer</span>
+                </a>
+            </div>
+
+            <a href="./products.html" class="fs-nav-item">
+                <svg class="fs-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <path
+                        d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                    </path>
+                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                </svg>
+                <span>Products</span>
+            </a>
+
+            <a href="./transaction.html" class="fs-nav-item">
+                <svg class="fs-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <line x1="12" y1="1" x2="12" y2="23"></line>
+                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                </svg>
+                <span>Transaction</span>
+            </a>
+
+            <a href="./fees.html" class="fs-nav-item">
+                <svg class="fs-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                    <line x1="1" y1="10" x2="23" y2="10"></line>
+                </svg>
+                <span>Fees</span>
+            </a>
+
+            <a href="./reports.html" class="fs-nav-item">
+                <svg class="fs-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                <span>Reports</span>
+            </a>
+        </nav>
+
+        <div class="fs-menu-footer">
+            <div class="fs-darkmode-row">
+                <div class="fs-darkmode-label">
+                    <svg class="fs-icon-moon moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="fs-icon-sun sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <span>Dark mode</span>
+                </div>
+                <label class="fs-switch">
+                    <input type="checkbox" id="fsDarkModeToggle">
+                    <span class="fs-slider"></span>
+                </label>
+            </div>
+
+            <div class="fs-user-profile">
+                <img src="./assets/images/lenny_avatar.png" alt="Lenny Muller" class="fs-user-avatar">
+                <span class="fs-user-name">Lenny Muller</span>
+                <a href="./login.html" class="fs-logout-btn" aria-label="Log Out">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+         Desktop Layout Wrapper (Sidebar + Main Content Wide Full)
+         Matches Figma BO_Customer in Unified Forest Teal (#134C49) Theme
+         ========================================================================== -->
+    <div class="cust-layout">
+
+        <!-- Desktop Sidebar (Hidden on Mobile) -->
+        <aside class="desktop-sidebar">
+            <div class="sidebar-brand">
+                <a href="./dashboard.html">
+                    <img src="./assets/images/desktop_sidebar_logo.png" alt="PIOS BizGrowth Engine"
+                        class="sidebar-logo">
+                </a>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="./dashboard.html" class="sidebar-item">
+                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="20" x2="18" y2="10"></line>
+                        <line x1="12" y1="20" x2="12" y2="4"></line>
+                        <line x1="6" y1="20" x2="6" y2="14"></line>
+                    </svg>
+                    <span>Dashboard</span>
+                </a>
+                <a href="./customer.html" class="sidebar-item active">
+                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                    <span>Customer</span>
+                </a>
+                <a href="./products.html" class="sidebar-item">
+                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path
+                            d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                        </path>
+                        <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                        <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                    </svg>
+                    <span>Products</span>
+                </a>
+                <a href="./transaction.html" class="sidebar-item">
+                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <line x1="12" y1="1" x2="12" y2="23"></line>
+                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                    </svg>
+                    <span>Transaction</span>
+                </a>
+                <a href="./fees.html" class="sidebar-item">
+                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                        <line x1="1" y1="10" x2="23" y2="10"></line>
+                    </svg>
+                    <span>Fees</span>
+                </a>
+                <a href="./reports.html" class="sidebar-item">
+                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                    <span>Reports</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-user">
+                    <img src="./assets/images/lenny_avatar.png" alt="Lenny Muller" class="user-avatar-img">
+                    <span class="user-name-text">Lenny Muller</span>
+                </div>
+                <a href="./login.html" class="sidebar-logout-btn" title="Logout">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content Area (Wide Full 100%) -->
+        <main class="cust-main">
+
+            <!-- Desktop Header Bar (Hidden on Mobile) -->
+            <div class="cust-topbar">
+                <div class="topbar-left">
+                    <h1 class="cust-heading">Customer</h1>
+                    <p class="cust-subheading">Manage your contacts, prospects, customers and VIPs</p>
+                </div>
+                <div class="topbar-right">
+                    <span class="topbar-date">Fri, Aug 21, 2026</span>
+                    <div class="system-status-badge">
+                        <span class="status-dot"></span>
+                        <span>Business Owner</span>
+                    </div>
+                    <button class="theme-toggle-btn" id="desktopThemeToggleBtn" aria-label="Toggle Dark / Light Theme"
+                        title="Toggle Dark / Light Theme">
+                        <svg class="theme-icon-moon moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                        <svg class="theme-icon-sun sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                    </button>
+                    <button class="notif-bell-btn" aria-label="Notifications" title="Notifications">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                        </svg>
+                        <span class="notif-badge-dot"></span>
+                    </button>
+                </div>
+            </div>
+            <!-- ==================================================================
+                 DESKTOP VIEW: Customer Data Table (Matches Figma BO_Customer)
+                 ================================================================== -->
+            <div class="desktop-customer-view">
+
+                <!-- Action Bar: Search & Add Customer (Desktop Only) -->
+                <div class="cust-action-bar">
+                    <div class="cust-search-wrapper">
+                        <svg class="cust-search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                        <input type="text" id="desktopSearchInput" class="cust-search-input"
+                            placeholder="Search customer name, phone, or email..." autocomplete="off">
+                    </div>
+                    <button type="button" class="btn-add-customer" id="btnAddCustomer" aria-label="Add Customer">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                        <span>Add Customer</span>
+                    </button>
+                </div>
+
+                <div class="customer-table-card">
+                    <div class="table-responsive-wrapper">
+                        <table class="customer-table" id="customerTable">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>HP No.</th>
+                                    <th>Email</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="customerTableBody">
+                                <!-- Row 1 -->
+                                <tr data-name="Carmen Reyes" data-phone="+1 305-667-8891"
+                                    data-email="c.reyes@example.com" data-status="VIP">
+                                    <td>
+                                        <div class="customer-name-cell">
+                                            <div class="cust-avatar avatar-vip">CR</div>
+                                            <div class="customer-details">
+                                                <span class="customer-primary-name">
+                                                    <span class="vip-star">★</span> Carmen Reyes
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>+1 305-667-8891</td>
+                                    <td>c.reyes@example.com</td>
+                                    <td><span class="status-pill vip">VIP</span></td>
+                                    <td>
+                                        <div class="action-buttons-group">
+                                            <a href="https://wa.me/13056678891" target="_blank" class="btn-action-wa"
+                                                title="WhatsApp">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2">
+                                                    <path
+                                                        d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                                                    </path>
+                                                </svg>
+                                                <span>WA</span>
+                                            </a>
+                                            <a href="tel:+13056678891" class="btn-action-call" title="Call">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2">
+                                                    <path
+                                                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                                                    </path>
+                                                </svg>
+                                                <span>Call</span>
+                                            </a>
+                                            <button class="btn-action-view"
+                                                onclick="openViewModal('Carmen Reyes', '+1 305-667-8891', 'c.reyes@example.com', 'VIP')">View</button>
+                                            <button class="btn-action-more" title="More Options">•••</button>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- Row 2 -->
+                                <tr data-name="Fatima Al-Amin" data-phone="+1 718-552-0093"
+                                    data-email="f.alamin@example.com" data-status="VIP">
+                                    <td>
+                                        <div class="customer-name-cell">
+                                            <div class="cust-avatar avatar-vip">FA</div>
+                                            <div class="customer-details">
+                                                <span class="customer-primary-name">
+                                                    <span class="vip-star">★</span> Fatima Al-Amin
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>+1 718-552-0093</td>
+                                    <td>f.alamin@example.com</td>
+                                    <td><span class="status-pill vip">VIP</span></td>
+                                    <td>
+                                        <div class="action-buttons-group">
+                                            <a href="https://wa.me/17185520093" target="_blank" class="btn-action-wa">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2">
+                                                    <path
+                                                        d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                                                    </path>
+                                                </svg><span>WA</span>
+                                            </a>
+                                            <a href="tel:+17185520093" class="btn-action-call">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2">
+                                                    <path
+                                                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                                                    </path>
+                                                </svg><span>Call</span>
+                                            </a>
+                                            <button class="btn-action-view"
+                                                onclick="openViewModal('Fatima Al-Amin', '+1 718-552-0093', 'f.alamin@example.com', 'VIP')">View</button>
+                                            <button class="btn-action-more">•••</button>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- Row 3 -->
+                                <tr data-name="Olivia Hartman" data-phone="+1 310-882-4401"
+                                    data-email="o.hartman@example.com" data-status="VIP">
+                                    <td>
+                                        <div class="customer-name-cell">
+                                            <div class="cust-avatar avatar-vip">OH</div>
+                                            <div class="customer-details">
+                                                <span class="customer-primary-name">
+                                                    <span class="vip-star">★</span> Olivia Hartman
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>+1 310-882-4401</td>
+                                    <td>o.hartman@example.com</td>
+                                    <td><span class="status-pill vip">VIP</span></td>
+                                    <td>
+                                        <div class="action-buttons-group">
+                                            <a href="https://wa.me/13108824401" target="_blank" class="btn-action-wa">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2">
+                                                    <path
+                                                        d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                                                    </path>
+                                                </svg><span>WA</span>
+                                            </a>
+                                            <a href="tel:+13108824401" class="btn-action-call">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2">
+                                                    <path
+                                                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                                                    </path>
+                                                </svg><span>Call</span>
+                                            </a>
+                                            <button class="btn-action-view"
+                                                onclick="openViewModal('Olivia Hartman', '+1 310-882-4401', 'o.hartman@example.com', 'VIP')">View</button>
+                                            <button class="btn-action-more">•••</button>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- Row 4 -->
+                                <tr data-name="Nathan Buckley" data-phone="+1 312-771-0034"
+                                    data-email="n.buckley@example.com" data-status="Customer">
+                                    <td>
+                                        <div class="customer-name-cell">
+                                            <div class="cust-avatar avatar-cust">NB</div>
+                                            <div class="customer-details">
+                                                <span class="customer-primary-name">Nathan Buckley</span>
+                                                <span class="followup-subtext followup-scheduled">Follow-up:
+                                                    Scheduled</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>+1 312-771-0034</td>
+                                    <td>n.buckley@example.com</td>
+                                    <td><span class="status-pill customer">Customer</span></td>
+                                    <td>
+                                        <div class="action-buttons-group">
+                                            <a href="https://wa.me/13127710034" target="_blank" class="btn-action-wa">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2">
+                                                    <path
+                                                        d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                                                    </path>
+                                                </svg><span>WA</span>
+                                            </a>
+                                            <a href="tel:+13127710034" class="btn-action-call">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2">
+                                                    <path
+                                                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                                                    </path>
+                                                </svg><span>Call</span>
+                                            </a>
+                                            <button class="btn-action-view"
+                                                onclick="openViewModal('Nathan Buckley', '+1 312-771-0034', 'n.buckley@example.com', 'Customer')">View</button>
+                                            <button class="btn-action-more">•••</button>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- Row 5 -->
+                                <tr data-name="Andre Dumont" data-phone="+1 514-440-2200"
+                                    data-email="a.dumont@example.com" data-status="Customer">
+                                    <td>
+                                        <div class="customer-name-cell">
+                                            <div class="cust-avatar avatar-cust">AD</div>
+                                            <div class="customer-details">
+                                                <span class="customer-primary-name">Andre Dumont</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>+1 514-440-2200</td>
+                                    <td>a.dumont@example.com</td>
+                                    <td><span class="status-pill customer">Customer</span></td>
+                                    <td>
+                                        <div class="action-buttons-group">
+                                            <a href="https://wa.me/15144402200" target="_blank" class="btn-action-wa">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2">
+                                                    <path
+                                                        d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                                                    </path>
+                                                </svg><span>WA</span>
+                                            </a>
+                                            <a href="tel:+15144402200" class="btn-action-call">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2">
+                                                    <path
+                                                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                                                    </path>
+                                                </svg><span>Call</span>
+                                            </a>
+                                            <button class="btn-action-view"
+                                                onclick="openViewModal('Andre Dumont', '+1 514-440-2200', 'a.dumont@example.com', 'Customer')">View</button>
+                                            <button class="btn-action-more">•••</button>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- Row 6 -->
+                                <tr data-name="Mei Lin" data-phone="+1 650-993-6672" data-email="m.lin@example.com"
+                                    data-status="Customer">
+                                    <td>
+                                        <div class="customer-name-cell">
+                                            <div class="cust-avatar avatar-cust">ML</div>
+                                            <div class="customer-details">
+                                                <span class="customer-primary-name">Mei Lin</span>
+                                                <span class="followup-subtext followup-overdue">Follow-up:
+                                                    Overdue</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>+1 650-993-6672</td>
+                                    <td>m.lin@example.com</td>
+                                    <td><span class="status-pill customer">Customer</span></td>
+                                    <td>
+                                        <div class="action-buttons-group">
+                                            <a href="https://wa.me/16509936672" target="_blank" class="btn-action-wa">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2">
+                                                    <path
+                                                        d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                                                    </path>
+                                                </svg><span>WA</span>
+                                            </a>
+                                            <a href="tel:+16509936672" class="btn-action-call">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2">
+                                                    <path
+                                                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                                                    </path>
+                                                </svg><span>Call</span>
+                                            </a>
+                                            <button class="btn-action-view"
+                                                onclick="openViewModal('Mei Lin', '+1 650-993-6672', 'm.lin@example.com', 'Customer')">View</button>
+                                            <button class="btn-action-more">•••</button>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- Row 7 -->
+                                <tr data-name="Asha Mensah" data-phone="+1 202-890-5512"
+                                    data-email="a.mensah@example.com" data-status="Prospect">
+                                    <td>
+                                        <div class="customer-name-cell">
+                                            <div class="cust-avatar avatar-prospect">AM</div>
+                                            <div class="customer-details">
+                                                <span class="customer-primary-name">Asha Mensah</span>
+                                                <span class="followup-subtext followup-pending">Follow-up:
+                                                    Pending</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>+1 202-890-5512</td>
+                                    <td>a.mensah@example.com</td>
+                                    <td><span class="status-pill prospect">Prospect</span></td>
+                                    <td>
+                                        <div class="action-buttons-group">
+                                            <a href="https://wa.me/12028905512" target="_blank" class="btn-action-wa">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2">
+                                                    <path
+                                                        d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                                                    </path>
+                                                </svg><span>WA</span>
+                                            </a>
+                                            <a href="tel:+12028905512" class="btn-action-call">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2">
+                                                    <path
+                                                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                                                    </path>
+                                                </svg><span>Call</span>
+                                            </a>
+                                            <button class="btn-action-view"
+                                                onclick="openViewModal('Asha Mensah', '+1 202-890-5512', 'a.mensah@example.com', 'Prospect')">View</button>
+                                            <button class="btn-action-more">•••</button>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- Row 8 -->
+                                <tr data-name="Leo Svensson" data-phone="+1 617-221-3344"
+                                    data-email="l.svensson@example.com" data-status="Prospect">
+                                    <td>
+                                        <div class="customer-name-cell">
+                                            <div class="cust-avatar avatar-prospect">LS</div>
+                                            <div class="customer-details">
+                                                <span class="customer-primary-name">Leo Svensson</span>
+                                                <span class="followup-subtext followup-scheduled">Follow-up:
+                                                    Scheduled</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>+1 617-221-3344</td>
+                                    <td>l.svensson@example.com</td>
+                                    <td><span class="status-pill prospect">Prospect</span></td>
+                                    <td>
+                                        <div class="action-buttons-group">
+                                            <a href="https://wa.me/16172213344" target="_blank" class="btn-action-wa">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2">
+                                                    <path
+                                                        d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                                                    </path>
+                                                </svg><span>WA</span>
+                                            </a>
+                                            <a href="tel:+16172213344" class="btn-action-call">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2">
+                                                    <path
+                                                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                                                    </path>
+                                                </svg><span>Call</span>
+                                            </a>
+                                            <button class="btn-action-view"
+                                                onclick="openViewModal('Leo Svensson', '+1 617-221-3344', 'l.svensson@example.com', 'Prospect')">View</button>
+                                            <button class="btn-action-more">•••</button>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- Row 9 -->
+                                <tr data-name="Wei Zhang" data-phone="+1 650-334-8812" data-email="w.zhang@example.com"
+                                    data-status="Prospect">
+                                    <td>
+                                        <div class="customer-name-cell">
+                                            <div class="cust-avatar avatar-prospect">WZ</div>
+                                            <div class="customer-details">
+                                                <span class="customer-primary-name">Wei Zhang</span>
+                                                <span class="followup-subtext followup-pending">Follow-up:
+                                                    Pending</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>+1 650-334-8812</td>
+                                    <td>w.zhang@example.com</td>
+                                    <td><span class="status-pill prospect">Prospect</span></td>
+                                    <td>
+                                        <div class="action-buttons-group">
+                                            <a href="https://wa.me/16503348812" target="_blank" class="btn-action-wa">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2">
+                                                    <path
+                                                        d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                                                    </path>
+                                                </svg><span>WA</span>
+                                            </a>
+                                            <a href="tel:+16503348812" class="btn-action-call">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2">
+                                                    <path
+                                                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                                                    </path>
+                                                </svg><span>Call</span>
+                                            </a>
+                                            <button class="btn-action-view"
+                                                onclick="openViewModal('Wei Zhang', '+1 650-334-8812', 'w.zhang@example.com', 'Prospect')">View</button>
+                                            <button class="btn-action-more">•••</button>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- Row 10 -->
+                                <tr data-name="Patrick Nguyen" data-phone="+1 408-224-7731"
+                                    data-email="p.nguyen@example.com" data-status="Contact">
+                                    <td>
+                                        <div class="customer-name-cell">
+                                            <div class="cust-avatar avatar-contact">PN</div>
+                                            <div class="customer-details">
+                                                <span class="customer-primary-name">Patrick Nguyen</span>
+                                                <span class="followup-subtext followup-pending">Follow-up:
+                                                    Pending</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>+1 408-224-7731</td>
+                                    <td>p.nguyen@example.com</td>
+                                    <td><span class="status-pill contact">Contact</span></td>
+                                    <td>
+                                        <div class="action-buttons-group">
+                                            <a href="https://wa.me/14082247731" target="_blank" class="btn-action-wa">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2">
+                                                    <path
+                                                        d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                                                    </path>
+                                                </svg><span>WA</span>
+                                            </a>
+                                            <a href="tel:+14082247731" class="btn-action-call">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2">
+                                                    <path
+                                                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                                                    </path>
+                                                </svg><span>Call</span>
+                                            </a>
+                                            <button class="btn-action-view"
+                                                onclick="openViewModal('Patrick Nguyen', '+1 408-224-7731', 'p.nguyen@example.com', 'Contact')">View</button>
+                                            <button class="btn-action-more">•••</button>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- Row 11 -->
+                                <tr data-name="Diana Okon" data-phone="+1 415-339-8821" data-email="d.okon@example.com"
+                                    data-status="Contact">
+                                    <td>
+                                        <div class="customer-name-cell">
+                                            <div class="cust-avatar avatar-contact">DO</div>
+                                            <div class="customer-details">
+                                                <span class="customer-primary-name">Diana Okon</span>
+                                                <span class="followup-subtext followup-pending">Follow-up:
+                                                    Pending</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>+1 415-339-8821</td>
+                                    <td>d.okon@example.com</td>
+                                    <td><span class="status-pill contact">Contact</span></td>
+                                    <td>
+                                        <div class="action-buttons-group">
+                                            <a href="https://wa.me/14153398821" target="_blank" class="btn-action-wa">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2">
+                                                    <path
+                                                        d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                                                    </path>
+                                                </svg><span>WA</span>
+                                            </a>
+                                            <a href="tel:+14153398821" class="btn-action-call">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2">
+                                                    <path
+                                                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                                                    </path>
+                                                </svg><span>Call</span>
+                                            </a>
+                                            <button class="btn-action-view"
+                                                onclick="openViewModal('Diana Okon', '+1 415-339-8821', 'd.okon@example.com', 'Contact')">View</button>
+                                            <button class="btn-action-more">•••</button>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- Row 12 -->
+                                <tr data-name="Siti Razali" data-phone="+6011 564 6363"
+                                    data-email="siti.razali@example.com" data-status="Customer">
+                                    <td>
+                                        <div class="customer-name-cell">
+                                            <div class="cust-avatar avatar-cust">SR</div>
+                                            <div class="customer-details">
+                                                <span class="customer-primary-name">Siti Razali</span>
+                                                <span class="followup-subtext followup-scheduled">Follow-up:
+                                                    Scheduled</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>+6011 564 6363</td>
+                                    <td>siti.razali@example.com</td>
+                                    <td><span class="status-pill customer">Customer</span></td>
+                                    <td>
+                                        <div class="action-buttons-group">
+                                            <a href="https://wa.me/60115646363" target="_blank" class="btn-action-wa">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2">
+                                                    <path
+                                                        d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                                                    </path>
+                                                </svg><span>WA</span>
+                                            </a>
+                                            <a href="tel:+60115646363" class="btn-action-call">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2">
+                                                    <path
+                                                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                                                    </path>
+                                                </svg><span>Call</span>
+                                            </a>
+                                            <button class="btn-action-view"
+                                                onclick="openViewModal('Siti Razali', '+6011 564 6363', 'siti.razali@example.com', 'Customer')">View</button>
+                                            <button class="btn-action-more">•••</button>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="customer-table-footer">
+                        <div class="table-pagination-info" id="desktopTableCount">
+                            Showing 1 to 10 of 12 customers
+                        </div>
+                        <div class="table-pagination-controls" id="tablePaginationControls"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==================================================================
+                 MOBILE VIEW: Customer Cards List (Matches Figma Mobile Screen)
+                 ================================================================== -->
+            <div class="mobile-customer-view">
+                <!-- Mobile Action Bar (Search + Add Customer Button) -->
+                <div class="mobile-action-bar">
+                    <div class="mobile-search-box">
+                        <svg class="mobile-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                        <input type="text" id="mobileSearchInput" class="mobile-search-input" placeholder="Search..."
+                            autocomplete="off">
+                    </div>
+                    <button type="button" class="mobile-btn-add-cust" id="mobileBtnAddCustomer"
+                        aria-label="Add Customer">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                        <span>Add</span>
+                    </button>
+                </div>
+
+                <!-- Cards Container -->
+                <div class="mobile-card-list" id="mobileCustomerList">
+
+                    <!-- Mobile Card 1: Carmen Reyes (VIP) -->
+                    <div class="mobile-cust-card" data-name="Carmen Reyes" data-phone="+6011 564 6363"
+                        data-email="c.reyes@example.com" data-status="VIP">
+                        <div class="mobile-card-top">
+                            <div class="mobile-user-profile">
+                                <div class="mobile-avatar avatar-vip">CR</div>
+                                <div class="mobile-user-text">
+                                    <div class="mobile-cust-name">Carmen Reyes</div>
+                                    <div class="mobile-cust-phone">+6011 564 6363</div>
+                                </div>
+                            </div>
+                            <span class="status-pill vip">VIP</span>
+                        </div>
+                        <div class="mobile-cust-email">c.reyes@example.com</div>
+                        <div class="mobile-actions-grid">
+                            <a href="https://wa.me/60115646363" target="_blank" class="mobile-btn mobile-btn-wa">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path
+                                        d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                                    </path>
+                                </svg>
+                                <span>Whatsapp</span>
+                            </a>
+                            <a href="tel:+60115646363" class="mobile-btn mobile-btn-call">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path
+                                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                                    </path>
+                                </svg>
+                                <span>Call</span>
+                            </a>
+                            <button class="mobile-btn mobile-btn-view"
+                                onclick="openViewModal('Carmen Reyes', '+6011 564 6363', 'c.reyes@example.com', 'VIP')">View</button>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Card 2: Fatima Al-Amin (VIP) -->
+                    <div class="mobile-cust-card" data-name="Fatima Al-Amin" data-phone="+1 718-552-0093"
+                        data-email="f.alamin@example.com" data-status="VIP">
+                        <div class="mobile-card-top">
+                            <div class="mobile-user-profile">
+                                <div class="mobile-avatar avatar-vip">FA</div>
+                                <div class="mobile-user-text">
+                                    <div class="mobile-cust-name">Fatima Al-Amin</div>
+                                    <div class="mobile-cust-phone">+1 718-552-0093</div>
+                                </div>
+                            </div>
+                            <span class="status-pill vip">VIP</span>
+                        </div>
+                        <div class="mobile-cust-email">f.alamin@example.com</div>
+                        <div class="mobile-actions-grid">
+                            <a href="https://wa.me/17185520093" target="_blank" class="mobile-btn mobile-btn-wa">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path
+                                        d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                                    </path>
+                                </svg>
+                                <span>Whatsapp</span>
+                            </a>
+                            <a href="tel:+17185520093" class="mobile-btn mobile-btn-call">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path
+                                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                                    </path>
+                                </svg>
+                                <span>Call</span>
+                            </a>
+                            <button class="mobile-btn mobile-btn-view"
+                                onclick="openViewModal('Fatima Al-Amin', '+1 718-552-0093', 'f.alamin@example.com', 'VIP')">View</button>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Card 3: Siti Razali (Customer) -->
+                    <div class="mobile-cust-card" data-name="Siti Razali" data-phone="+6011 564 6363"
+                        data-email="c.reyes@example.com" data-status="Customer">
+                        <div class="mobile-card-top">
+                            <div class="mobile-user-profile">
+                                <div class="mobile-avatar avatar-cust">SR</div>
+                                <div class="mobile-user-text">
+                                    <div class="mobile-cust-name">Siti Razali</div>
+                                    <div class="mobile-cust-phone">+6011 564 6363</div>
+                                </div>
+                            </div>
+                            <span class="status-pill customer">Customer</span>
+                        </div>
+                        <div class="mobile-cust-email">c.reyes@example.com</div>
+                        <div class="mobile-actions-grid">
+                            <a href="https://wa.me/60115646363" target="_blank" class="mobile-btn mobile-btn-wa">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path
+                                        d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                                    </path>
+                                </svg>
+                                <span>Whatsapp</span>
+                            </a>
+                            <a href="tel:+60115646363" class="mobile-btn mobile-btn-call">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path
+                                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                                    </path>
+                                </svg>
+                                <span>Call</span>
+                            </a>
+                            <button class="mobile-btn mobile-btn-view"
+                                onclick="openViewModal('Siti Razali', '+6011 564 6363', 'siti.razali@example.com', 'Customer')">View</button>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Card 4: Ahmad Fakrul (Prospect) -->
+                    <div class="mobile-cust-card" data-name="Ahmad Fakrul" data-phone="+6011 564 6363"
+                        data-email="c.reyes@example.com" data-status="Prospect">
+                        <div class="mobile-card-top">
+                            <div class="mobile-user-profile">
+                                <div class="mobile-avatar avatar-prospect">AF</div>
+                                <div class="mobile-user-text">
+                                    <div class="mobile-cust-name">Ahmad Fakrul</div>
+                                    <div class="mobile-cust-phone">+6011 564 6363</div>
+                                </div>
+                            </div>
+                            <span class="status-pill prospect">Prospect</span>
+                        </div>
+                        <div class="mobile-cust-email">c.reyes@example.com</div>
+                        <div class="mobile-actions-grid">
+                            <a href="https://wa.me/60115646363" target="_blank" class="mobile-btn mobile-btn-wa">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path
+                                        d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                                    </path>
+                                </svg>
+                                <span>Whatsapp</span>
+                            </a>
+                            <a href="tel:+60115646363" class="mobile-btn mobile-btn-call">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path
+                                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                                    </path>
+                                </svg>
+                                <span>Call</span>
+                            </a>
+                            <button class="mobile-btn mobile-btn-view"
+                                onclick="openViewModal('Ahmad Fakrul', '+6011 564 6363', 'c.reyes@example.com', 'Prospect')">View</button>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Card 5: Nathan Buckley (Customer) -->
+                    <div class="mobile-cust-card" data-name="Nathan Buckley" data-phone="+1 312-771-0034"
+                        data-email="n.buckley@example.com" data-status="Customer">
+                        <div class="mobile-card-top">
+                            <div class="mobile-user-profile">
+                                <div class="mobile-avatar avatar-cust">NB</div>
+                                <div class="mobile-user-text">
+                                    <div class="mobile-cust-name">Nathan Buckley</div>
+                                    <div class="mobile-cust-phone">+1 312-771-0034</div>
+                                </div>
+                            </div>
+                            <span class="status-pill customer">Customer</span>
+                        </div>
+                        <div class="mobile-cust-email">n.buckley@example.com</div>
+                        <div class="mobile-actions-grid">
+                            <a href="https://wa.me/13127710034" target="_blank"
+                                class="mobile-btn mobile-btn-wa">Whatsapp</a>
+                            <a href="tel:+13127710034" class="mobile-btn mobile-btn-call">Call</a>
+                            <button class="mobile-btn mobile-btn-view"
+                                onclick="openViewModal('Nathan Buckley', '+1 312-771-0034', 'n.buckley@example.com', 'Customer')">View</button>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Card 6: Mei Lin (Customer) -->
+                    <div class="mobile-cust-card" data-name="Mei Lin" data-phone="+1 650-993-6672"
+                        data-email="m.lin@example.com" data-status="Customer">
+                        <div class="mobile-card-top">
+                            <div class="mobile-user-profile">
+                                <div class="mobile-avatar avatar-cust">ML</div>
+                                <div class="mobile-user-text">
+                                    <div class="mobile-cust-name">Mei Lin</div>
+                                    <div class="mobile-cust-phone">+1 650-993-6672</div>
+                                </div>
+                            </div>
+                            <span class="status-pill customer">Customer</span>
+                        </div>
+                        <div class="mobile-cust-email">m.lin@example.com</div>
+                        <div class="mobile-actions-grid">
+                            <a href="https://wa.me/16509936672" target="_blank"
+                                class="mobile-btn mobile-btn-wa">Whatsapp</a>
+                            <a href="tel:+16509936672" class="mobile-btn mobile-btn-call">Call</a>
+                            <button class="mobile-btn mobile-btn-view"
+                                onclick="openViewModal('Mei Lin', '+1 650-993-6672', 'm.lin@example.com', 'Customer')">View</button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Mobile Pagination Controls -->
+                <div class="mobile-pagination-wrapper">
+                    <div class="mobile-pagination-info" id="mobileTableCount">Showing 1 to 10 of 12 customers</div>
+                    <div class="table-pagination-controls" id="mobilePaginationControls"></div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- ==========================================================================
+         Register Customer Modal (Matches Figma & User Screenshot)
+         ========================================================================== -->
+    <div class="modal-overlay" id="addCustomerModal">
+        <div class="modal-card modal-register-card">
+            <!-- Mobile Header for Register Customer (Shown on Mobile < 992px, Matches Dashboard) -->
+            <div class="mobile-customer-header mobile-reg-header">
+                <div class="mobile-header-left">
+                    <button type="button" class="mobile-back-btn mobile-reg-back-btn" id="mobileRegBackBtn"
+                        aria-label="Back to Customer List">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="19" y1="12" x2="5" y2="12"></line>
+                            <polyline points="12 19 5 12 12 5"></polyline>
+                        </svg>
+                    </button>
+                    <span class="mobile-header-title mobile-reg-title">Register Customer</span>
+                </div>
+                <button type="button" class="mobile-hamburger-btn mobile-reg-menu-btn" id="mobileRegMenuBtn"
+                    aria-label="Toggle Navigation">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Desktop Header Bar (Hidden on Mobile) -->
+            <div class="modal-header desktop-modal-header">
+                <h3 class="modal-title">Register Customer</h3>
+                <button class="modal-close-btn" id="closeAddModalBtn" aria-label="Close modal">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <form id="addCustomerForm">
+                <div class="modal-body modal-grid-layout">
+                    <!-- Left Column (On mobile: Card 1) -->
+                    <div class="modal-col modal-card-section">
+                        <div class="form-group">
+                            <label class="form-label" for="regCustName">Customer Name</label>
+                            <input type="text" class="form-control" id="regCustName" name="customer_name"
+                                placeholder="Enter customer name" required autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="regContactPerson">Contact Person</label>
+                            <input type="text" class="form-control" id="regContactPerson" name="contact_person"
+                                placeholder="Full name" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="regEmail">Email Address</label>
+                            <input type="email" class="form-control" id="regEmail" name="email"
+                                placeholder="contact@gmail.com" required autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="regPhone">Phone Number</label>
+                            <input type="tel" class="form-control" id="regPhone" name="phone"
+                                placeholder="+601 11000-0000" required autocomplete="off">
+                        </div>
+                    </div>
+
+                    <!-- Right Column (On mobile: Card 2) -->
+                    <div class="modal-col modal-card-section">
+                        <div class="form-group address-group">
+                            <label class="form-label" for="regAddress1">Address</label>
+                            <div class="address-inputs-stack">
+                                <input type="text" class="form-control" id="regAddress1" name="address_1"
+                                    placeholder="Address line 1" autocomplete="off">
+                                <input type="text" class="form-control" id="regAddress2" name="address_2"
+                                    placeholder="Address line 2" autocomplete="off">
+                                <input type="text" class="form-control" id="regAddress3" name="address_3"
+                                    placeholder="Address line 3" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="regPostcode">Postcode</label>
+                            <div class="select-wrapper">
+                                <select class="form-control form-select" id="regPostcode" name="postcode">
+                                    <option value="" disabled selected>Select postcode</option>
+                                    <option value="50000">50000 (Kuala Lumpur)</option>
+                                    <option value="50480">50480 (Bukit Damansara)</option>
+                                    <option value="47301">47301 (Petaling Jaya)</option>
+                                    <option value="40000">40000 (Shah Alam)</option>
+                                    <option value="43000">43000 (Kajang)</option>
+                                    <option value="80000">80000 (Johor Bahru)</option>
+                                    <option value="10000">10000 (George Town)</option>
+                                    <option value="30000">30000 (Ipoh)</option>
+                                    <option value="75000">75000 (Melaka)</option>
+                                    <option value="25000">25000 (Kuantan)</option>
+                                    <option value="15000">15000 (Kota Bharu)</option>
+                                    <option value="93000">93000 (Kuching)</option>
+                                    <option value="88000">88000 (Kota Kinabalu)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="regCity">City</label>
+                            <div class="select-wrapper">
+                                <select class="form-control form-select" id="regCity" name="city">
+                                    <option value="" disabled selected>Select city</option>
+                                    <option value="Kuala Lumpur">Kuala Lumpur</option>
+                                    <option value="Petaling Jaya">Petaling Jaya</option>
+                                    <option value="Shah Alam">Shah Alam</option>
+                                    <option value="Subang Jaya">Subang Jaya</option>
+                                    <option value="Klang">Klang</option>
+                                    <option value="Johor Bahru">Johor Bahru</option>
+                                    <option value="George Town">George Town</option>
+                                    <option value="Ipoh">Ipoh</option>
+                                    <option value="Melaka">Melaka</option>
+                                    <option value="Seremban">Seremban</option>
+                                    <option value="Kuantan">Kuantan</option>
+                                    <option value="Kota Bharu">Kota Bharu</option>
+                                    <option value="Kuala Terengganu">Kuala Terengganu</option>
+                                    <option value="Kuching">Kuching</option>
+                                    <option value="Kota Kinabalu">Kota Kinabalu</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="regState">State</label>
+                            <div class="select-wrapper">
+                                <select class="form-control form-select" id="regState" name="state">
+                                    <option value="" disabled selected>Select state</option>
+                                    <option value="Wilayah Persekutuan Kuala Lumpur">Wilayah Persekutuan Kuala Lumpur
+                                    </option>
+                                    <option value="Selangor">Selangor</option>
+                                    <option value="Johor">Johor</option>
+                                    <option value="Pulau Pinang">Pulau Pinang</option>
+                                    <option value="Perak">Perak</option>
+                                    <option value="Kedah">Kedah</option>
+                                    <option value="Melaka">Melaka</option>
+                                    <option value="Negeri Sembilan">Negeri Sembilan</option>
+                                    <option value="Pahang">Pahang</option>
+                                    <option value="Terengganu">Terengganu</option>
+                                    <option value="Kelantan">Kelantan</option>
+                                    <option value="Perlis">Perlis</option>
+                                    <option value="Sabah">Sabah</option>
+                                    <option value="Sarawak">Sarawak</option>
+                                    <option value="Wilayah Persekutuan Putrajaya">Wilayah Persekutuan Putrajaya</option>
+                                    <option value="Wilayah Persekutuan Labuan">Wilayah Persekutuan Labuan</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer-divider"></div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn-modal-submit" id="submitAddCustBtn">Register Customer</button>
+                    <button type="button" class="btn-modal-cancel" id="cancelAddModalBtn">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+         View Customer Details Modal
+         ========================================================================== -->
+    <div class="modal-overlay" id="viewCustomerModal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3 class="modal-title">Customer Profile</h3>
+                <button class="modal-close-btn" id="closeViewModalBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 12px;">
+                    <div class="cust-avatar avatar-cust" id="viewModalAvatar"
+                        style="width: 54px; height: 54px; font-size: 1.25rem;">CR</div>
+                    <div>
+                        <h4 id="viewModalName" style="font-size: 1.2rem; font-weight: 700;">Carmen Reyes</h4>
+                        <span id="viewModalStatusBadge" class="status-pill vip">VIP</span>
+                    </div>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.95rem;">
+                    <div><strong>Phone:</strong> <span id="viewModalPhone" style="color: #0D9488;">+1
+                            305-667-8891</span></div>
+                    <div><strong>Email:</strong> <span id="viewModalEmail"
+                            style="color: #2563EB;">c.reyes@example.com</span></div>
+                    <div><strong>Account Status:</strong> <span style="color: #10B981; font-weight: 600;">Active</span>
+                    </div>
+                    <div><strong>Total Orders:</strong> 14 completed ($3,420)</div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-add-customer" id="closeViewModalBtn2"
+                    style="padding: 10px 20px;">Done</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Customer JavaScript Logic -->
+    <script src="./assets/js/customer.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>PIOS - Business Transactions</title>
+    <meta name="description" content="PIOS BizGrowth Engine - Business Transactions Management">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="./assets/css/transaction.css">
+</head>
+
+<body class="transaction-body">
+
+    <!-- ==========================================================================
+         Mobile Top Header (Shown only on Mobile < 992px)
+         Strictly follows Benchmark Dashboard Specification (60px, Forest Teal)
+         ========================================================================== -->
+    <header class="mobile-tx-header">
+        <div class="mobile-header-left">
+            <a href="./dashboard.html" class="mobile-back-btn" aria-label="Back to Dashboard">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+            </a>
+            <span class="mobile-header-title">Transaction</span>
+        </div>
+        <button class="mobile-hamburger-btn" id="mobileMenuToggleBtn" aria-label="Toggle Navigation Menu">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+    </header>
+
+    <!-- ==========================================================================
+         Fullscreen Mobile Navigation Menu (100% Height Overlay)
+         ========================================================================== -->
+    <div class="fullscreen-menu" id="fullscreenMenu" aria-hidden="true">
+        <div class="fs-menu-header">
+            <a href="./index.html" class="fs-logo-link">
+                <img src="./assets/images/header_logo.png" alt="PIOS BizGrowth Engine" class="fs-header-logo">
+            </a>
+            <button class="fs-menu-close-btn" id="fsMenuCloseBtn" aria-label="Close Menu">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+
+        <nav class="fs-nav-list">
+            <a href="./dashboard.html" class="fs-nav-item">
+                <svg class="fs-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2.2">
+                    <line x1="18" y1="20" x2="18" y2="10"></line>
+                    <line x1="12" y1="20" x2="12" y2="4"></line>
+                    <line x1="6" y1="20" x2="6" y2="14"></line>
+                </svg>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="./customer.html" class="fs-nav-item">
+                <svg class="fs-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+                <span>Customer</span>
+            </a>
+
+            <a href="./products.html" class="fs-nav-item">
+                <svg class="fs-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <path
+                        d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                    </path>
+                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                </svg>
+                <span>Products</span>
+            </a>
+
+            <a href="./transaction.html" class="fs-nav-item active">
+                <svg class="fs-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <line x1="12" y1="1" x2="12" y2="23"></line>
+                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                </svg>
+                <span>Transaction</span>
+            </a>
+
+            <a href="./fees.html" class="fs-nav-item">
+                <svg class="fs-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                    <line x1="1" y1="10" x2="23" y2="10"></line>
+                </svg>
+                <span>Fees</span>
+            </a>
+
+            <a href="./reports.html" class="fs-nav-item">
+                <svg class="fs-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                <span>Reports</span>
+            </a>
+        </nav>
+
+        <div class="fs-menu-footer">
+            <div class="fs-darkmode-row">
+                <div class="fs-darkmode-label">
+                    <svg class="fs-icon-moon moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="fs-icon-sun sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <span>Dark mode</span>
+                </div>
+                <label class="fs-switch">
+                    <input type="checkbox" id="fsDarkModeToggle">
+                    <span class="fs-slider"></span>
+                </label>
+            </div>
+
+            <div class="fs-user-profile">
+                <img src="./assets/images/lenny_avatar.png" alt="Lenny Muller" class="fs-user-avatar">
+                <span class="fs-user-name">Lenny Muller</span>
+                <a href="./login.html" class="fs-logout-btn" aria-label="Log Out">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+         Desktop Layout (Sidebar + Fluid Wide Content)
+         ========================================================================== -->
+    <div class="tx-layout">
+
+        <!-- Desktop Sidebar (Forest Teal #134C49) -->
+        <aside class="desktop-sidebar">
+            <div class="sidebar-brand">
+                <a href="./dashboard.html">
+                    <img src="./assets/images/desktop_sidebar_logo.png" alt="PIOS BizGrowth Engine"
+                        class="sidebar-logo">
+                </a>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="./dashboard.html" class="sidebar-item">
+                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="20" x2="18" y2="10"></line>
+                        <line x1="12" y1="20" x2="12" y2="4"></line>
+                        <line x1="6" y1="20" x2="6" y2="14"></line>
+                    </svg>
+                    <span>Dashboard</span>
+                </a>
+                <a href="./customer.html" class="sidebar-item">
+                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                    <span>Customer</span>
+                </a>
+                <a href="./products.html" class="sidebar-item">
+                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path
+                            d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                        </path>
+                        <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                        <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                    </svg>
+                    <span>Products</span>
+                </a>
+                <a href="./transaction.html" class="sidebar-item active">
+                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <line x1="12" y1="1" x2="12" y2="23"></line>
+                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                    </svg>
+                    <span>Transaction</span>
+                </a>
+                <a href="./fees.html" class="sidebar-item">
+                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                        <line x1="1" y1="10" x2="23" y2="10"></line>
+                    </svg>
+                    <span>Fees</span>
+                </a>
+                <a href="./reports.html" class="sidebar-item">
+                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                    <span>Reports</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-user">
+                    <img src="./assets/images/lenny_avatar.png" alt="Lenny Muller" class="user-avatar-img">
+                    <span class="user-name-text">Lenny Muller</span>
+                </div>
+                <a href="./login.html" class="sidebar-logout-btn" title="Logout">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="tx-main">
+
+            <!-- Desktop Topbar (Hidden on Mobile) -->
+            <div class="tx-topbar">
+                <div class="topbar-left">
+                    <h1 class="tx-heading">Business Transactions</h1>
+                    <p class="tx-subheading">Track orders from response through to payment</p>
+                </div>
+                <div class="topbar-right">
+                    <span class="topbar-date">Fri, Aug 21, 2026</span>
+                    <div class="system-status-badge">
+                        <span class="status-dot"></span>
+                        <span>Business Owner</span>
+                    </div>
+                    <button class="theme-toggle-btn" id="desktopThemeToggleBtn" aria-label="Toggle Dark / Light Theme"
+                        title="Toggle Dark / Light Theme">
+                        <svg class="theme-icon-moon moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                        <svg class="theme-icon-sun sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                    </button>
+                    <button class="notif-bell-btn" aria-label="Notifications" title="Notifications">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                        </svg>
+                        <span class="notif-badge-dot"></span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Transaction Flow Status Bar / Card -->
+            <div class="tx-flow-card">
+                <div class="tx-flow-header">
+                    <span class="tx-flow-title">Transaction Flow</span>
+                </div>
+                <div class="tx-flow-steps" id="txFlowSteps">
+                    
+                    <div class="tx-flow-step step-response active-filter" data-status="Response">
+                        <div class="step-num text-purple">24</div>
+                        <div class="step-label">Response</div>
+                    </div>
+                    
+                    <div class="step-arrow">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </div>
+
+                    <div class="tx-flow-step step-order" data-status="Order">
+                        <div class="step-num text-blue">12</div>
+                        <div class="step-label">Order</div>
+                    </div>
+
+                    <div class="step-arrow">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </div>
+
+                    <div class="tx-flow-step step-invoice" data-status="Invoice">
+                        <div class="step-num text-orange">13</div>
+                        <div class="step-label">Invoice</div>
+                    </div>
+
+                    <div class="step-arrow">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </div>
+
+                    <div class="tx-flow-step step-delivery" data-status="Delivery">
+                        <div class="step-num text-amber">8</div>
+                        <div class="step-label">Delivery</div>
+                    </div>
+
+                    <div class="step-arrow">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </div>
+
+                    <div class="tx-flow-step step-payment" data-status="Payment">
+                        <div class="step-num text-orange">14</div>
+                        <div class="step-label">Payment</div>
+                    </div>
+
+                    <div class="step-arrow">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </div>
+
+                    <div class="tx-flow-step step-complete" data-status="Complete">
+                        <div class="step-num text-teal">7</div>
+                        <div class="step-label">Complete</div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Search and Filter Bar -->
+            <div class="tx-action-bar">
+                <div class="tx-search-wrapper">
+                    <svg class="tx-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" class="tx-search-input" id="txSearchInput"
+                        placeholder="Search by order, customer or product..." aria-label="Search transactions">
+                </div>
+
+                <div class="tx-filter-wrapper">
+                    <select class="tx-filter-select" id="paymentFilterSelect" aria-label="Filter payment status">
+                        <option value="all">All Payments</option>
+                        <option value="Complete">Complete</option>
+                        <option value="Payment">Payment</option>
+                        <option value="Delivery">Delivery</option>
+                        <option value="Invoice">Invoice</option>
+                        <option value="Order">Order</option>
+                        <option value="Response">Response</option>
+                    </select>
+                    <svg class="tx-select-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Desktop Transaction Table (Wide-Full) -->
+            <div class="tx-table-card desktop-only">
+                <div class="table-responsive-wrapper">
+                    <table class="tx-table" id="transactionTable">
+                        <thead>
+                            <tr>
+                                <th>Order No.</th>
+                                <th>Customer</th>
+                                <th>Product</th>
+                                <th>Date</th>
+                                <th>Amount</th>
+                                <th>Order Status</th>
+                                <th class="text-right">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="transactionTableBody">
+                            
+                            <!-- Row 1 -->
+                            <tr class="tx-row" data-order="ORD-2026-0214" data-customer="Carmen Reyes" data-product="Premium Wellness Pack" data-status="Complete" data-amount="240" data-date="Aug 20, 2026">
+                                <td class="col-order font-mono">ORD-2026-0214</td>
+                                <td class="col-customer font-semibold">Carmen Reyes</td>
+                                <td class="col-product text-muted">Premium Wellness Pack</td>
+                                <td class="col-date text-muted">Aug 20, 2026</td>
+                                <td class="col-amount font-bold">RM 240</td>
+                                <td class="col-status">
+                                    <span class="badge-status badge-complete">Complete</span>
+                                </td>
+                                <td class="col-actions text-right">
+                                    <button type="button" class="btn-tx-view" aria-label="View transaction ORD-2026-0214">View</button>
+                                </td>
+                            </tr>
+
+                            <!-- Row 2 -->
+                            <tr class="tx-row" data-order="ORD-2026-0213" data-customer="Fatima Al-Amin" data-product="VIP Wellness Retreat" data-status="Payment" data-amount="1200" data-date="Aug 19, 2026">
+                                <td class="col-order font-mono">ORD-2026-0213</td>
+                                <td class="col-customer font-semibold">Fatima Al-Amin</td>
+                                <td class="col-product text-muted">VIP Wellness Retreat</td>
+                                <td class="col-date text-muted">Aug 19, 2026</td>
+                                <td class="col-amount font-bold">RM 1,200</td>
+                                <td class="col-status">
+                                    <span class="badge-status badge-payment">Payment</span>
+                                </td>
+                                <td class="col-actions text-right">
+                                    <button type="button" class="btn-tx-view" aria-label="View transaction ORD-2026-0213">View</button>
+                                </td>
+                            </tr>
+
+                            <!-- Row 3 -->
+                            <tr class="tx-row" data-order="ORD-2026-0212" data-customer="Olivia Hartman" data-product="Business Growth Bundle" data-status="Delivery" data-amount="360" data-date="Aug 18, 2026">
+                                <td class="col-order font-mono">ORD-2026-0212</td>
+                                <td class="col-customer font-semibold">Olivia Hartman</td>
+                                <td class="col-product text-muted">Business Growth Bundle</td>
+                                <td class="col-date text-muted">Aug 18, 2026</td>
+                                <td class="col-amount font-bold">RM 360</td>
+                                <td class="col-status">
+                                    <span class="badge-status badge-delivery">Delivery</span>
+                                </td>
+                                <td class="col-actions text-right">
+                                    <button type="button" class="btn-tx-view" aria-label="View transaction ORD-2026-0212">View</button>
+                                </td>
+                            </tr>
+
+                            <!-- Row 4 -->
+                            <tr class="tx-row" data-order="ORD-2026-0211" data-customer="Nathan Buckley" data-product="Advanced Coaching Programme" data-status="Invoice" data-amount="500" data-date="Aug 17, 2026">
+                                <td class="col-order font-mono">ORD-2026-0211</td>
+                                <td class="col-customer font-semibold">Nathan Buckley</td>
+                                <td class="col-product text-muted">Advanced Coaching Programme</td>
+                                <td class="col-date text-muted">Aug 17, 2026</td>
+                                <td class="col-amount font-bold">RM 500</td>
+                                <td class="col-status">
+                                    <span class="badge-status badge-invoice">Invoice</span>
+                                </td>
+                                <td class="col-actions text-right">
+                                    <button type="button" class="btn-tx-view" aria-label="View transaction ORD-2026-0211">View</button>
+                                </td>
+                            </tr>
+
+                            <!-- Row 5 -->
+                            <tr class="tx-row" data-order="ORD-2026-0210" data-customer="Andre Dumont" data-product="Starter Pack" data-status="Complete" data-amount="240" data-date="Aug 16, 2026">
+                                <td class="col-order font-mono">ORD-2026-0210</td>
+                                <td class="col-customer font-semibold">Andre Dumont</td>
+                                <td class="col-product text-muted">Starter Pack</td>
+                                <td class="col-date text-muted">Aug 16, 2026</td>
+                                <td class="col-amount font-bold">RM 240</td>
+                                <td class="col-status">
+                                    <span class="badge-status badge-complete">Complete</span>
+                                </td>
+                                <td class="col-actions text-right">
+                                    <button type="button" class="btn-tx-view" aria-label="View transaction ORD-2026-0210">View</button>
+                                </td>
+                            </tr>
+
+                            <!-- Row 6 -->
+                            <tr class="tx-row" data-order="ORD-2026-0209" data-customer="Mei Lin" data-product="Mega Discount Bundle" data-status="Complete" data-amount="160" data-date="Aug 15, 2026">
+                                <td class="col-order font-mono">ORD-2026-0209</td>
+                                <td class="col-customer font-semibold">Mei Lin</td>
+                                <td class="col-product text-muted">Mega Discount Bundle</td>
+                                <td class="col-date text-muted">Aug 15, 2026</td>
+                                <td class="col-amount font-bold">RM 160</td>
+                                <td class="col-status">
+                                    <span class="badge-status badge-complete">Complete</span>
+                                </td>
+                                <td class="col-actions text-right">
+                                    <button type="button" class="btn-tx-view" aria-label="View transaction ORD-2026-0209">View</button>
+                                </td>
+                            </tr>
+
+                            <!-- Row 7 -->
+                            <tr class="tx-row" data-order="ORD-2026-0208" data-customer="Tobias Kern" data-product="Starter Pack" data-status="Payment" data-amount="120" data-date="Aug 14, 2026">
+                                <td class="col-order font-mono">ORD-2026-0208</td>
+                                <td class="col-customer font-semibold">Tobias Kern</td>
+                                <td class="col-product text-muted">Starter Pack</td>
+                                <td class="col-date text-muted">Aug 14, 2026</td>
+                                <td class="col-amount font-bold">RM 120</td>
+                                <td class="col-status">
+                                    <span class="badge-status badge-payment">Payment</span>
+                                </td>
+                                <td class="col-actions text-right">
+                                    <button type="button" class="btn-tx-view" aria-label="View transaction ORD-2026-0208">View</button>
+                                </td>
+                            </tr>
+
+                            <!-- Row 8 -->
+                            <tr class="tx-row" data-order="ORD-2026-0207" data-customer="Asha Mensah" data-product="Premium Wellness Pack" data-status="Order" data-amount="240" data-date="Aug 12, 2026">
+                                <td class="col-order font-mono">ORD-2026-0207</td>
+                                <td class="col-customer font-semibold">Asha Mensah</td>
+                                <td class="col-product text-muted">Premium Wellness Pack</td>
+                                <td class="col-date text-muted">Aug 12, 2026</td>
+                                <td class="col-amount font-bold">RM 240</td>
+                                <td class="col-status">
+                                    <span class="badge-status badge-order">Order</span>
+                                </td>
+                                <td class="col-actions text-right">
+                                    <button type="button" class="btn-tx-view" aria-label="View transaction ORD-2026-0207">View</button>
+                                </td>
+                            </tr>
+
+                            <!-- Row 9 -->
+                            <tr class="tx-row" data-order="ORD-2026-0206" data-customer="Leo Svensson" data-product="Business Growth Bundle" data-status="Response" data-amount="360" data-date="Aug 10, 2026">
+                                <td class="col-order font-mono">ORD-2026-0206</td>
+                                <td class="col-customer font-semibold">Leo Svensson</td>
+                                <td class="col-product text-muted">Business Growth Bundle</td>
+                                <td class="col-date text-muted">Aug 10, 2026</td>
+                                <td class="col-amount font-bold">RM 360</td>
+                                <td class="col-status">
+                                    <span class="badge-status badge-response">Response</span>
+                                </td>
+                                <td class="col-actions text-right">
+                                    <button type="button" class="btn-tx-view" aria-label="View transaction ORD-2026-0206">View</button>
+                                </td>
+                            </tr>
+
+                            <!-- Row 10 -->
+                            <tr class="tx-row" data-order="ORD-2026-0205" data-customer="Carmen Reyes" data-product="Starter Pack" data-status="Complete" data-amount="120" data-date="Aug 5, 2026">
+                                <td class="col-order font-mono">ORD-2026-0205</td>
+                                <td class="col-customer font-semibold">Carmen Reyes</td>
+                                <td class="col-product text-muted">Starter Pack</td>
+                                <td class="col-date text-muted">Aug 5, 2026</td>
+                                <td class="col-amount font-bold">RM 120</td>
+                                <td class="col-status">
+                                    <span class="badge-status badge-complete">Complete</span>
+                                </td>
+                                <td class="col-actions text-right">
+                                    <button type="button" class="btn-tx-view" aria-label="View transaction ORD-2026-0205">View</button>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="tx-table-footer">
+                    <span class="tx-count-text" id="txCountText">Showing 10 of 10 transactions</span>
+                </div>
+            </div>
+
+            <!-- Mobile Transaction Card List (< 992px) -->
+            <div class="tx-mobile-list" id="txMobileList">
+                
+                <!-- Card 1 -->
+                <div class="tx-card" data-order="ORD-2026-0214" data-customer="Carmen Reyes" data-product="Premium Wellness Pack" data-status="Complete" data-amount="240" data-date="Aug 20, 2026">
+                    <div class="tx-card-top">
+                        <span class="tx-card-order font-mono">ORD-2026-0214</span>
+                        <span class="badge-status badge-complete">Complete</span>
+                    </div>
+                    <div class="tx-card-middle">
+                        <span class="tx-card-customer font-semibold">Carmen Reyes</span>
+                        <span class="tx-card-amount font-bold">RM 240</span>
+                    </div>
+                    <div class="tx-card-bottom">
+                        <span class="tx-card-product text-muted">Premium Wellness Pack</span>
+                        <span class="tx-card-date text-muted">Aug 20, 2026</span>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="tx-card" data-order="ORD-2026-0213" data-customer="Fatima Al-Amin" data-product="VIP Wellness Retreat" data-status="Payment" data-amount="1200" data-date="Aug 19, 2026">
+                    <div class="tx-card-top">
+                        <span class="tx-card-order font-mono">ORD-2026-0213</span>
+                        <span class="badge-status badge-payment">Payment</span>
+                    </div>
+                    <div class="tx-card-middle">
+                        <span class="tx-card-customer font-semibold">Fatima Al-Amin</span>
+                        <span class="tx-card-amount font-bold">RM 1,200</span>
+                    </div>
+                    <div class="tx-card-bottom">
+                        <span class="tx-card-product text-muted">VIP Wellness Retreat</span>
+                        <span class="tx-card-date text-muted">Aug 19, 2026</span>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="tx-card" data-order="ORD-2026-0212" data-customer="Olivia Hartman" data-product="Business Growth Bundle" data-status="Delivery" data-amount="360" data-date="Aug 18, 2026">
+                    <div class="tx-card-top">
+                        <span class="tx-card-order font-mono">ORD-2026-0212</span>
+                        <span class="badge-status badge-delivery">Delivery</span>
+                    </div>
+                    <div class="tx-card-middle">
+                        <span class="tx-card-customer font-semibold">Olivia Hartman</span>
+                        <span class="tx-card-amount font-bold">RM 360</span>
+                    </div>
+                    <div class="tx-card-bottom">
+                        <span class="tx-card-product text-muted">Business Growth Bundle</span>
+                        <span class="tx-card-date text-muted">Aug 18, 2026</span>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="tx-card" data-order="ORD-2026-0211" data-customer="Nathan Buckley" data-product="Advanced Coaching Programme" data-status="Invoice" data-amount="500" data-date="Aug 17, 2026">
+                    <div class="tx-card-top">
+                        <span class="tx-card-order font-mono">ORD-2026-0211</span>
+                        <span class="badge-status badge-invoice">Invoice</span>
+                    </div>
+                    <div class="tx-card-middle">
+                        <span class="tx-card-customer font-semibold">Nathan Buckley</span>
+                        <span class="tx-card-amount font-bold">RM 500</span>
+                    </div>
+                    <div class="tx-card-bottom">
+                        <span class="tx-card-product text-muted">Advanced Coaching Programme</span>
+                        <span class="tx-card-date text-muted">Aug 17, 2026</span>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="tx-card" data-order="ORD-2026-0210" data-customer="Andre Dumont" data-product="Starter Pack" data-status="Complete" data-amount="240" data-date="Aug 16, 2026">
+                    <div class="tx-card-top">
+                        <span class="tx-card-order font-mono">ORD-2026-0210</span>
+                        <span class="badge-status badge-complete">Complete</span>
+                    </div>
+                    <div class="tx-card-middle">
+                        <span class="tx-card-customer font-semibold">Andre Dumont</span>
+                        <span class="tx-card-amount font-bold">RM 240</span>
+                    </div>
+                    <div class="tx-card-bottom">
+                        <span class="tx-card-product text-muted">Starter Pack</span>
+                        <span class="tx-card-date text-muted">Aug 16, 2026</span>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="tx-card" data-order="ORD-2026-0209" data-customer="Mei Lin" data-product="Mega Discount Bundle" data-status="Complete" data-amount="160" data-date="Aug 15, 2026">
+                    <div class="tx-card-top">
+                        <span class="tx-card-order font-mono">ORD-2026-0209</span>
+                        <span class="badge-status badge-complete">Complete</span>
+                    </div>
+                    <div class="tx-card-middle">
+                        <span class="tx-card-customer font-semibold">Mei Lin</span>
+                        <span class="tx-card-amount font-bold">RM 160</span>
+                    </div>
+                    <div class="tx-card-bottom">
+                        <span class="tx-card-product text-muted">Mega Discount Bundle</span>
+                        <span class="tx-card-date text-muted">Aug 15, 2026</span>
+                    </div>
+                </div>
+
+                <!-- Card 7 -->
+                <div class="tx-card" data-order="ORD-2026-0208" data-customer="Tobias Kern" data-product="Starter Pack" data-status="Payment" data-amount="120" data-date="Aug 14, 2026">
+                    <div class="tx-card-top">
+                        <span class="tx-card-order font-mono">ORD-2026-0208</span>
+                        <span class="badge-status badge-payment">Payment</span>
+                    </div>
+                    <div class="tx-card-middle">
+                        <span class="tx-card-customer font-semibold">Tobias Kern</span>
+                        <span class="tx-card-amount font-bold">RM 120</span>
+                    </div>
+                    <div class="tx-card-bottom">
+                        <span class="tx-card-product text-muted">Starter Pack</span>
+                        <span class="tx-card-date text-muted">Aug 14, 2026</span>
+                    </div>
+                </div>
+
+                <!-- Card 8 -->
+                <div class="tx-card" data-order="ORD-2026-0207" data-customer="Asha Mensah" data-product="Premium Wellness Pack" data-status="Order" data-amount="240" data-date="Aug 12, 2026">
+                    <div class="tx-card-top">
+                        <span class="tx-card-order font-mono">ORD-2026-0207</span>
+                        <span class="badge-status badge-order">Order</span>
+                    </div>
+                    <div class="tx-card-middle">
+                        <span class="tx-card-customer font-semibold">Asha Mensah</span>
+                        <span class="tx-card-amount font-bold">RM 240</span>
+                    </div>
+                    <div class="tx-card-bottom">
+                        <span class="tx-card-product text-muted">Premium Wellness Pack</span>
+                        <span class="tx-card-date text-muted">Aug 12, 2026</span>
+                    </div>
+                </div>
+
+                <!-- Card 9 -->
+                <div class="tx-card" data-order="ORD-2026-0206" data-customer="Leo Svensson" data-product="Business Growth Bundle" data-status="Response" data-amount="360" data-date="Aug 10, 2026">
+                    <div class="tx-card-top">
+                        <span class="tx-card-order font-mono">ORD-2026-0206</span>
+                        <span class="badge-status badge-response">Response</span>
+                    </div>
+                    <div class="tx-card-middle">
+                        <span class="tx-card-customer font-semibold">Leo Svensson</span>
+                        <span class="tx-card-amount font-bold">RM 360</span>
+                    </div>
+                    <div class="tx-card-bottom">
+                        <span class="tx-card-product text-muted">Business Growth Bundle</span>
+                        <span class="tx-card-date text-muted">Aug 10, 2026</span>
+                    </div>
+                </div>
+
+                <!-- Card 10 -->
+                <div class="tx-card" data-order="ORD-2026-0205" data-customer="Carmen Reyes" data-product="Starter Pack" data-status="Complete" data-amount="120" data-date="Aug 5, 2026">
+                    <div class="tx-card-top">
+                        <span class="tx-card-order font-mono">ORD-2026-0205</span>
+                        <span class="badge-status badge-complete">Complete</span>
+                    </div>
+                    <div class="tx-card-middle">
+                        <span class="tx-card-customer font-semibold">Carmen Reyes</span>
+                        <span class="tx-card-amount font-bold">RM 120</span>
+                    </div>
+                    <div class="tx-card-bottom">
+                        <span class="tx-card-product text-muted">Starter Pack</span>
+                        <span class="tx-card-date text-muted">Aug 5, 2026</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </main>
+    </div>
+
+    <!-- ==========================================================================
+         Modal: Transaction Details (Light Mode)
+         ========================================================================== -->
+    <div class="tx-modal-overlay" id="txModal" aria-hidden="true">
+        <div class="tx-modal-card">
+            <div class="tx-modal-header">
+                <div class="tx-modal-title-wrap">
+                    <h2 class="tx-modal-title" id="modalOrderNo">ORD-2026-0214</h2>
+                    <span class="badge-status" id="modalStatusBadge">Complete</span>
+                </div>
+                <button class="tx-modal-close" id="closeTxModalBtn" aria-label="Close modal">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="tx-modal-body">
+                <div class="tx-modal-grid">
+                    
+                    <div class="tx-modal-section">
+                        <span class="section-label">Customer Information</span>
+                        <div class="info-row">
+                            <span class="info-key">Name:</span>
+                            <span class="info-val font-semibold" id="modalCustomerName">Carmen Reyes</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-key">Contact:</span>
+                            <span class="info-val">+1 305-667-8891</span>
+                        </div>
+                    </div>
+
+                    <div class="tx-modal-section">
+                        <span class="section-label">Order Details</span>
+                        <div class="info-row">
+                            <span class="info-key">Product:</span>
+                            <span class="info-val font-semibold" id="modalProductName">Premium Wellness Pack</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-key">Order Date:</span>
+                            <span class="info-val" id="modalOrderDate">Aug 20, 2026</span>
+                        </div>
+                    </div>
+
+                    <div class="tx-modal-section full-width">
+                        <span class="section-label">Payment Summary</span>
+                        <div class="payment-box">
+                            <div class="info-row">
+                                <span class="info-key">Total Amount:</span>
+                                <span class="info-val font-bold text-teal" id="modalTotalAmount">RM 240.00</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-key">Payment Status:</span>
+                                <span class="info-val" id="modalPaymentStatus">Settled via Online Banking</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="tx-modal-footer">
+                <button type="button" class="btn-cancel" id="cancelTxModalBtn">Close</button>
+                <button type="button" class="btn-print" id="printReceiptBtn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                        <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                        <rect x="6" y="14" width="12" height="8"></rect>
+                    </svg>
+                    <span>Print Receipt</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast-notification" id="toastNotification" aria-hidden="true">
+        <span class="toast-message" id="toastMessage">Receipt generated successfully</span>
+    </div>
+
+    <!-- Scripts -->
+    <script src="./assets/js/transaction.js"></script>
+</body>
+
+</html>

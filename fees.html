@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>PIOS - BGE Fees</title>
+    <meta name="description" content="PIOS BizGrowth Engine - Monthly BGE Subscription and Payment History">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="./assets/css/fees.css">
+</head>
+
+<body class="fees-body">
+
+    <!-- ==========================================================================
+         Mobile Top Header (Shown only on Mobile < 992px)
+         Strictly follows Benchmark Dashboard Specification (60px, Forest Teal)
+         ========================================================================== -->
+    <header class="mobile-fees-header">
+        <div class="mobile-header-left">
+            <a href="./dashboard.html" class="mobile-back-btn" aria-label="Back to Dashboard">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+            </a>
+            <span class="mobile-header-title">Fees</span>
+        </div>
+        <button class="mobile-hamburger-btn" id="mobileMenuToggleBtn" aria-label="Toggle Navigation Menu">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+    </header>
+
+    <!-- ==========================================================================
+         Fullscreen Mobile Navigation Menu (100% Height Overlay)
+         ========================================================================== -->
+    <div class="fullscreen-menu" id="fullscreenMenu" aria-hidden="true">
+        <div class="fs-menu-header">
+            <a href="./index.html" class="fs-logo-link">
+                <img src="./assets/images/header_logo.png" alt="PIOS BizGrowth Engine" class="fs-header-logo">
+            </a>
+            <button class="fs-menu-close-btn" id="fsMenuCloseBtn" aria-label="Close Menu">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+
+        <nav class="fs-nav-list">
+            <a href="./dashboard.html" class="fs-nav-item">
+                <svg class="fs-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <line x1="18" y1="20" x2="18" y2="10"></line>
+                    <line x1="12" y1="20" x2="12" y2="4"></line>
+                    <line x1="6" y1="20" x2="6" y2="14"></line>
+                </svg>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="./customer.html" class="fs-nav-item">
+                <svg class="fs-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+                <span>Customer</span>
+            </a>
+
+            <a href="./products.html" class="fs-nav-item">
+                <svg class="fs-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <path
+                        d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                    </path>
+                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                </svg>
+                <span>Products</span>
+            </a>
+
+            <a href="./transaction.html" class="fs-nav-item">
+                <svg class="fs-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <line x1="12" y1="1" x2="12" y2="23"></line>
+                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                </svg>
+                <span>Transaction</span>
+            </a>
+
+            <a href="./fees.html" class="fs-nav-item active">
+                <svg class="fs-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                    <line x1="1" y1="10" x2="23" y2="10"></line>
+                </svg>
+                <span>Fees</span>
+            </a>
+
+            <a href="./reports.html" class="fs-nav-item">
+                <svg class="fs-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                <span>Reports</span>
+            </a>
+        </nav>
+
+        <div class="fs-menu-footer">
+            <div class="fs-darkmode-row">
+                <div class="fs-darkmode-label">
+                    <svg class="fs-icon-moon moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="fs-icon-sun sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <span>Dark mode</span>
+                </div>
+                <label class="fs-switch">
+                    <input type="checkbox" id="fsDarkModeToggle">
+                    <span class="fs-slider"></span>
+                </label>
+            </div>
+
+            <div class="fs-user-profile">
+                <img src="./assets/images/lenny_avatar.png" alt="Lenny Muller" class="fs-user-avatar">
+                <span class="fs-user-name">Lenny Muller</span>
+                <a href="./login.html" class="fs-logout-btn" aria-label="Log Out">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+         Desktop Layout (Sidebar + Main Fluid Canvas)
+         ========================================================================== -->
+    <div class="fees-app-container">
+
+        <!-- 260px Business Owner Sidebar -->
+        <aside class="fees-sidebar">
+            <div class="sidebar-logo-container">
+                <a href="./index.html">
+                    <img src="./assets/images/header_logo.png" alt="PIOS BizGrowth Engine" class="sidebar-logo">
+                </a>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="./dashboard.html" class="sidebar-item">
+                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="20" x2="18" y2="10"></line>
+                        <line x1="12" y1="20" x2="12" y2="4"></line>
+                        <line x1="6" y1="20" x2="6" y2="14"></line>
+                    </svg>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="./customer.html" class="sidebar-item">
+                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                    <span>Customer</span>
+                </a>
+
+                <a href="./products.html" class="sidebar-item">
+                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path
+                            d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                        </path>
+                        <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                        <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                    </svg>
+                    <span>Products</span>
+                </a>
+
+                <a href="./transaction.html" class="sidebar-item">
+                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <line x1="12" y1="1" x2="12" y2="23"></line>
+                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                    </svg>
+                    <span>Transaction</span>
+                </a>
+
+                <a href="./fees.html" class="sidebar-item active">
+                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                        <line x1="1" y1="10" x2="23" y2="10"></line>
+                    </svg>
+                    <span>Fees</span>
+                </a>
+
+                <a href="./reports.html" class="sidebar-item">
+                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                    <span>Reports</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-user">
+                    <img src="./assets/images/lenny_avatar.png" alt="Lenny Muller" class="user-avatar-img">
+                    <span class="user-name-text">Lenny Muller</span>
+                </div>
+                <a href="./login.html" class="sidebar-logout-btn" title="Logout">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Fluid Canvas -->
+        <main class="fees-main">
+
+            <!-- Desktop Topbar -->
+            <div class="fees-topbar">
+                <div class="topbar-title-wrap">
+                    <h1 class="fees-page-title">BGE Fees</h1>
+                    <p class="fees-page-subtitle">Your monthly BGE subscription and payment history</p>
+                </div>
+
+                <div class="fees-topbar-right">
+                    <span class="topbar-date" id="topbarDate">Fri, Aug 21, 2026</span>
+                    <div class="topbar-badge">
+                        <span class="status-dot"></span>
+                        <span>Business Owner</span>
+                    </div>
+
+                    <!-- Theme Toggle Button -->
+                    <button class="theme-toggle-btn" id="desktopThemeToggleBtn" aria-label="Toggle Dark/Light Mode"
+                        title="Toggle Dark/Light Mode">
+                        <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                        <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                    </button>
+
+                    <!-- Notification Button -->
+                    <button class="topbar-icon-btn" aria-label="Notifications" title="Notifications">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Top Metric Cards (3 Columns) -->
+            <section class="fee-metrics-grid">
+
+                <!-- Card 1: Current Monthly Fee -->
+                <div class="fee-metric-card card-current-fee" id="currentFeeCard">
+                    <div class="fmc-header">
+                        <span class="fmc-title">Current Monthly BGE Fee</span>
+                        <span class="badge-status-outstanding" id="currentFeeBadge">Outstanding</span>
+                    </div>
+
+                    <div class="fmc-amount text-teal" id="currentFeeAmount">RM 900</div>
+                    <div class="fmc-period">August 2026</div>
+
+                    <hr class="fmc-divider">
+
+                    <div class="fmc-meta-row">
+                        <span class="fmc-meta-label">Due date</span>
+                        <span class="fmc-meta-val" id="currentFeeDueDate">Aug 31, 2026</span>
+                    </div>
+                    <div class="fmc-meta-row">
+                        <span class="fmc-meta-label">Invoice</span>
+                        <span class="fmc-meta-val invoice-code">INV-P-0213</span>
+                    </div>
+
+                    <button class="btn-pay-now" id="payNowBtn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                            <line x1="1" y1="10" x2="23" y2="10"></line>
+                        </svg>
+                        <span>Pay Now — RM 900</span>
+                    </button>
+                </div>
+
+                <!-- Card 2: Next Payment -->
+                <div class="fee-metric-card">
+                    <div class="fmc-header">
+                        <span class="fmc-title">Next Payment</span>
+                    </div>
+
+                    <div class="fmc-amount" id="nextPaymentAmount">~RM 900</div>
+                    <div class="fmc-period">Due Sep 30, 2026</div>
+
+                    <div class="fmc-info-callout">
+                        <p>Fees are based on your active customer count and may adjust monthly.</p>
+                    </div>
+                </div>
+
+                <!-- Card 3: Total Paid — 2026 (Desktop View) -->
+                <div class="fee-metric-card card-total-paid-desktop">
+                    <div class="fmc-header">
+                        <span class="fmc-title">Total Paid — 2026</span>
+                    </div>
+
+                    <div class="fmc-amount text-teal" id="totalPaidAmount">RM 4,050</div>
+                    <div class="fmc-period" id="paymentsOnTimeText">5 payments on time</div>
+
+                    <div class="fmc-progress-section">
+                        <div class="fmc-progress-bar">
+                            <div class="fmc-progress-fill" id="progressFill" style="width: 83%;"></div>
+                        </div>
+                        <div class="fmc-progress-sub">
+                            <span>on-time rate</span>
+                            <span class="fmc-progress-percent" id="progressPctText">83%</span>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Mobile Solid Teal Banner (Shown only on Mobile < 992px, matching Image 2) -->
+            <div class="mobile-total-paid-banner">
+                <span class="mtp-title">Total Paid</span>
+                <span class="mtp-value" id="mobileTotalPaidAmount">RM 4,050</span>
+            </div>
+
+            <!-- Informational Section: How BGE Fees Work -->
+            <section class="fee-info-section">
+                <h2 class="fee-section-title">How BGE Fees Work</h2>
+
+                <div class="fee-info-grid">
+
+                    <!-- Info Card 1: Monthly Fee -->
+                    <div class="fee-info-card">
+                        <div class="fic-icon-wrap icon-teal">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <circle cx="12" cy="12" r="6"></circle>
+                                <circle cx="12" cy="12" r="2"></circle>
+                            </svg>
+                        </div>
+                        <h3 class="fic-title">Monthly Fee</h3>
+                        <p class="fic-desc">Your BGE fee is calculated monthly based on your registered active
+                            customers and business tier.</p>
+                    </div>
+
+                    <!-- Info Card 2: Payment Due -->
+                    <div class="fee-info-card">
+                        <div class="fic-icon-wrap icon-orange">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                                <text x="12" y="18" font-size="7" font-weight="700" fill="currentColor"
+                                    text-anchor="middle" font-family="'Inter', sans-serif">17</text>
+                            </svg>
+                        </div>
+                        <h3 class="fic-title">Payment Due</h3>
+                        <p class="fic-desc">Fees are due by the last day of each month. Automatic reminders are sent 7
+                            days before the due date.</p>
+                    </div>
+
+                    <!-- Info Card 3: Outstanding Fees -->
+                    <div class="fee-info-card">
+                        <div class="fic-icon-wrap icon-amber">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path
+                                    d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z">
+                                </path>
+                                <line x1="12" y1="9" x2="12" y2="13"></line>
+                                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                            </svg>
+                        </div>
+                        <h3 class="fic-title">Outstanding Fees</h3>
+                        <p class="fic-desc">Unpaid fees may result in service restrictions. Contact your partner if you
+                            have any payment concerns.</p>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Bottom Section: Payment History -->
+            <section class="fee-history-card">
+                <div class="fhc-header">
+                    <h2 class="fhc-title">Payment History</h2>
+                    <span class="fhc-year">2026</span>
+                </div>
+
+                <!-- Desktop Table View (Hidden on Mobile) -->
+                <div class="fee-table-responsive">
+                    <table class="fee-table">
+                        <thead>
+                            <tr>
+                                <th>Period</th>
+                                <th>Amount</th>
+                                <th>Due Date</th>
+                                <th>Date Paid</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="feeHistoryTableBody">
+                            <tr id="rowAug2026">
+                                <td class="font-semibold">Aug 2026</td>
+                                <td class="font-bold font-mono">RM 900</td>
+                                <td>Aug 31, 2026</td>
+                                <td id="datePaidAug">—</td>
+                                <td>
+                                    <div class="table-status-actions" id="statusActionAug">
+                                        <span class="badge-status-outstanding">Outstanding</span>
+                                        <button class="btn-table-pay" id="btnTablePayAug">Pay</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="font-semibold">Jul 2026</td>
+                                <td class="font-bold font-mono">RM 850</td>
+                                <td>Jul 31, 2026</td>
+                                <td>Jul 12, 2026</td>
+                                <td><span class="badge-status-paid">Paid</span></td>
+                            </tr>
+                            <tr>
+                                <td class="font-semibold">Jun 2026</td>
+                                <td class="font-bold font-mono">RM 850</td>
+                                <td>Jun 30, 2026</td>
+                                <td>Jun 10, 2026</td>
+                                <td><span class="badge-status-paid">Paid</span></td>
+                            </tr>
+                            <tr>
+                                <td class="font-semibold">May 2026</td>
+                                <td class="font-bold font-mono">RM 800</td>
+                                <td>May 31, 2026</td>
+                                <td>May 14, 2026</td>
+                                <td><span class="badge-status-paid">Paid</span></td>
+                            </tr>
+                            <tr>
+                                <td class="font-semibold">Apr 2026</td>
+                                <td class="font-bold font-mono">RM 800</td>
+                                <td>Apr 30, 2026</td>
+                                <td>Apr 9, 2026</td>
+                                <td><span class="badge-status-paid">Paid</span></td>
+                            </tr>
+                            <tr>
+                                <td class="font-semibold">Mar 2026</td>
+                                <td class="font-bold font-mono">RM 750</td>
+                                <td>Mar 31, 2026</td>
+                                <td>Mar 15, 2026</td>
+                                <td><span class="badge-status-paid">Paid</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Mobile Card List View (Shown on Mobile < 992px) -->
+                <div class="fee-mobile-list" id="feeMobileList">
+                    <!-- Item 1: Aug 2026 -->
+                    <div class="fee-mobile-item" id="mobileItemAug">
+                        <div class="fmi-left">
+                            <div class="fmi-period">Aug 2026</div>
+                            <div class="fmi-subtext">Due: Aug 31, 2026</div>
+                            <div class="fmi-subtext text-teal font-semibold" id="mobileDatePaidAug" style="display: none;">Paid: Aug 21, 2026</div>
+                        </div>
+                        <div class="fmi-right">
+                            <div class="fmi-amount font-mono">RM 900</div>
+                            <div class="fmi-status-row" id="mobileStatusRowAug">
+                                <span class="badge-status-outstanding">Outstanding</span>
+                                <button class="btn-table-pay" id="btnMobilePayAug">Pay</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 2: Jul 2026 -->
+                    <div class="fee-mobile-item">
+                        <div class="fmi-left">
+                            <div class="fmi-period">Jul 2026</div>
+                            <div class="fmi-subtext">Due: Jul 31, 2026</div>
+                            <div class="fmi-subtext text-muted">Paid: Jul 12, 2026</div>
+                        </div>
+                        <div class="fmi-right">
+                            <div class="fmi-amount font-mono">RM 850</div>
+                            <div class="fmi-status-row">
+                                <span class="badge-status-paid">Paid</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 3: Jun 2026 -->
+                    <div class="fee-mobile-item">
+                        <div class="fmi-left">
+                            <div class="fmi-period">Jun 2026</div>
+                            <div class="fmi-subtext">Due: Jun 30, 2026</div>
+                            <div class="fmi-subtext text-muted">Paid: Jun 10, 2026</div>
+                        </div>
+                        <div class="fmi-right">
+                            <div class="fmi-amount font-mono">RM 850</div>
+                            <div class="fmi-status-row">
+                                <span class="badge-status-paid">Paid</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 4: May 2026 -->
+                    <div class="fee-mobile-item">
+                        <div class="fmi-left">
+                            <div class="fmi-period">May 2026</div>
+                            <div class="fmi-subtext">Due: May 31, 2026</div>
+                            <div class="fmi-subtext text-muted">Paid: May 14, 2026</div>
+                        </div>
+                        <div class="fmi-right">
+                            <div class="fmi-amount font-mono">RM 800</div>
+                            <div class="fmi-status-row">
+                                <span class="badge-status-paid">Paid</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 5: Apr 2026 -->
+                    <div class="fee-mobile-item">
+                        <div class="fmi-left">
+                            <div class="fmi-period">Apr 2026</div>
+                            <div class="fmi-subtext">Due: Apr 30, 2026</div>
+                            <div class="fmi-subtext text-muted">Paid: Apr 9, 2026</div>
+                        </div>
+                        <div class="fmi-right">
+                            <div class="fmi-amount font-mono">RM 800</div>
+                            <div class="fmi-status-row">
+                                <span class="badge-status-paid">Paid</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 6: Mar 2026 -->
+                    <div class="fee-mobile-item">
+                        <div class="fmi-left">
+                            <div class="fmi-period">Mar 2026</div>
+                            <div class="fmi-subtext">Due: Mar 31, 2026</div>
+                            <div class="fmi-subtext text-muted">Paid: Mar 15, 2026</div>
+                        </div>
+                        <div class="fmi-right">
+                            <div class="fmi-amount font-mono">RM 750</div>
+                            <div class="fmi-status-row">
+                                <span class="badge-status-paid">Paid</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer Summary (Both Desktop & Mobile) -->
+                <div class="fhc-footer">
+                    <div class="fhc-footer-left">
+                        Outstanding: <span class="text-orange font-bold" id="footerOutstandingAmount">RM 900</span>
+                    </div>
+                    <div class="fhc-footer-right">
+                        Total paid 2026: <span class="text-teal font-bold" id="footerTotalPaidAmount">RM 4,050</span>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- ==========================================================================
+         Payment Checkout Modal (Interactive FPX / Card Simulation)
+         ========================================================================== -->
+    <div class="fee-modal-backdrop" id="paymentModalBackdrop" aria-hidden="true">
+        <div class="fee-modal-dialog">
+            <div class="fee-modal-header">
+                <div class="fmh-title-wrap">
+                    <h3 class="fmh-title">Pay BGE Fee</h3>
+                    <span class="fmh-sub">Invoice INV-P-0213 &bull; August 2026</span>
+                </div>
+                <button class="fee-modal-close-btn" id="closePaymentModalBtn" aria-label="Close modal">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="fee-modal-body">
+                <!-- Amount Highlight Box -->
+                <div class="fm-amount-box">
+                    <div class="fma-label">Total Payable</div>
+                    <div class="fma-value">RM 900.00</div>
+                    <div class="fma-due">Due Date: August 31, 2026</div>
+                </div>
+
+                <!-- Payment Channel Selection -->
+                <div class="fm-form-group">
+                    <label class="fm-label">Select Payment Method</label>
+                    <div class="payment-methods-grid">
+                        <label class="method-card active">
+                            <input type="radio" name="payment_method" value="fpx" checked>
+                            <div class="method-card-content">
+                                <div class="mc-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+                                        <line x1="2" y1="10" x2="22" y2="10"></line>
+                                    </svg>
+                                </div>
+                                <div class="mc-text">
+                                    <span class="mc-name">FPX Online Banking</span>
+                                    <span class="mc-desc">Maybank, CIMB, Public Bank, etc.</span>
+                                </div>
+                            </div>
+                        </label>
+
+                        <label class="method-card">
+                            <input type="radio" name="payment_method" value="duitnow">
+                            <div class="method-card-content">
+                                <div class="mc-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <rect x="3" y="3" width="7" height="7"></rect>
+                                        <rect x="14" y="3" width="7" height="7"></rect>
+                                        <rect x="14" y="14" width="7" height="7"></rect>
+                                        <rect x="3" y="14" width="7" height="7"></rect>
+                                    </svg>
+                                </div>
+                                <div class="mc-text">
+                                    <span class="mc-name">DuitNow QR</span>
+                                    <span class="mc-desc">Instant QR Pay via Bank App</span>
+                                </div>
+                            </div>
+                        </label>
+
+                        <label class="method-card">
+                            <input type="radio" name="payment_method" value="card">
+                            <div class="method-card-content">
+                                <div class="mc-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <rect x="1" y="4" width="22" height="16" rx="2"></rect>
+                                        <line x1="1" y1="10" x2="23" y2="10"></line>
+                                    </svg>
+                                </div>
+                                <div class="mc-text">
+                                    <span class="mc-name">Credit / Debit Card</span>
+                                    <span class="mc-desc">Visa, Mastercard</span>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Simulation Notice -->
+                <div class="fm-simulation-notice">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="16" x2="12" y2="12"></line>
+                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                    </svg>
+                    <span>Clicking <strong>Confirm &amp; Pay</strong> will simulate a successful transaction and update your payment status instantly.</span>
+                </div>
+            </div>
+
+            <div class="fee-modal-footer">
+                <button type="button" class="btn-modal-cancel" id="cancelPaymentModalBtn">Cancel</button>
+                <button type="button" class="btn-modal-submit" id="confirmPaymentBtn">
+                    <span id="confirmBtnText">Confirm &amp; Pay RM 900.00</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="fee-toast" id="feeToast" aria-live="polite">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        <span id="feeToastMessage">Payment successful! August 2026 fee is now Paid.</span>
+    </div>
+
+    <!-- Script -->
+    <script src="./assets/js/fees.js"></script>
+</body>
+
+</html>

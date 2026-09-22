@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>PIOS - Products</title>
+    <meta name="description" content="PIOS BizGrowth Engine Product Management">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Products Stylesheet -->
+    <link rel="stylesheet" href="./assets/css/products.css">
+</head>
+
+<body class="products-body">
+
+    <!-- ==========================================================================
+         Mobile Top Header (Shown only on Mobile < 992px)
+         Matches Figma Mobile Product Screen with Forest Teal (#134C49)
+         ========================================================================== -->
+    <header class="mobile-prod-header">
+        <div class="mobile-header-left">
+            <a href="./dashboard.html" class="mobile-back-btn" aria-label="Back to Dashboard">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+            </a>
+            <span class="mobile-header-title">Product</span>
+        </div>
+        <button class="mobile-hamburger-btn" id="mobileMenuToggleBtn" aria-label="Toggle Navigation Menu">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+    </header>
+
+    <!-- ==========================================================================
+         Fullscreen Mobile Navigation Menu
+         ========================================================================== -->
+    <div class="fullscreen-menu" id="fullscreenMenu" aria-hidden="true">
+        <div class="fs-menu-header">
+            <a href="./index.html" class="fs-logo-link">
+                <img src="./assets/images/header_logo.png" alt="PIOS BizGrowth Engine" class="fs-header-logo">
+            </a>
+            <button class="fs-menu-close-btn" id="fsMenuCloseBtn" aria-label="Close Menu">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+
+        <nav class="fs-nav-list">
+            <a href="./dashboard.html" class="fs-nav-item">
+                <svg class="fs-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2.2">
+                    <line x1="18" y1="20" x2="18" y2="10"></line>
+                    <line x1="12" y1="20" x2="12" y2="4"></line>
+                    <line x1="6" y1="20" x2="6" y2="14"></line>
+                </svg>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="./customer.html" class="fs-nav-item">
+                <svg class="fs-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+                <span>Customer</span>
+            </a>
+
+            <a href="./products.html" class="fs-nav-item active">
+                <svg class="fs-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <path
+                        d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                    </path>
+                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                </svg>
+                <span>Products</span>
+            </a>
+
+            <a href="./transaction.html" class="fs-nav-item">
+                <svg class="fs-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <line x1="12" y1="1" x2="12" y2="23"></line>
+                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                </svg>
+                <span>Transaction</span>
+            </a>
+
+            <a href="./fees.html" class="fs-nav-item">
+                <svg class="fs-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                    <line x1="1" y1="10" x2="23" y2="10"></line>
+                </svg>
+                <span>Fees</span>
+            </a>
+
+            <a href="./reports.html" class="fs-nav-item">
+                <svg class="fs-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                <span>Reports</span>
+            </a>
+        </nav>
+
+        <div class="fs-menu-footer">
+            <div class="fs-darkmode-row">
+                <div class="fs-darkmode-label">
+                    <svg class="fs-icon-moon moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="fs-icon-sun sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <span>Dark mode</span>
+                </div>
+                <label class="fs-switch">
+                    <input type="checkbox" id="fsDarkModeToggle">
+                    <span class="fs-slider"></span>
+                </label>
+            </div>
+
+            <div class="fs-user-profile">
+                <img src="./assets/images/lenny_avatar.png" alt="Lenny Muller" class="fs-user-avatar">
+                <span class="fs-user-name">Lenny Muller</span>
+                <a href="./login.html" class="fs-logout-btn" aria-label="Log Out">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+         Desktop & Mobile Layout Wrapper
+         ========================================================================== -->
+    <div class="prod-layout">
+
+        <!-- Desktop Sidebar (Hidden on Mobile) -->
+        <aside class="desktop-sidebar">
+            <div class="sidebar-brand">
+                <a href="./dashboard.html">
+                    <img src="./assets/images/desktop_sidebar_logo.png" alt="PIOS BizGrowth Engine"
+                        class="sidebar-logo">
+                </a>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="./dashboard.html" class="sidebar-item">
+                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="20" x2="18" y2="10"></line>
+                        <line x1="12" y1="20" x2="12" y2="4"></line>
+                        <line x1="6" y1="20" x2="6" y2="14"></line>
+                    </svg>
+                    <span>Dashboard</span>
+                </a>
+                <a href="./customer.html" class="sidebar-item">
+                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                    <span>Customer</span>
+                </a>
+                <a href="./products.html" class="sidebar-item active">
+                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path
+                            d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                        </path>
+                        <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                        <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                    </svg>
+                    <span>Products</span>
+                </a>
+                <a href="./transaction.html" class="sidebar-item">
+                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <line x1="12" y1="1" x2="12" y2="23"></line>
+                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                    </svg>
+                    <span>Transaction</span>
+                </a>
+                <a href="./fees.html" class="sidebar-item">
+                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                        <line x1="1" y1="10" x2="23" y2="10"></line>
+                    </svg>
+                    <span>Fees</span>
+                </a>
+                <a href="./reports.html" class="sidebar-item">
+                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                    <span>Reports</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-user">
+                    <img src="./assets/images/lenny_avatar.png" alt="Lenny Muller" class="user-avatar-img">
+                    <span class="user-name-text">Lenny Muller</span>
+                </div>
+                <a href="./login.html" class="sidebar-logout-btn" title="Logout">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Product Area -->
+        <main class="prod-main">
+
+            <!-- Desktop Header (Hidden on Mobile, Matches Dashboard Topbar Layout) -->
+            <div class="dash-topbar prod-topbar">
+                <div class="topbar-left">
+                    <h1 class="dash-heading prod-page-title">Product</h1>
+                    <p class="dash-subheading prod-page-subtitle">Your products, services and programmes</p>
+                </div>
+                <div class="topbar-right">
+                    <span class="topbar-date">Fri, Aug 21, 2026</span>
+                    <div class="system-status-badge">
+                        <span class="status-dot"></span>
+                        <span>Business Owner</span>
+                    </div>
+                    <button class="theme-toggle-btn" id="desktopThemeToggleBtn" aria-label="Toggle Dark / Light Theme"
+                        title="Toggle Dark / Light Theme">
+                        <svg class="theme-icon-moon moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                        <svg class="theme-icon-sun sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                    </button>
+                    <button class="notif-bell-btn" aria-label="Notifications" title="Notifications">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                        </svg>
+                        <span class="notif-badge-dot"></span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Search and Action Bar -->
+            <div class="prod-action-bar">
+                <div class="prod-search-box">
+                    <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" id="productSearchInput" class="prod-search-input" placeholder="Search...">
+                </div>
+                <button class="btn-new-product-desktop" id="openNewProductBtnDesktop">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                    <span>New Product</span>
+                </button>
+            </div>
+
+            <!-- Products Grid (4 cols desktop, 2 cols mobile) -->
+            <div class="prod-grid" id="productGrid">
+
+                <!-- Product Card 1 -->
+                <article class="prod-card" data-id="1" data-name="COSRX Advanced Snail 96 Mucin Power Essence"
+                    data-category="Health Product" data-price="108.38" data-stock="14" data-sold="88">
+                    <div class="prod-card-thumb">
+                        <img src="./assets/images/products/prod_1.jpg"
+                            alt="COSRX Advanced Snail 96 Mucin Power Essence" class="prod-img">
+                        <span class="badge-active">Active</span>
+                    </div>
+                    <div class="prod-card-body">
+                        <h3 class="prod-title">COSRX Advanced Snail 96 Mucin Power Essence</h3>
+                        <div class="prod-category-tag">Health Product</div>
+                        <div class="prod-price">RM 108.38</div>
+                        <p class="prod-desc">Essence dengan kandungan 96.3% Snail Secretion Filtrate untuk memperbaiki tekst...</p>
+                        <div class="prod-inventory">
+                            <span class="stock-info">Stock: <strong class="stock-qty">14</strong></span>
+                            <span class="sold-info">88 sold</span>
+                        </div>
+                    </div>
+                    <div class="prod-card-actions">
+                        <button class="btn-prod-action btn-share" data-action="share" title="Share Product">
+                            <svg class="action-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="18" cy="5" r="3"></circle>
+                                <circle cx="6" cy="12" r="3"></circle>
+                                <circle cx="18" cy="19" r="3"></circle>
+                                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                            </svg>
+                            <span class="btn-text">Share</span>
+                        </button>
+                        <button class="btn-prod-action btn-blast" data-action="blast" title="Blast to WhatsApp">
+                            <svg class="action-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M17.472 14.382c-.301-.15-1.782-.879-2.057-.98-.276-.1-.476-.15-.677.15-.201.3-.777.98-.953 1.18-.175.2-.351.226-.652.075-.301-.15-1.272-.469-2.423-1.496-.896-.799-1.501-1.787-1.677-2.088-.175-.3-.019-.463.132-.613.136-.135.301-.351.452-.527.15-.175.201-.3.301-.501.101-.2.05-.376-.025-.526-.075-.15-.677-1.632-.928-2.235-.245-.587-.493-.508-.677-.517-.175-.01-.376-.01-.577-.01-.201 0-.527.075-.803.376-.276.3-1.054 1.03-1.054 2.511 0 1.482 1.079 2.911 1.23 3.112.15.2 2.124 3.243 5.145 4.548.719.311 1.28.497 1.718.636.722.23 1.379.197 1.9-.12.57-.348 1.782-.728 2.033-1.431.25-.703.25-1.306.175-1.431-.075-.125-.276-.2-.577-.35zM12 2a10 10 0 0 0-8.59 15.11L2 22l4.98-1.31A10 10 0 1 0 12 2z">
+                                </path>
+                            </svg>
+                            <span class="btn-text">Blast</span>
+                        </button>
+                        <button class="btn-prod-action btn-edit" data-action="edit" title="Edit Product">
+                            <svg class="action-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                            </svg>
+                            <span class="btn-text">Edit</span>
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Product Card 2 -->
+                <article class="prod-card" data-id="2" data-name="COSRX Advanced Snail 96 Mucin Power Essence"
+                    data-category="Health Product" data-price="108.38" data-stock="14" data-sold="88">
+                    <div class="prod-card-thumb">
+                        <img src="./assets/images/products/prod_2.jpg"
+                            alt="COSRX Advanced Snail 96 Mucin Power Essence" class="prod-img">
+                        <span class="badge-active">Active</span>
+                    </div>
+                    <div class="prod-card-body">
+                        <h3 class="prod-title">COSRX Advanced Snail 96 Mucin Power Essence</h3>
+                        <div class="prod-category-tag">Health Product</div>
+                        <div class="prod-price">RM 108.38</div>
+                        <p class="prod-desc">Essence dengan kandungan 96.3% Snail Secretion Filtrate untuk memperbaiki tekst...</p>
+                        <div class="prod-inventory">
+                            <span class="stock-info">Stock: <strong class="stock-qty">14</strong></span>
+                            <span class="sold-info">88 sold</span>
+                        </div>
+                    </div>
+                    <div class="prod-card-actions">
+                        <button class="btn-prod-action btn-share" data-action="share" title="Share Product">
+                            <svg class="action-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="18" cy="5" r="3"></circle>
+                                <circle cx="6" cy="12" r="3"></circle>
+                                <circle cx="18" cy="19" r="3"></circle>
+                                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                            </svg>
+                            <span class="btn-text">Share</span>
+                        </button>
+                        <button class="btn-prod-action btn-blast" data-action="blast" title="Blast to WhatsApp">
+                            <svg class="action-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M17.472 14.382c-.301-.15-1.782-.879-2.057-.98-.276-.1-.476-.15-.677.15-.201.3-.777.98-.953 1.18-.175.2-.351.226-.652.075-.301-.15-1.272-.469-2.423-1.496-.896-.799-1.501-1.787-1.677-2.088-.175-.3-.019-.463.132-.613.136-.135.301-.351.452-.527.15-.175.201-.3.301-.501.101-.2.05-.376-.025-.526-.075-.15-.677-1.632-.928-2.235-.245-.587-.493-.508-.677-.517-.175-.01-.376-.01-.577-.01-.201 0-.527.075-.803.376-.276.3-1.054 1.03-1.054 2.511 0 1.482 1.079 2.911 1.23 3.112.15.2 2.124 3.243 5.145 4.548.719.311 1.28.497 1.718.636.722.23 1.379.197 1.9-.12.57-.348 1.782-.728 2.033-1.431.25-.703.25-1.306.175-1.431-.075-.125-.276-.2-.577-.35zM12 2a10 10 0 0 0-8.59 15.11L2 22l4.98-1.31A10 10 0 1 0 12 2z">
+                                </path>
+                            </svg>
+                            <span class="btn-text">Blast</span>
+                        </button>
+                        <button class="btn-prod-action btn-edit" data-action="edit" title="Edit Product">
+                            <svg class="action-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                            </svg>
+                            <span class="btn-text">Edit</span>
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Product Card 3 -->
+                <article class="prod-card" data-id="3" data-name="COSRX Advanced Snail 96 Mucin Power Essence"
+                    data-category="Health Product" data-price="108.38" data-stock="14" data-sold="88">
+                    <div class="prod-card-thumb">
+                        <img src="./assets/images/products/prod_3.jpg"
+                            alt="COSRX Advanced Snail 96 Mucin Power Essence" class="prod-img">
+                        <span class="badge-active">Active</span>
+                    </div>
+                    <div class="prod-card-body">
+                        <h3 class="prod-title">COSRX Advanced Snail 96 Mucin Power Essence</h3>
+                        <div class="prod-category-tag">Health Product</div>
+                        <div class="prod-price">RM 108.38</div>
+                        <p class="prod-desc">Essence dengan kandungan 96.3% Snail Secretion Filtrate untuk memperbaiki tekst...</p>
+                        <div class="prod-inventory">
+                            <span class="stock-info">Stock: <strong class="stock-qty">14</strong></span>
+                            <span class="sold-info">88 sold</span>
+                        </div>
+                    </div>
+                    <div class="prod-card-actions">
+                        <button class="btn-prod-action btn-share" data-action="share" title="Share Product">
+                            <svg class="action-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="18" cy="5" r="3"></circle>
+                                <circle cx="6" cy="12" r="3"></circle>
+                                <circle cx="18" cy="19" r="3"></circle>
+                                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                            </svg>
+                            <span class="btn-text">Share</span>
+                        </button>
+                        <button class="btn-prod-action btn-blast" data-action="blast" title="Blast to WhatsApp">
+                            <svg class="action-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M17.472 14.382c-.301-.15-1.782-.879-2.057-.98-.276-.1-.476-.15-.677.15-.201.3-.777.98-.953 1.18-.175.2-.351.226-.652.075-.301-.15-1.272-.469-2.423-1.496-.896-.799-1.501-1.787-1.677-2.088-.175-.3-.019-.463.132-.613.136-.135.301-.351.452-.527.15-.175.201-.3.301-.501.101-.2.05-.376-.025-.526-.075-.15-.677-1.632-.928-2.235-.245-.587-.493-.508-.677-.517-.175-.01-.376-.01-.577-.01-.201 0-.527.075-.803.376-.276.3-1.054 1.03-1.054 2.511 0 1.482 1.079 2.911 1.23 3.112.15.2 2.124 3.243 5.145 4.548.719.311 1.28.497 1.718.636.722.23 1.379.197 1.9-.12.57-.348 1.782-.728 2.033-1.431.25-.703.25-1.306.175-1.431-.075-.125-.276-.2-.577-.35zM12 2a10 10 0 0 0-8.59 15.11L2 22l4.98-1.31A10 10 0 1 0 12 2z">
+                                </path>
+                            </svg>
+                            <span class="btn-text">Blast</span>
+                        </button>
+                        <button class="btn-prod-action btn-edit" data-action="edit" title="Edit Product">
+                            <svg class="action-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                            </svg>
+                            <span class="btn-text">Edit</span>
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Product Card 4 -->
+                <article class="prod-card" data-id="4" data-name="COSRX Advanced Snail 96 Mucin Power Essence"
+                    data-category="Health Product" data-price="108.38" data-stock="14" data-sold="88">
+                    <div class="prod-card-thumb">
+                        <img src="./assets/images/products/prod_4.jpg"
+                            alt="COSRX Advanced Snail 96 Mucin Power Essence" class="prod-img">
+                        <span class="badge-active">Active</span>
+                    </div>
+                    <div class="prod-card-body">
+                        <h3 class="prod-title">COSRX Advanced Snail 96 Mucin Power Essence</h3>
+                        <div class="prod-category-tag">Health Product</div>
+                        <div class="prod-price">RM 108.38</div>
+                        <p class="prod-desc">Essence dengan kandungan 96.3% Snail Secretion Filtrate untuk memperbaiki tekst...</p>
+                        <div class="prod-inventory">
+                            <span class="stock-info">Stock: <strong class="stock-qty">14</strong></span>
+                            <span class="sold-info">88 sold</span>
+                        </div>
+                    </div>
+                    <div class="prod-card-actions">
+                        <button class="btn-prod-action btn-share" data-action="share" title="Share Product">
+                            <svg class="action-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="18" cy="5" r="3"></circle>
+                                <circle cx="6" cy="12" r="3"></circle>
+                                <circle cx="18" cy="19" r="3"></circle>
+                                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                            </svg>
+                            <span class="btn-text">Share</span>
+                        </button>
+                        <button class="btn-prod-action btn-blast" data-action="blast" title="Blast to WhatsApp">
+                            <svg class="action-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M17.472 14.382c-.301-.15-1.782-.879-2.057-.98-.276-.1-.476-.15-.677.15-.201.3-.777.98-.953 1.18-.175.2-.351.226-.652.075-.301-.15-1.272-.469-2.423-1.496-.896-.799-1.501-1.787-1.677-2.088-.175-.3-.019-.463.132-.613.136-.135.301-.351.452-.527.15-.175.201-.3.301-.501.101-.2.05-.376-.025-.526-.075-.15-.677-1.632-.928-2.235-.245-.587-.493-.508-.677-.517-.175-.01-.376-.01-.577-.01-.201 0-.527.075-.803.376-.276.3-1.054 1.03-1.054 2.511 0 1.482 1.079 2.911 1.23 3.112.15.2 2.124 3.243 5.145 4.548.719.311 1.28.497 1.718.636.722.23 1.379.197 1.9-.12.57-.348 1.782-.728 2.033-1.431.25-.703.25-1.306.175-1.431-.075-.125-.276-.2-.577-.35zM12 2a10 10 0 0 0-8.59 15.11L2 22l4.98-1.31A10 10 0 1 0 12 2z">
+                                </path>
+                            </svg>
+                            <span class="btn-text">Blast</span>
+                        </button>
+                        <button class="btn-prod-action btn-edit" data-action="edit" title="Edit Product">
+                            <svg class="action-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                            </svg>
+                            <span class="btn-text">Edit</span>
+                        </button>
+                    </div>
+                </article>
+
+            </div>
+
+            <!-- Mobile Sticky Bottom Container for New Product Button -->
+            <div class="mobile-sticky-footer">
+                <button class="btn-new-product-mobile" id="openNewProductBtnMobile">
+                    New product
+                </button>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- ==========================================================================
+         Modal: Add / Edit Product
+         ========================================================================== -->
+    <!-- ==========================================================================
+         Modal: Add / Edit Product (Matches Desktop & Mobile Reference Screenshots)
+         ========================================================================== -->
+    <div class="prod-modal-overlay" id="productModal" aria-hidden="true">
+        <div class="prod-modal-card">
+            
+            <!-- Mobile Header for Modal (Matches Dashboard mobile header size, color, and font) -->
+            <div class="mobile-prod-header mobile-modal-header">
+                <div class="mobile-header-left">
+                    <button type="button" class="mobile-back-btn mobile-modal-back-btn" id="mobileModalBackBtn" aria-label="Back to Products">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="19" y1="12" x2="5" y2="12"></line>
+                            <polyline points="12 19 5 12 12 5"></polyline>
+                        </svg>
+                    </button>
+                    <span class="mobile-header-title" id="mobileModalTitle">Add Product</span>
+                </div>
+                <button type="button" class="mobile-hamburger-btn mobile-modal-hamburger" id="mobileModalHamburgerBtn" aria-label="Toggle Navigation Menu">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Desktop Modal Header -->
+            <div class="prod-modal-header">
+                <h2 class="prod-modal-title" id="productModalTitle">Edit Product</h2>
+                <button class="prod-modal-close" id="closeProductModalBtn" aria-label="Close Modal">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <form class="prod-modal-form" id="productForm">
+                <div class="prod-form-grid">
+                    
+                    <!-- Left Column (Category, Status, Pricing) -->
+                    <div class="form-col form-col-left">
+                        
+                        <!-- Section: Category & Status -->
+                        <div class="form-section-card form-section-category">
+                            <h3 class="form-section-title">Category &amp; Status</h3>
+                            
+                            <div class="form-group">
+                                <label for="prodCategoryInput">Category</label>
+                                <div class="select-wrapper">
+                                    <select id="prodCategoryInput">
+                                        <option value="Health Product">Health Product</option>
+                                        <option value="Skincare">Skincare</option>
+                                        <option value="Cosmetics">Cosmetics</option>
+                                        <option value="Personal Care">Personal Care</option>
+                                        <option value="Services">Services</option>
+                                    </select>
+                                    <svg class="select-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="prodStatusInput">Status</label>
+                                <div class="select-wrapper">
+                                    <select id="prodStatusInput">
+                                        <option value="Active">Active</option>
+                                        <option value="Inactive">Inactive</option>
+                                    </select>
+                                    <svg class="select-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Section: Pricing -->
+                        <div class="form-section-card form-section-pricing">
+                            <h3 class="form-section-title">Pricing</h3>
+                            
+                            <div class="form-group">
+                                <label for="prodPriceInput">Price</label>
+                                <div class="price-input-wrapper">
+                                    <span class="currency-prefix">RM</span>
+                                    <input type="text" id="prodPriceInput" required placeholder="168.99" value="168.99">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="prodStockInput">Stock Quantity</label>
+                                <input type="number" id="prodStockInput" min="0" required placeholder="156" value="156">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Right Column (Product Details, Media & Promotion) -->
+                    <div class="form-col form-col-right">
+                        
+                        <!-- Section: Product Details -->
+                        <div class="form-section-card form-section-details">
+                            <h3 class="form-section-title">Product Details</h3>
+                            
+                            <div class="form-group">
+                                <label for="prodNameInput">Name</label>
+                                <input type="text" id="prodNameInput" required placeholder="Enter product name" value="Beauty of Joseon Relief Sun SPF50+">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="prodDescInput">Description</label>
+                                <textarea id="prodDescInput" rows="4"
+                                    placeholder="Pelindung matahari organik yang mengandungi 30% ekstrak beras dan ekstrak probiotik bijirin untuk menenangkan kulit dan mencerahkan wajah.">Pelindung matahari organik yang mengandungi 30% ekstrak beras dan ekstrak probiotik bijirin untuk menenangkan kulit dan mencerahkan wajah.</textarea>
+                            </div>
+                        </div>
+
+                        <!-- Section: Media and Promotion -->
+                        <div class="form-section-card form-section-media">
+                            <h3 class="form-section-title">Media and Promotion</h3>
+                            
+                            <div class="form-group">
+                                <label>Photo and Videos</label>
+                                <div class="media-dropzone" id="mediaDropzone">
+                                    <input type="file" id="prodFileInput" hidden accept="image/*,video/*">
+                                    <div class="dropzone-content">
+                                        <p class="dropzone-label">
+                                            Drag &amp; Drop your files or <button type="button" class="browse-trigger" id="browseTriggerBtn">Browse</button>
+                                        </p>
+                                    </div>
+                                </div>
+                                <p class="media-note">Images (PNG, JPG, WEBP) or videos (MP4, WEBM, MOV). Max 20 MB each.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Form Action Buttons -->
+                <div class="prod-modal-actions">
+                    <button type="button" class="btn-cancel" id="cancelProductBtn">Cancel</button>
+                    <button type="submit" class="btn-submit" id="saveProductBtn">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+         Modal: Blast Promo via WhatsApp
+         ========================================================================== -->
+    <div class="prod-modal-overlay" id="blastModal" aria-hidden="true">
+        <div class="prod-modal-card blast-modal-card">
+            <div class="prod-modal-header">
+                <div class="blast-header-badge">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M17.472 14.382c-.301-.15-1.782-.879-2.057-.98-.276-.1-.476-.15-.677.15-.201.3-.777.98-.953 1.18-.175.2-.351.226-.652.075-.301-.15-1.272-.469-2.423-1.496-.896-.799-1.501-1.787-1.677-2.088-.175-.3-.019-.463.132-.613.136-.135.301-.351.452-.527.15-.175.201-.3.301-.501.101-.2.05-.376-.025-.526-.075-.15-.677-1.632-.928-2.235-.245-.587-.493-.508-.677-.517-.175-.01-.376-.01-.577-.01-.201 0-.527.075-.803.376-.276.3-1.054 1.03-1.054 2.511 0 1.482 1.079 2.911 1.23 3.112.15.2 2.124 3.243 5.145 4.548.719.311 1.28.497 1.718.636.722.23 1.379.197 1.9-.12.57-.348 1.782-.728 2.033-1.431.25-.703.25-1.306.175-1.431-.075-.125-.276-.2-.577-.35zM12 2a10 10 0 0 0-8.59 15.11L2 22l4.98-1.31A10 10 0 1 0 12 2z">
+                        </path>
+                    </svg>
+                    <span>WhatsApp Blast</span>
+                </div>
+                <button class="prod-modal-close" id="closeBlastModalBtn" aria-label="Close Blast Modal">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="blast-body">
+                <p class="blast-desc">Send automated promotion message to your customers:</p>
+                <div class="blast-product-summary">
+                    <div class="blast-prod-title" id="blastProductName">COSRX Advanced Snail 96 Mucin Power Essence</div>
+                    <div class="blast-prod-price" id="blastProductPrice">Price: RM 108.38</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="blastAudienceSelect">Target Audience</label>
+                    <select id="blastAudienceSelect">
+                        <option value="all">All Registered Customers (384)</option>
+                        <option value="vip">VIP Customers Only (48)</option>
+                        <option value="active">Active Customers (192)</option>
+                        <option value="prospects">Prospects Only (86)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="blastMessageText">Message Template</label>
+                    <textarea id="blastMessageText" rows="4">Hai {Customer_Name}! Special promotion hari ini untuk COSRX Advanced Snail 96 Mucin Power Essence pada harga hanya RM 108.38. Stok tinggal 14 sahaja! Dapatkan sekarang: https://pios.com.my/p/snail96</textarea>
+                </div>
+
+                <div class="prod-modal-actions">
+                    <button type="button" class="btn-cancel" id="cancelBlastBtn">Cancel</button>
+                    <button type="button" class="btn-blast-send" id="sendBlastBtn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M17.472 14.382c-.301-.15-1.782-.879-2.057-.98-.276-.1-.476-.15-.677.15-.201.3-.777.98-.953 1.18-.175.2-.351.226-.652.075-.301-.15-1.272-.469-2.423-1.496-.896-.799-1.501-1.787-1.677-2.088-.175-.3-.019-.463.132-.613.136-.135.301-.351.452-.527.15-.175.201-.3.301-.501.101-.2.05-.376-.025-.526-.075-.15-.677-1.632-.928-2.235-.245-.587-.493-.508-.677-.517-.175-.01-.376-.01-.577-.01-.201 0-.527.075-.803.376-.276.3-1.054 1.03-1.054 2.511 0 1.482 1.079 2.911 1.23 3.112.15.2 2.124 3.243 5.145 4.548.719.311 1.28.497 1.718.636.722.23 1.379.197 1.9-.12.57-.348 1.782-.728 2.033-1.431.25-.703.25-1.306.175-1.431-.075-.125-.276-.2-.577-.35zM12 2a10 10 0 0 0-8.59 15.11L2 22l4.98-1.31A10 10 0 1 0 12 2z">
+                            </path>
+                        </svg>
+                        <span>Start Blast</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast-notification" id="toastNotification" aria-hidden="true">
+        <span class="toast-message" id="toastMessage">Product link copied to clipboard!</span>
+    </div>
+
+    <!-- Scripts -->
+    <script src="./assets/js/products.js"></script>
+</body>
+
+</html>

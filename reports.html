@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>PIOS - Reports</title>
+    <meta name="description" content="PIOS BizGrowth Engine - Transaction, Promotion and Prospecting Analytics Reports">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="./assets/css/reports.css">
+</head>
+
+<body class="reports-body">
+
+    <!-- ==========================================================================
+         Mobile Top Header (Shown only on Mobile < 992px)
+         Strictly follows Benchmark Dashboard Specification (60px, Forest Teal)
+         ========================================================================== -->
+    <header class="mobile-rep-header">
+        <div class="mobile-header-left">
+            <a href="./dashboard.html" class="mobile-back-btn" aria-label="Back to Dashboard">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+            </a>
+            <span class="mobile-header-title">Reports</span>
+        </div>
+        <button class="mobile-hamburger-btn" id="mobileMenuToggleBtn" aria-label="Toggle Navigation Menu">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+    </header>
+
+    <!-- ==========================================================================
+         Fullscreen Mobile Navigation Menu (100% Height Overlay)
+         ========================================================================== -->
+    <div class="fullscreen-menu" id="fullscreenMenu" aria-hidden="true">
+        <div class="fs-menu-header">
+            <a href="./index.html" class="fs-logo-link">
+                <img src="./assets/images/header_logo.png" alt="PIOS BizGrowth Engine" class="fs-header-logo">
+            </a>
+            <button class="fs-menu-close-btn" id="fsMenuCloseBtn" aria-label="Close Menu">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+
+        <nav class="fs-nav-list">
+            <a href="./dashboard.html" class="fs-nav-item">
+                <svg class="fs-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <line x1="18" y1="20" x2="18" y2="10"></line>
+                    <line x1="12" y1="20" x2="12" y2="4"></line>
+                    <line x1="6" y1="20" x2="6" y2="14"></line>
+                </svg>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="./customer.html" class="fs-nav-item">
+                <svg class="fs-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+                <span>Customer</span>
+            </a>
+
+            <a href="./products.html" class="fs-nav-item">
+                <svg class="fs-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <path
+                        d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                    </path>
+                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                </svg>
+                <span>Products</span>
+            </a>
+
+            <a href="./transaction.html" class="fs-nav-item">
+                <svg class="fs-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <line x1="12" y1="1" x2="12" y2="23"></line>
+                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                </svg>
+                <span>Transaction</span>
+            </a>
+
+            <a href="./fees.html" class="fs-nav-item">
+                <svg class="fs-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                    <line x1="1" y1="10" x2="23" y2="10"></line>
+                </svg>
+                <span>Fees</span>
+            </a>
+
+            <a href="./reports.html" class="fs-nav-item active">
+                <svg class="fs-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                <span>Reports</span>
+            </a>
+        </nav>
+
+        <div class="fs-menu-footer">
+            <div class="fs-darkmode-row">
+                <div class="fs-darkmode-label">
+                    <svg class="fs-icon-moon moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="fs-icon-sun sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <span>Dark mode</span>
+                </div>
+                <label class="fs-switch">
+                    <input type="checkbox" id="fsDarkModeToggle">
+                    <span class="fs-slider"></span>
+                </label>
+            </div>
+
+            <div class="fs-user-profile">
+                <img src="./assets/images/lenny_avatar.png" alt="Lenny Muller" class="fs-user-avatar">
+                <span class="fs-user-name">Lenny Muller</span>
+                <a href="./login.html" class="fs-logout-btn" aria-label="Log Out">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+         Desktop Layout (Sidebar + Main Fluid Canvas)
+         ========================================================================== -->
+    <div class="reports-app-container">
+
+        <!-- 260px Business Owner Sidebar -->
+        <aside class="reports-sidebar">
+            <div class="sidebar-logo-container">
+                <a href="./index.html">
+                    <img src="./assets/images/header_logo.png" alt="PIOS BizGrowth Engine" class="sidebar-logo">
+                </a>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="./dashboard.html" class="sidebar-item">
+                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="20" x2="18" y2="10"></line>
+                        <line x1="12" y1="20" x2="12" y2="4"></line>
+                        <line x1="6" y1="20" x2="6" y2="14"></line>
+                    </svg>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="./customer.html" class="sidebar-item">
+                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                    <span>Customer</span>
+                </a>
+
+                <a href="./products.html" class="sidebar-item">
+                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path
+                            d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                        </path>
+                        <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                        <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                    </svg>
+                    <span>Product</span>
+                </a>
+
+                <a href="./transaction.html" class="sidebar-item">
+                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <line x1="12" y1="1" x2="12" y2="23"></line>
+                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                    </svg>
+                    <span>Transaction</span>
+                </a>
+
+                <a href="./fees.html" class="sidebar-item">
+                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                        <line x1="1" y1="10" x2="23" y2="10"></line>
+                    </svg>
+                    <span>Fees</span>
+                </a>
+
+                <a href="./reports.html" class="sidebar-item active">
+                    <svg class="sidebar-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                    <span>Reports</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-user">
+                    <img src="./assets/images/lenny_avatar.png" alt="Lenny Muller" class="user-avatar-img">
+                    <span class="user-name-text">Lenny Muller</span>
+                </div>
+                <a href="./login.html" class="sidebar-logout-btn" title="Logout">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Fluid Canvas -->
+        <main class="reports-main">
+
+            <!-- Desktop Topbar -->
+            <div class="reports-topbar">
+                <div class="topbar-title-wrap">
+                    <h1 class="reports-page-title">Reports</h1>
+                    <p class="reports-page-subtitle">Transaction, promotion and prospecting analytics</p>
+                </div>
+
+                <div class="reports-topbar-right">
+                    <span class="topbar-date" id="topbarDate">Fri, Aug 21, 2026</span>
+                    <div class="topbar-badge">
+                        <span class="status-dot"></span>
+                        <span>Business Owner</span>
+                    </div>
+
+                    <!-- Theme Toggle Button (With Sun & Moon icons) -->
+                    <button class="theme-toggle-btn" id="desktopThemeToggleBtn" aria-label="Toggle Dark / Light Theme"
+                        title="Toggle Dark / Light Theme">
+                        <svg class="theme-icon-moon moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                        <svg class="theme-icon-sun sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                    </button>
+
+                    <!-- Notification Button -->
+                    <button class="topbar-icon-btn" aria-label="Notifications" title="Notifications">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Top KPI Metrics Grid (Desktop 4 Columns, Mobile 2x2 Grid) -->
+            <section class="rep-kpi-grid">
+
+                <!-- KPI Card 1: Total Orders -->
+                <div class="rep-kpi-card">
+                    <div class="rkc-value" id="kpiTotalOrders">175</div>
+                    <div class="rkc-label">Total Orders</div>
+                    <div class="rkc-subtext text-growth">
+                        <span class="growth-arrow">↑</span> +40 vs last month
+                    </div>
+                </div>
+
+                <!-- KPI Card 2: Total Revenue -->
+                <div class="rep-kpi-card">
+                    <div class="rkc-value text-teal" id="kpiTotalRevenue">RM 28,080</div>
+                    <div class="rkc-label">Total Revenue</div>
+                    <div class="rkc-subtext text-growth">
+                        <span class="growth-arrow">↑</span> +12% vs last month
+                    </div>
+                </div>
+
+                <!-- KPI Card 3: Avg Order Value -->
+                <div class="rep-kpi-card">
+                    <div class="rkc-value text-teal" id="kpiAvgOrderValue">RM 160</div>
+                    <div class="rkc-label">Avg Order Value</div>
+                    <div class="rkc-subtext text-growth">
+                        <span class="growth-arrow">↑</span> +$8 vs last month
+                    </div>
+                </div>
+
+                <!-- KPI Card 4: Complete Rate -->
+                <div class="rep-kpi-card">
+                    <div class="rkc-value text-blue" id="kpiCompleteRate">72%</div>
+                    <div class="rkc-label">Complete Rate</div>
+                    <div class="rkc-subtext text-growth">
+                        <span class="growth-arrow">↑</span> +4% vs last month
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Middle Section: 2-Column Analytics Grid -->
+            <section class="rep-analytics-grid">
+
+                <!-- Left Card: Monthly Revenue & Orders (Bar Chart) -->
+                <div class="rep-chart-card">
+                    <div class="rcc-header">
+                        <h2 class="rcc-title">Monthly Revenue &amp; Orders</h2>
+                    </div>
+
+                    <div class="bar-chart-container">
+                        <!-- Y-Axis Labels -->
+                        <div class="chart-y-axis">
+                            <span>8K</span>
+                            <span>6K</span>
+                            <span>4K</span>
+                            <span>2K</span>
+                            <span>0K</span>
+                        </div>
+
+                        <!-- Chart Canvas / Bars -->
+                        <div class="chart-plot-area">
+                            <!-- Background Grid Lines -->
+                            <div class="grid-line" style="bottom: 100%;"></div>
+                            <div class="grid-line" style="bottom: 75%;"></div>
+                            <div class="grid-line" style="bottom: 50%;"></div>
+                            <div class="grid-line" style="bottom: 25%;"></div>
+                            <div class="grid-line" style="bottom: 0%;"></div>
+
+                            <!-- Bars Container -->
+                            <div class="bars-flex-container">
+                                <!-- Mar (3.2K / 40%) -->
+                                <div class="chart-col" data-month="March 2026" data-val="RM 3,200" data-orders="22">
+                                    <div class="chart-bar" style="height: 40%;"></div>
+                                    <span class="chart-x-label">Mar</span>
+                                </div>
+
+                                <!-- Apr (4.1K / 51%) -->
+                                <div class="chart-col" data-month="April 2026" data-val="RM 4,100" data-orders="28">
+                                    <div class="chart-bar" style="height: 51%;"></div>
+                                    <span class="chart-x-label">Apr</span>
+                                </div>
+
+                                <!-- May (4.8K / 60%) -->
+                                <div class="chart-col" data-month="May 2026" data-val="RM 4,800" data-orders="32">
+                                    <div class="chart-bar" style="height: 60%;"></div>
+                                    <span class="chart-x-label">May</span>
+                                </div>
+
+                                <!-- Jun (5.6K / 70%) -->
+                                <div class="chart-col" data-month="June 2026" data-val="RM 5,600" data-orders="38">
+                                    <div class="chart-bar" style="height: 70%;"></div>
+                                    <span class="chart-x-label">Jun</span>
+                                </div>
+
+                                <!-- Jul (6.8K / 85%) -->
+                                <div class="chart-col" data-month="July 2026" data-val="RM 6,800" data-orders="45">
+                                    <div class="chart-bar" style="height: 85%;"></div>
+                                    <span class="chart-x-label">Jul</span>
+                                </div>
+
+                                <!-- Aug (7.6K / 95%) -->
+                                <div class="chart-col active" data-month="August 2026" data-val="RM 7,600" data-orders="50">
+                                    <div class="chart-bar active-bar" style="height: 95%;"></div>
+                                    <span class="chart-x-label">Aug</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Tooltip Box -->
+                    <div class="chart-tooltip-display" id="chartTooltipDisplay">
+                        <span class="ctd-month" id="ctdMonth">August 2026</span>
+                        <span class="ctd-val text-teal font-bold" id="ctdVal">RM 7,600</span>
+                        <span class="ctd-orders" id="ctdOrders">(50 orders)</span>
+                    </div>
+                </div>
+
+                <!-- Right Card: Product Performance -->
+                <div class="rep-perf-card">
+                    <div class="rcc-header">
+                        <h2 class="rcc-title">Product Performance</h2>
+                    </div>
+
+                    <div class="product-perf-list">
+
+                        <!-- Item 1: Starter Pack -->
+                        <div class="perf-item">
+                            <div class="perf-meta-row">
+                                <span class="perf-name">Starter Pack</span>
+                                <span class="perf-amount text-teal">RM 4,920</span>
+                            </div>
+                            <div class="perf-bar-track">
+                                <div class="perf-bar-fill" style="width: 51%;"></div>
+                            </div>
+                        </div>
+
+                        <!-- Item 2: Premium Wellness -->
+                        <div class="perf-item">
+                            <div class="perf-meta-row">
+                                <span class="perf-name">Premium Wellness</span>
+                                <span class="perf-amount text-teal">RM 8,160</span>
+                            </div>
+                            <div class="perf-bar-track">
+                                <div class="perf-bar-fill" style="width: 84%;"></div>
+                            </div>
+                        </div>
+
+                        <!-- Item 3: Mega Discount -->
+                        <div class="perf-item">
+                            <div class="perf-meta-row">
+                                <span class="perf-name">Mega Discount</span>
+                                <span class="perf-amount text-teal">RM 3,520</span>
+                            </div>
+                            <div class="perf-bar-track">
+                                <div class="perf-bar-fill" style="width: 36%;"></div>
+                            </div>
+                        </div>
+
+                        <!-- Item 4: Business Bundle -->
+                        <div class="perf-item">
+                            <div class="perf-meta-row">
+                                <span class="perf-name">Business Bundle</span>
+                                <span class="perf-amount text-teal">RM 9,720</span>
+                            </div>
+                            <div class="perf-bar-track">
+                                <div class="perf-bar-fill" style="width: 100%;"></div>
+                            </div>
+                        </div>
+
+                        <!-- Item 5: Coaching Prog. -->
+                        <div class="perf-item">
+                            <div class="perf-meta-row">
+                                <span class="perf-name">Coaching Prog.</span>
+                                <span class="perf-amount text-teal">RM 4,500</span>
+                            </div>
+                            <div class="perf-bar-track">
+                                <div class="perf-bar-fill" style="width: 46%;"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Bottom Section: Order Status Breakdown — Aug 2026 -->
+            <section class="rep-breakdown-card">
+                <div class="rcc-header">
+                    <h2 class="rcc-title">Order Status Breakdown — Aug 2026</h2>
+                </div>
+
+                <div class="status-breakdown-grid">
+
+                    <!-- Step 1: Response -->
+                    <div class="breakdown-stat-item">
+                        <div class="bsi-count text-purple">2</div>
+                        <div class="bsi-label">Response</div>
+                    </div>
+
+                    <!-- Step 2: Order -->
+                    <div class="breakdown-stat-item">
+                        <div class="bsi-count text-blue">2</div>
+                        <div class="bsi-label">Order</div>
+                    </div>
+
+                    <!-- Step 3: Invoice -->
+                    <div class="breakdown-stat-item">
+                        <div class="bsi-count text-amber">3</div>
+                        <div class="bsi-label">Invoice</div>
+                    </div>
+
+                    <!-- Step 4: Delivery -->
+                    <div class="breakdown-stat-item">
+                        <div class="bsi-count text-yellow">3</div>
+                        <div class="bsi-label">Delivery</div>
+                    </div>
+
+                    <!-- Step 5: Payment -->
+                    <div class="breakdown-stat-item">
+                        <div class="bsi-count text-orange">4</div>
+                        <div class="bsi-label">Payment</div>
+                    </div>
+
+                    <!-- Step 6: Complete -->
+                    <div class="breakdown-stat-item">
+                        <div class="bsi-count text-emerald">26</div>
+                        <div class="bsi-label">Complete</div>
+                    </div>
+
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Script -->
+    <script src="./assets/js/reports.js"></script>
+</body>
+
+</html>

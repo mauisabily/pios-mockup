@@ -39,8 +39,10 @@
 
 | Page | Description | Source File | Demo Endpoint |
 | :--- | :--- | :--- | :--- |
-| **Login Screen** | Responsive Desktop 2-column & Mobile Teal with show/hide password | [`index.html`](index.html) | `http://localhost:3000/index.html` |
+| **Landing Page** | Modern showcase with 'How PIOS Works' flow, 3 pillars & sliding product marquee | [`index.html`](index.html) | `http://localhost:3000/index.html` |
+| **Login Screen** | Responsive Desktop 2-column & Mobile Teal with show/hide password | [`login.html`](login.html) | `http://localhost:3000/login.html` |
 | **Business Owner Dashboard** | Wide Full 6 KPI cards, Customer Pipeline, Recent Activity & Theme toggle | [`dashboard.html`](dashboard.html) | `http://localhost:3000/dashboard.html` |
+| **Customer Management** | Wide Full 12-customer table (Desktop) & Card list with WhatsApp/Call/View (Mobile) | [`customer.html`](customer.html) | `http://localhost:3000/customer.html` |
 | **Owner Documentation** | Interactive dev log, test credentials, timestamps & visual gallery | [`docs/index.html`](docs/index.html) | `http://localhost:3000/docs/index.html` |
 
 ### Demo Credentials for Testing
@@ -60,12 +62,15 @@ Mockup Folder                          Laravel Target Location
 ├── assets/
 │   ├── css/style.css            ───>  public/assets/css/style.css (or resources/css/style.css)
 │   ├── css/dashboard.css        ───>  public/assets/css/dashboard.css
+│   ├── css/customer.css         ───>  public/assets/css/customer.css
 │   ├── js/script.js             ───>  public/assets/js/script.js (or resources/js/script.js)
 │   ├── js/dashboard.js          ───>  public/assets/js/dashboard.js
+│   ├── js/customer.js           ───>  public/assets/js/customer.js
 │   └── images/*                 ───>  public/assets/images/*
 │
 ├── index.html                   ───>  resources/views/auth/login.blade.php
-└── dashboard.html               ───>  resources/views/dashboard.blade.php
+├── dashboard.html               ───>  resources/views/dashboard.blade.php
+└── customer.html                ───>  resources/views/customers/index.blade.php
 ```
 
 ---
@@ -146,6 +151,7 @@ Route::middleware('guest')->group(function () {
 // Authenticated Business Owner Routes
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/customers', [CustomerController::class, 'index'])->name('customers.index');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 ```
@@ -251,8 +257,8 @@ pios-mockup/
 │       ├── dashboard.js              # Fullscreen menu, theme switcher & date logic
 │       └── script.js                 # Password toggle, form validation & loading animation
 │
-├── dashboard.html                    # Unified Business Owner Dashboard (Wide Full Desktop + Mobile)
-├── index.html                        # Unified Login Screen (Desktop + Mobile in 1 file)
+├── index.html                        # PIOS Landing Page (Public Showcase & Ecosystem Overview)
+├── login.html                        # Unified Login Screen (Desktop + Mobile in 1 file)
 ├── mobile.html                       # Auto-redirects to index.html (deprecated)
 │
 ├── docs/                             # Interactive documentation for System Owner & Developers
@@ -284,6 +290,31 @@ All design tokens are defined in Vanilla CSS `:root` variables:
 | `--color-purple` | `#9333EA` | Products metric & badges |
 | `--color-green` | `#059669` | Active Promotions metric & badges |
 | `--color-orange` | `#EA580C` | Open Orders metric & badges |
+
+---
+
+## 📱 Standardized Mobile Header Guidelines (Benchmark: Dashboard)
+
+To ensure visual consistency across all PIOS web applications, all mobile headers (Dashboard, Products, Customers, Modals, etc.) MUST strictly adhere to the official **Dashboard Benchmark Specification**:
+
+| Component Attribute | Standard Benchmark Specification | CSS Implementation |
+| :--- | :--- | :--- |
+| **Header Height** | Strictly **`60px`** | `height: 60px !important; min-height: 60px; max-height: 60px; box-sizing: border-box;` |
+| **Background Color** | Forest Teal **`#134C49`** | `background-color: #134C49 !important;` |
+| **Text & Icon Color** | Pure White **`#FFFFFF`** | `color: #FFFFFF !important;` |
+| **Horizontal Padding**| **`0 16px`** (0 top/bottom, 16px left/right) | `padding: 0 16px !important;` |
+| **Layout & Alignment**| Flexbox, vertically centered, space-between | `display: flex !important; align-items: center; justify-content: space-between;` |
+| **Positioning** | Sticky top bar with shadow | `position: sticky; top: 0; z-index: 99; box-shadow: 0 2px 8px rgba(0,0,0,0.1);` |
+| **Left Group Gap** | **`14px`** between back button & title | `display: flex; align-items: center; gap: 14px;` |
+| **Title Typography** | **`Poppins 600`**, Size: **`1.25rem` (20px)** | `font-family: 'Poppins', sans-serif !important; font-size: 1.25rem !important; font-weight: 600 !important; line-height: 1.2 !important; margin: 0; padding: 0;` |
+| **Back Button** | 36x36px touch target, 6px padding | `width: 36px; height: 36px; padding: 6px; border: none; background: transparent; color: #FFF; border-radius: 6px; line-height: 1;` |
+| **Back Button Icon**| SVG Arrow Left, 22x22px, stroke 2.2 | `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">` |
+| **Menu Toggle Button**| 36x36px touch target, 6px padding | `width: 36px; height: 36px; padding: 6px; border: none; background: transparent; color: #FFF; border-radius: 6px; line-height: 1;` |
+| **Menu Toggle Icon**| SVG Hamburger, 26x26px, stroke 2.2 | `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">` |
+
+> [!IMPORTANT]
+> **Zero Discrepancy Rule:** Fullscreen mobile modals (e.g. `Add Product` / `Edit Product` / `Register Customer`) must also apply this exact mobile header specification (`.mobile-modal-header`) at the top of the modal sheet with `z-index: 100`, matching the main page 1:1. Both elements must have identical SVG stroke width (`2.2`), height (`60px`), and font styling.
+
 
 ---
 

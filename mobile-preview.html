@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIOS Mobile Preview - Register Customer</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #0B1220;
+            color: #FFFFFF;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .preview-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .preview-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #5EEAD4;
+            margin-bottom: 6px;
+        }
+
+        .preview-subtitle {
+            font-size: 0.9rem;
+            color: #94A3B8;
+        }
+
+        .preview-controls {
+            display: flex;
+            gap: 12px;
+            margin-top: 12px;
+            justify-content: center;
+        }
+
+        .btn-switch {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #FFFFFF;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .btn-switch:hover, .btn-switch.active {
+            background: #00BA9B;
+            border-color: #00BA9B;
+        }
+
+        .phone-mockup {
+            width: 390px;
+            height: 844px;
+            background: #1E293B;
+            border-radius: 46px;
+            padding: 10px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 0 2px #334155;
+            position: relative;
+        }
+
+        .phone-notch {
+            position: absolute;
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90px;
+            height: 20px;
+            background: #000000;
+            border-radius: 20px;
+            z-index: 9999;
+            pointer-events: none;
+            opacity: 0.8;
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            border-radius: 36px;
+            overflow: hidden;
+            background: #F1F5F9;
+            position: relative;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        .phones-container {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .phone-label {
+            text-align: center;
+            margin-top: 12px;
+            font-size: 0.9rem;
+            color: #94A3B8;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="preview-header">
+        <div class="preview-title">PIOS Customer Management - Paparan Mobile 390x844 (Padanan Spesifikasi)</div>
+        <div class="preview-subtitle">Header Forest Teal (#134C49), 2 Kad Putih Berasingan, dan Butang Tindakan Fokus Register Customer</div>
+        <div class="preview-controls">
+            <a href="./customer.html" class="btn-switch" target="_blank">Buka Fail Asal (customer.html)</a>
+            <a href="./customer.html#register" class="btn-switch active" target="_blank">Uji Modal Langsung (#register)</a>
+        </div>
+    </div>
+
+    <!-- Dual Phones Display -->
+    <div class="phones-container">
+        <!-- Phone 1: Top of Form -->
+        <div>
+            <div class="phone-mockup">
+                <div class="phone-screen">
+                    <iframe id="phoneFrame1" src="./customer.html#register"></iframe>
+                </div>
+            </div>
+            <div class="phone-label">1. Bahagian Atas (Header & 2 Kad Maklumat)</div>
+        </div>
+
+        <!-- Phone 2: Bottom Focus Register Button -->
+        <div>
+            <div class="phone-mockup">
+                <div class="phone-screen">
+                    <iframe id="phoneFrame2" src="./customer.html#register"></iframe>
+                </div>
+            </div>
+            <div class="phone-label">2. Bahagian Bawah (Fokus Butang Register Customer & Cancel)</div>
+        </div>
+    </div>
+
+    <script>
+        // Scroll the second phone frame to show the bottom buttons
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const f2 = document.getElementById('phoneFrame2');
+                if (f2 && f2.contentWindow) {
+                    try {
+                        const modalOverlay = f2.contentWindow.document.getElementById('addCustomerModal');
+                        if (modalOverlay) {
+                            modalOverlay.scrollTop = 9999;
+                        }
+                    } catch(e) {}
+                }
+            }, 800);
+        });
+    </script>
+</body>
+</html>

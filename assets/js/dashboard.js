@@ -59,6 +59,10 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.classList.remove('dark-mode-active');
             if (fsDarkModeToggle) fsDarkModeToggle.checked = false;
         }
+        if (desktopThemeToggleBtn) {
+            desktopThemeToggleBtn.setAttribute('title', isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode');
+            desktopThemeToggleBtn.setAttribute('aria-label', isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode');
+        }
         try {
             localStorage.setItem('pios_theme', isDark ? 'dark' : 'light');
         } catch (err) {

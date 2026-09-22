@@ -142,6 +142,45 @@ body.dashboard-body {
     flex-shrink: 0;
 }
 
+/* Sidebar Sub-menu (Desktop) */
+.sidebar-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.sidebar-subitem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px 10px 42px;
+    margin: 2px 4px 4px 10px;
+    border-radius: 10px;
+    color: rgba(255, 255, 255, 0.85);
+    background-color: rgba(255, 255, 255, 0.07);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.sidebar-subitem:hover {
+    color: #FFFFFF;
+    background-color: rgba(255, 255, 255, 0.15);
+    transform: translateX(2px);
+}
+
+.sidebar-subitem.active {
+    background-color: rgba(255, 255, 255, 0.18);
+    color: #FFFFFF;
+    font-weight: 600;
+}
+
+.sidebar-subicon {
+    flex-shrink: 0;
+    opacity: 0.9;
+}
+
 .sidebar-footer {
     display: flex;
     align-items: center;
@@ -760,10 +799,23 @@ body.dashboard-body {
         display: flex;
         align-items: center;
         gap: 14px;
-        padding: 10px 18px 10px 52px;
-        color: rgba(255, 255, 255, 0.7);
+        margin: 4px 12px 6px 20px;
+        padding: 14px 20px;
+        border-radius: 14px;
+        background-color: rgba(255, 255, 255, 0.12);
+        color: #FFFFFF;
         text-decoration: none;
-        font-size: 0.95rem;
+        font-size: 1rem;
+        font-weight: 500;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+        transition: all 0.2s ease;
+    }
+
+    .fs-nav-subitem:hover,
+    .fs-nav-subitem:active,
+    .fs-nav-subitem.active {
+        background-color: rgba(255, 255, 255, 0.18);
+        color: #FFFFFF;
     }
 
     .fs-menu-footer {
@@ -937,3 +989,47 @@ body.dashboard-body.dark-mode-active .activity-row:hover {
 body.dashboard-body.dark-mode-active .pipeline-bar-track {
     background-color: rgba(255, 255, 255, 0.08);
 }
+
+/* ==========================================================================
+   Theme Icon Switching (Sun / Moon)
+   ========================================================================== */
+.theme-toggle-btn .moon-icon,
+.theme-toggle-btn .theme-icon-moon {
+    display: block;
+}
+
+.theme-toggle-btn .sun-icon,
+.theme-toggle-btn .theme-icon-sun {
+    display: none;
+}
+
+body.dark-mode-active .theme-toggle-btn .moon-icon,
+body.dark-mode-active .theme-toggle-btn .theme-icon-moon {
+    display: none !important;
+}
+
+body.dark-mode-active .theme-toggle-btn .sun-icon,
+body.dark-mode-active .theme-toggle-btn .theme-icon-sun {
+    display: block !important;
+}
+
+.fs-darkmode-label .moon-icon,
+.fs-darkmode-label .fs-icon-moon {
+    display: block;
+}
+
+.fs-darkmode-label .sun-icon,
+.fs-darkmode-label .fs-icon-sun {
+    display: none;
+}
+
+body.dark-mode-active .fs-darkmode-label .moon-icon,
+body.dark-mode-active .fs-darkmode-label .fs-icon-moon {
+    display: none !important;
+}
+
+body.dark-mode-active .fs-darkmode-label .sun-icon,
+body.dark-mode-active .fs-darkmode-label .fs-icon-sun {
+    display: block !important;
+}
+
