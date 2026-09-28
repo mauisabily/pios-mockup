@@ -61,8 +61,8 @@ This mockup is structured for immediate conversion into a **Laravel Blade-based 
 Mockup Folder                          Laravel Target Location
 ├── assets/
 │   ├── css/style.css            ───>  public/assets/css/style.css (or resources/css/style.css)
-│   ├── css/dashboard.css        ───>  public/assets/css/dashboard.css
-│   ├── css/customer.css         ───>  public/assets/css/customer.css
+│   ├── css/bo-style.css         ───>  public/assets/css/bo-style.css (Business Owner Unified CSS)
+│   ├── css/landing.css          ───>  public/assets/css/landing.css
 │   ├── js/script.js             ───>  public/assets/js/script.js (or resources/js/script.js)
 │   ├── js/dashboard.js          ───>  public/assets/js/dashboard.js
 │   ├── js/customer.js           ───>  public/assets/js/customer.js
@@ -94,7 +94,7 @@ To maintain clean and DRY code, break down [`dashboard.html`](dashboard.html) in
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
     
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="{{ asset('assets/css/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/bo-style.css') }}">
     @stack('styles')
 </head>
 <body class="dashboard-body">
@@ -244,7 +244,8 @@ class DashboardController extends Controller
 pios-mockup/
 ├── assets/
 │   ├── css/
-│   │   ├── dashboard.css             # Wide-full responsive dashboard styles (desktop & mobile)
+│   │   ├── bo-style.css              # Master responsive styles for Business Owner pages (Dashboard, Customer, Products, Transaction, Fees, Reports)
+│   │   ├── landing.css               # Modern showcase & landing page styles
 │   │   ├── style.css                 # Login page responsive styles (desktop 2-col & mobile teal)
 │   │   └── mobile.css                # Standalone mobile styles (kept for reference)
 │   ├── images/
