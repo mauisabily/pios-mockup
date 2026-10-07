@@ -109,6 +109,52 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- Role Tab Switching (Business Owner vs Partner) ---
+    let currentRole = 'business'; // 'business' | 'partner'
+    const roleBtnBusiness = document.getElementById('roleBtnBusiness');
+    const roleBtnPartner = document.getElementById('roleBtnPartner');
+    const piosIdLabel = document.getElementById('piosIdLabel');
+
+    function setRole(role) {
+        currentRole = role;
+        if (role === 'partner') {
+            if (roleBtnPartner) {
+                roleBtnPartner.classList.add('active');
+                roleBtnPartner.setAttribute('aria-selected', 'true');
+            }
+            if (roleBtnBusiness) {
+                roleBtnBusiness.classList.remove('active');
+                roleBtnBusiness.setAttribute('aria-selected', 'false');
+            }
+            if (piosIdInput) piosIdInput.placeholder = 'Enter Partner ID';
+            if (loginSubmitBtn) {
+                const textSpan = loginSubmitBtn.querySelector('.btn-text');
+                if (textSpan) textSpan.textContent = 'Login as Partner';
+            }
+        } else {
+            if (roleBtnBusiness) {
+                roleBtnBusiness.classList.add('active');
+                roleBtnBusiness.setAttribute('aria-selected', 'true');
+            }
+            if (roleBtnPartner) {
+                roleBtnPartner.classList.remove('active');
+                roleBtnPartner.setAttribute('aria-selected', 'false');
+            }
+            if (piosIdInput) piosIdInput.placeholder = 'Enter your ID';
+            if (loginSubmitBtn) {
+                const textSpan = loginSubmitBtn.querySelector('.btn-text');
+                if (textSpan) textSpan.textContent = 'Login';
+            }
+        }
+    }
+
+    if (roleBtnBusiness) {
+        roleBtnBusiness.addEventListener('click', () => setRole('business'));
+    }
+    if (roleBtnPartner) {
+        roleBtnPartner.addEventListener('click', () => setRole('partner'));
+    }
+
     if (loginForm) {
         loginForm.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -138,6 +184,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 loginSubmitBtn.disabled = true;
             }
 
+            const targetDashboard = currentRole === 'partner' ? './partner/dashboard.html' : './business/dashboard.html';
+            const roleLabel = currentRole === 'partner' ? 'Partner Dashboard' : 'Business Owner Dashboard';
+
             setTimeout(() => {
                 if (loginSubmitBtn) {
                     loginSubmitBtn.classList.remove('loading');
@@ -145,13 +194,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 if (loginFeedback) {
-                    loginFeedback.textContent = `Welcome back, ${piosIdVal}! Redirecting to Dashboard...`;
+                    loginFeedback.textContent = `Welcome back, ${piosIdVal}! Redirecting to ${roleLabel}...`;
                     loginFeedback.className = 'login-feedback success';
                     loginFeedback.style.display = 'block';
                 }
 
                 setTimeout(() => {
-                    window.location.href = './dashboard.html';
+                    window.location.href = targetDashboard;
                 }, 800);
             }, 1000);
         });
