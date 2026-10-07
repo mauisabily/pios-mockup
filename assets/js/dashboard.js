@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function openFullscreenMenu() {
         if (fullscreenMenu) {
             fullscreenMenu.classList.add('active');
+            fullscreenMenu.classList.add('open');
             fullscreenMenu.setAttribute('aria-hidden', 'false');
             if (mobileMenuToggleBtn) mobileMenuToggleBtn.setAttribute('aria-expanded', 'true');
             document.body.style.overflow = 'hidden';
@@ -20,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function closeFullscreenMenu() {
         if (fullscreenMenu) {
             fullscreenMenu.classList.remove('active');
+            fullscreenMenu.classList.remove('open');
             fullscreenMenu.setAttribute('aria-hidden', 'true');
             if (mobileMenuToggleBtn) mobileMenuToggleBtn.setAttribute('aria-expanded', 'false');
             document.body.style.overflow = '';
@@ -28,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (mobileMenuToggleBtn) {
         mobileMenuToggleBtn.addEventListener('click', () => {
-            if (fullscreenMenu && fullscreenMenu.classList.contains('active')) {
+            if (fullscreenMenu && (fullscreenMenu.classList.contains('active') || fullscreenMenu.classList.contains('open'))) {
                 closeFullscreenMenu();
             } else {
                 openFullscreenMenu();
@@ -40,9 +42,15 @@ document.addEventListener('DOMContentLoaded', () => {
         fsMenuCloseBtn.addEventListener('click', closeFullscreenMenu);
     }
 
+    // Close when clicking navigation items
+    const fsNavLinks = document.querySelectorAll('.fullscreen-menu .fs-nav-item, .fullscreen-menu .fs-nav-subitem');
+    fsNavLinks.forEach(link => {
+        link.addEventListener('click', closeFullscreenMenu);
+    });
+
     // Close on Escape key
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && fullscreenMenu && fullscreenMenu.classList.contains('active')) {
+        if (e.key === 'Escape' && fullscreenMenu && (fullscreenMenu.classList.contains('active') || fullscreenMenu.classList.contains('open'))) {
             closeFullscreenMenu();
         }
     });

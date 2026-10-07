@@ -519,8 +519,9 @@
             <a href="#spesifikasi" class="nav-link">Spesifikasi</a>
             <a href="../index.html" class="nav-link" style="color: #38bdf8;" target="_blank">Landing Page ↗</a>
             <a href="../login.html" class="nav-link" style="color: #60a5fa;" target="_blank">Buka Login ↗</a>
-            <a href="../dashboard.html" class="nav-link" style="color: #34d399;" target="_blank">Buka Dashboard ↗</a>
-            <a href="../customer.html" class="nav-link" style="color: #2dd4bf;" target="_blank">Buka Customer ↗</a>
+            <a href="../business/dashboard.html" class="nav-link" style="color: #34d399;" target="_blank">Business ↗</a>
+            <a href="../partner/dashboard.html" class="nav-link" style="color: #a78bfa;" target="_blank">Partner ↗</a>
+            <a href="../partner/business-owner-management.html" class="nav-link" style="color: #c084fc;" target="_blank">BO Mgmt ↗</a>
         </nav>
     </header>
 
@@ -534,7 +535,7 @@
         </div>
         <h1 class="hero-title">PIOS BizGrowth Engine</h1>
         <p class="hero-subtitle">
-            Laporan lengkap penyatuan reka bentuk responsif bagi paparan Desktop dan Mobile (Login, Dashboard & Pengurusan Customer) dalam <strong>1 kod tunggal</strong> mengikut spesifikasi Figma rasmi.
+            Laporan lengkap penyatuan reka bentuk responsif bagi paparan Desktop dan Mobile (Login, Business Owner Suite, & Partner Portal) dalam <strong>1 kod tunggal</strong> mengikut spesifikasi Figma rasmi.
         </p>
         <div class="action-bar" style="flex-wrap: wrap;">
             <a href="../index.html" class="btn btn-primary" style="background: #0ea5e9;" target="_blank">
@@ -550,22 +551,39 @@
                 </svg>
                 Uji Login (login.html)
             </a>
-            <a href="../dashboard.html" class="btn btn-primary" style="background: #14b8a6; box-shadow: 0 4px 14px rgba(20, 184, 166, 0.4);" target="_blank">
+            <a href="../business/dashboard.html" class="btn btn-primary" style="background: #14b8a6; box-shadow: 0 4px 14px rgba(20, 184, 166, 0.4);" target="_blank">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <line x1="18" y1="20" x2="18" y2="10"></line>
                     <line x1="12" y1="20" x2="12" y2="4"></line>
                     <line x1="6" y1="20" x2="6" y2="14"></line>
                 </svg>
-                Uji Dashboard (dashboard.html)
+                Business Dashboard
             </a>
-            <a href="../customer.html" class="btn btn-primary" style="background: #0d9488; box-shadow: 0 4px 14px rgba(13, 148, 136, 0.4);" target="_blank">
+            <a href="../business/customer.html" class="btn btn-primary" style="background: #0d9488; box-shadow: 0 4px 14px rgba(13, 148, 136, 0.4);" target="_blank">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
                     <circle cx="9" cy="7" r="4"></circle>
                     <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
                     <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                 </svg>
-                Uji Customer (customer.html)
+                Customer Management
+            </a>
+            <a href="../partner/dashboard.html" class="btn btn-primary" style="background: #6366F1; box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);" target="_blank">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                </svg>
+                Partner Dashboard
+            </a>
+            <a href="../partner/business-owner-management.html" class="btn btn-primary" style="background: #7C3AED; box-shadow: 0 4px 14px rgba(124, 58, 237, 0.4);" target="_blank">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <line x1="19" y1="8" x2="19" y2="14"></line>
+                    <line x1="22" y1="11" x2="16" y2="11"></line>
+                </svg>
+                BO Management (Baru!)
             </a>
             <a href="https://www.figma.com/proto/EiQNeIuQNHOFacXfWL4N6a/BizGrowth-Engine?node-id=343-3227&m=dev&scaling=scale-down&content-scaling=fixed&page-id=0%3A1" class="btn btn-secondary" target="_blank">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -573,7 +591,7 @@
                     <polyline points="15 3 21 3 21 9"></polyline>
                     <line x1="10" y1="14" x2="21" y2="3"></line>
                 </svg>
-                Rujukan Prototaip Figma
+                Prototaip Figma
             </a>
         </div>
     </section>
@@ -601,20 +619,16 @@
                         <span class="data-value">21 September 2026</span>
                     </li>
                     <li class="data-item">
-                        <span class="data-label">Waktu Mula Kerja:</span>
-                        <span class="data-value">16:15 MYT (+08:00)</span>
-                    </li>
-                    <li class="data-item">
-                        <span class="data-label">Waktu Selesai:</span>
-                        <span class="data-value">23:35 MYT (+08:00)</span>
+                        <span class="data-label">Waktu Kemas Kini:</span>
+                        <span class="data-value">7 Oktober 2026, 18:15 MYT</span>
                     </li>
                     <li class="data-item">
                         <span class="data-label">Status Semasa:</span>
-                        <span class="data-value"><span class="pill success">100% Selesai (Login, Dashboard & Customer)</span></span>
+                        <span class="data-value"><span class="pill success">100% Selesai (Business & Partner Portal)</span></span>
                     </li>
                     <li class="data-item">
                         <span class="data-label">Versi:</span>
-                        <span class="data-value">v1.3.0 (Unified Responsive & Customer Module)</span>
+                        <span class="data-value">v1.4.0 (Partner Portal & BO Management)</span>
                     </li>
                 </ul>
             </div>
@@ -651,7 +665,7 @@
                 </div>
 
                 <div style="margin-top: 14px; font-size: 0.8rem; color: var(--text-muted);">
-                    ⚡ <em>Nota: Log masuk yang berjaya akan menghala terus ke Dashboard perniagaan (dashboard.html).</em>
+                    ⚡ <em>Nota: Log masuk yang berjaya akan menghala terus ke Dashboard perniagaan (business/dashboard.html).</em>
                 </div>
             </div>
 
@@ -676,28 +690,32 @@
                         <span class="data-value"><a href="../login.html" target="_blank">login.html</a></span>
                     </li>
                     <li class="data-item">
-                        <span class="data-label">Aplikasi Dashboard:</span>
-                        <span class="data-value"><a href="../dashboard.html" target="_blank">dashboard.html</a></span>
+                        <span class="data-label">Modul Business:</span>
+                        <span class="data-value"><a href="../business/dashboard.html" target="_blank">business/</a> (6 Halaman)</span>
                     </li>
                     <li class="data-item">
-                        <span class="data-label">Aplikasi Customer:</span>
-                        <span class="data-value"><a href="../customer.html" target="_blank">customer.html</a></span>
+                        <span class="data-label">Portal Partner:</span>
+                        <span class="data-value"><a href="../partner/dashboard.html" target="_blank">partner/dashboard.html</a></span>
+                    </li>
+                    <li class="data-item">
+                        <span class="data-label">Pengurusan BO:</span>
+                        <span class="data-value"><a href="../partner/business-owner-management.html" target="_blank">partner/business-owner...</a></span>
                     </li>
                     <li class="data-item">
                         <span class="data-label">Fail Gaya CSS:</span>
-                        <span class="data-value">style.css, landing.css, bo-style.css</span>
+                        <span class="data-value">bo-style.css, partner-style.css</span>
                     </li>
                     <li class="data-item">
                         <span class="data-label">Fail Logik JS:</span>
-                        <span class="data-value">script.js, dashboard.js, customer.js</span>
+                        <span class="data-value">script.js, dashboard.js, partner.js</span>
                     </li>
                     <li class="data-item">
                         <span class="data-label">Figma Mobile:</span>
-                        <span class="data-value"><span class="pill orange">343-3227 / 3.1_dashboard / 3.0_nav</span></span>
+                        <span class="data-value"><span class="pill orange">343-3227 / 3.1_dashboard / BO_Mobile</span></span>
                     </li>
                     <li class="data-item">
                         <span class="data-label">Figma Desktop:</span>
-                        <span class="data-value"><span class="pill blue">Login_Screen / BO_dashboard</span></span>
+                        <span class="data-value"><span class="pill blue">BO_dashboard / BO_Management</span></span>
                     </li>
                 </ul>
             </div>
@@ -758,9 +776,21 @@
                         <td><span class="pill success">Selesai</span></td>
                     </tr>
                     <tr>
-                        <td><strong>Pengurusan Pelanggan (<code>customer.html</code>)</strong></td>
+                        <td><strong>Pengurusan Pelanggan (<code>business/customer.html</code>)</strong></td>
                         <td>Tiada modul pengurusan pelanggan bersepadu.</td>
-                        <td>Dibina <strong>1 fail tunggal responsif dengan tema seragam Business Owner (Forest Teal #134C49)</strong>: Paparan Desktop 100% lebar penuh (Wide Full) dengan bar carian masa nyata, butang <code>+ Add Customer</code>, jadual 12 pelanggan berstatus VIP star dan butang tindakan pantas (<code>WA</code>, <code>Call</code>, <code>View</code>, <code>•••</code>), serta <strong>Borang Modal "Register Customer" (2-Lajur)</strong> mengikut reka bentuk rasmi Figma (Customer Name, Contact Person, Email Address, Phone Number, Address baris 1-3, dropdown Postcode, City, State, butang Cancel dan Register Customer); Paparan Mobile dengan header Forest Teal #134C49, carian dinamik, dan kad senarai pelanggan dengan 3 butang aksi berasingan (<code>Whatsapp</code>, <code>Call</code>, <code>View</code>).</td>
+                        <td>Dibina <strong>1 fail tunggal responsif dengan tema seragam Business Owner (Forest Teal #134C49)</strong>: Paparan Desktop 100% lebar penuh (Wide Full) dengan bar carian masa nyata, butang <code>+ Add Customer</code>, jadual 12 pelanggan berstatus VIP star dan butang tindakan pantas (<code>WA</code>, <code>Call</code>, <code>View</code>, <code>•••</code>), serta <strong>Borang Modal "Register Customer" (2-Lajur)</strong>; Paparan Mobile dengan header Forest Teal, carian dinamik, dan kad senarai pelanggan dengan 3 butang aksi berasingan.</td>
+                        <td><span class="pill success">Selesai</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Partner Portal Dashboard (<code>partner/dashboard.html</code>)</strong></td>
+                        <td>Tiada portal khas untuk rakan kongsi sistem.</td>
+                        <td>Dibina <strong>Partner Portal</strong> berona Midnight Navy <code>#0F172A</code>: Ringkasan prestasi rakan kongsi, metrik hasil komisen MTD, graf analitik, carta pertumbuhan Business Owner, dan menu navigasi responsif dengan toggle tema dwimod.</td>
+                        <td><span class="pill success">Selesai</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pengurusan Business Owner (<code>partner/business-owner-management.html</code>)</strong></td>
+                        <td>Tiada modul pengurusan Business Owner berpusat untuk Partner.</td>
+                        <td>Dibina <strong>1 fail tunggal responsif seragam dengan modul Business</strong>: Jarak Topbar <code>32px 36px 60px</code> & <code>24px margin</code> tepat menyamai Business; <strong>Kotak carian lebar penuh (Full-Width Flex 1)</strong> tanpa kekangan saiz merentangi ruang kiri (~520px) bersama 4 butang penapis kemas (All, Active, Overdue, Pending) dan butang <code>+ Register Business Owner</code> (#7C3AED); 4 kad metrik KPI (Total 10, Active 8, Pending 1, Overdue 1); Jadual Desktop 10 rekod lengkap VIP stars & revenue; Kad senarai Mobile responsif; Modal pendaftaran BO baharu & modal butiran profil; serta pertukaran ikon tunggal (Single Dynamic Icon) pada menu mudah alih.</td>
                         <td><span class="pill success">Selesai</span></td>
                     </tr>
                 </tbody>
@@ -931,6 +961,58 @@
                 </div>
             </div>
 
+            <!-- Screenshot: BO Management Desktop Dark -->
+            <div class="gallery-item">
+                <div class="gallery-image-wrapper">
+                    <img src="./images/bo_desktop_dark.png" alt="Paparan Desktop Business Owner Management Mod Gelap" class="gallery-img">
+                </div>
+                <div class="gallery-info">
+                    <div class="gallery-title">13. Pengurusan Business Owner Desktop (Mod Gelap / Dark Mode)</div>
+                    <p class="gallery-desc">
+                        Paparan Desktop rasmi modul Partner: Sidebar Midnight Navy <code>#080E1A</code>, Topbar terselaras tepat dengan jarak Business, <strong>kotak carian lebar penuh (~520px)</strong> merentangi Kad 1 & 2, 4 penapis status (All, Active, Overdue, Pending), butang <code>+ Register Business Owner</code> (#7C3AED), 4 kad KPI, dan jadual data 10 pemilik perniagaan.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Screenshot: BO Management Desktop Light -->
+            <div class="gallery-item">
+                <div class="gallery-image-wrapper">
+                    <img src="./images/bo_desktop_light.png" alt="Paparan Desktop Business Owner Management Mod Cerah" class="gallery-img">
+                </div>
+                <div class="gallery-info">
+                    <div class="gallery-title">14. Pengurusan Business Owner Desktop (Mod Cerah / Light Mode)</div>
+                    <p class="gallery-desc">
+                        Paparan Mod Cerah kemas dan elegan: Latar <code>#F8FAFC</code>, kad putih <code>#FFFFFF</code>, teks tajuk <code>#0F172A</code> pada saiz 1.85rem dengan jarak 24px ke bar carian penuh, penapis status Active berwarna hijau <code>#10B981</code>, dan butang tindakan ungu diraja.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Screenshot: BO Management Mobile Dark -->
+            <div class="gallery-item">
+                <div class="gallery-image-wrapper">
+                    <img src="./images/bo_mobile_dark.png" alt="Paparan Mobile Business Owner Management Mod Gelap" class="gallery-img">
+                </div>
+                <div class="gallery-info">
+                    <div class="gallery-title">15. Pengurusan Business Owner Mobile (Mod Gelap)</div>
+                    <p class="gallery-desc">
+                        Paparan Mobile responsif mengikut spesifikasi Figma: Header gelap 60px berbutang kembali <code>← Business Owner Management</code>, carian lebar penuh 100%, 5 penapis boleh-skrol (All, Active, Overdue, Suspended, Pending), grid metrik KPI 2x2, dan kad senarai Business Owner.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Screenshot: BO Management Mobile Light -->
+            <div class="gallery-item">
+                <div class="gallery-image-wrapper">
+                    <img src="./images/bo_mobile_light.png" alt="Paparan Mobile Business Owner Management Mod Cerah" class="gallery-img">
+                </div>
+                <div class="gallery-info">
+                    <div class="gallery-title">16. Pengurusan Business Owner Mobile (Mod Cerah & Figma Parity)</div>
+                    <p class="gallery-desc">
+                        Padanan tepat 100% dengan reka bentuk Figma Mobile (Tangkapan Skrin 2): Header navy dengan menu hamburger, bar carian 100% lebar, lencana penapis hijau cerah, kad metrik 2-kolum, dan senarai kad interaktif lengkap dengan ID, nama, hasil MTD, dan status.
+                    </p>
+                </div>
+            </div>
+
         </div>
 
         <!-- Section: Spesifikasi Teknikal -->
@@ -1001,6 +1083,16 @@
                     • Desktop: Jadual 12 rekod berstatus VIP, aksi pantas WA & Call, dialog modal tambah pelanggan.<br>
                     • Mobile: Kad senarai pelanggan responsif dengan 3 butang berasingan (Whatsapp, Call, View).<br>
                     • Carian Masa Nyata (Real-time Filter) menyegerakkan carian nama, telefon, emel, dan ID.
+                </div>
+            </div>
+
+            <div class="tech-card">
+                <div class="tech-title">🏢 Modul Partner & BO Management</div>
+                <div class="tech-desc">
+                    • <strong>Jarak Topbar Standard:</strong> Padding <code>32px 36px 60px</code> & Margin <code>24px</code> sepadan Business.<br>
+                    • <strong>Carian Dinamik Lebar Penuh:</strong> Flex 1 mengembang penuh (~520px) tanpa ruang kosong.<br>
+                    • <strong>Pill Penapis Pintar:</strong> 4 butang di Desktop, 5 butang boleh-skrol di Mobile.<br>
+                    • <strong>Toggle Ikon Tunggal:</strong> Ikon tunggal bertukar Matahari/Bulan secara dinamik pada menu mobile.
                 </div>
             </div>
         </div>

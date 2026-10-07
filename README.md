@@ -41,9 +41,12 @@
 | :--- | :--- | :--- | :--- |
 | **Landing Page** | Modern showcase with 'How PIOS Works' flow, 3 pillars & sliding product marquee | [`index.html`](index.html) | `http://localhost:3000/index.html` |
 | **Login Screen** | Responsive Desktop 2-column & Mobile Teal with show/hide password | [`login.html`](login.html) | `http://localhost:3000/login.html` |
-| **Business Owner Dashboard** | Wide Full 6 KPI cards, Customer Pipeline, Recent Activity & Theme toggle | [`dashboard.html`](dashboard.html) | `http://localhost:3000/dashboard.html` |
-| **Customer Management** | Wide Full 12-customer table (Desktop) & Card list with WhatsApp/Call/View (Mobile) | [`customer.html`](customer.html) | `http://localhost:3000/customer.html` |
+| **Business Owner Dashboard** | Wide Full 6 KPI cards, Customer Pipeline, Recent Activity & Theme toggle | [`business/dashboard.html`](business/dashboard.html) | `http://localhost:3000/business/dashboard.html` |
+| **Customer Management** | Wide Full 12-customer table (Desktop) & Card list with WhatsApp/Call/View (Mobile) | [`business/customer.html`](business/customer.html) | `http://localhost:3000/business/customer.html` |
+| **Partner Dashboard** | Partner Overview, monthly revenue breakdown, commission metrics & growth | [`partner/dashboard.html`](partner/dashboard.html) | `http://localhost:3000/partner/dashboard.html` |
+| **BO Management** | Partner BO list, full-width search, 4 KPI cards, 10-row table & modals | [`partner/business-owner-management.html`](partner/business-owner-management.html) | `http://localhost:3000/partner/business-owner-management.html` |
 | **Owner Documentation** | Interactive dev log, test credentials, timestamps & visual gallery | [`docs/index.html`](docs/index.html) | `http://localhost:3000/docs/index.html` |
+| **Design System Guide** | Complete UI tokens, typography standards & component specifications | [`docs/design-guide.md`](docs/design-guide.md) | Markdown Reference |
 
 ### Demo Credentials for Testing
 - **PIOS ID**: `PIO-8823`
@@ -245,9 +248,9 @@ pios-mockup/
 ├── assets/
 │   ├── css/
 │   │   ├── bo-style.css              # Master responsive styles for Business Owner pages (Dashboard, Customer, Products, Transaction, Fees, Reports)
+│   │   ├── partner-style.css         # Master styles for Partner Portal (Dashboard, BO Management)
 │   │   ├── landing.css               # Modern showcase & landing page styles
-│   │   ├── style.css                 # Login page responsive styles (desktop 2-col & mobile teal)
-│   │   └── mobile.css                # Standalone mobile styles (kept for reference)
+│   │   └── style.css                 # Login page responsive styles (desktop 2-col & mobile teal)
 │   ├── images/
 │   │   ├── header_logo.png           # Transparent PIOS header logo
 │   │   ├── desktop_center_logo.png   # Transparent mascot logo for desktop login
@@ -255,19 +258,34 @@ pios-mockup/
 │   │   ├── hero_card.png             # Metallic orange wave graphic for login desktop
 │   │   └── lenny_avatar.png          # High-resolution avatar of Lenny Muller
 │   └── js/
-│       ├── dashboard.js              # Fullscreen menu, theme switcher & date logic
+│       ├── dashboard.js              # Business fullscreen menu, theme switcher & date logic
+│       ├── customer.js               # Customer management interactive logic
+│       ├── partner.js                # Partner portal filtering, search & modal handlers
 │       └── script.js                 # Password toggle, form validation & loading animation
 │
 ├── index.html                        # PIOS Landing Page (Public Showcase & Ecosystem Overview)
 ├── login.html                        # Unified Login Screen (Desktop + Mobile in 1 file)
 ├── mobile.html                       # Auto-redirects to index.html (deprecated)
 │
-├── docs/                             # Interactive documentation for System Owner & Developers
-│   ├── index.html                    # Official developer & owner report
-│   ├── walkthrough.html              # Redirects to docs/index.html
-│   └── images/*                      # Verification screenshots
+├── business/                         # Business Owner Suite Module (6 Pages)
+│   ├── dashboard.html                # Main BO Dashboard
+│   ├── customer.html                 # Customer Management & Registration Modal
+│   ├── products.html                 # Products & Inventory Management
+│   ├── transaction.html              # Transaction records & billing
+│   ├── fees.html                     # Fees breakdown & subscription details
+│   └── reports.html                  # Business analytics & reports
 │
-└── README.md                         # This file
+├── partner/                          # Partner Portal Module (2 Pages)
+│   ├── dashboard.html                # Partner Dashboard & Revenue Overview
+│   └── business-owner-management.html# Business Owner Management & Registration
+│
+├── docs/                             # Interactive documentation for System Owner & Developers
+│   ├── design-guide.md               # Standard Design System & Component Guidelines
+│   ├── index.html                    # Official developer & owner report with visual gallery
+│   ├── walkthrough.html              # Redirects to docs/index.html
+│   └── images/*                      # Verification screenshots (BO Management, Customer, Dashboard)
+│
+└── README.md                         # Project documentation and Laravel integration guide
 ```
 
 ---

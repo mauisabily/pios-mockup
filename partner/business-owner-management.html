@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>PIOS - Business Owner Management</title>
+    <meta name="description" content="PIOS BizGrowth Engine Partner Panel - Manage and support your registered business owners">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Partner Dark Blue Master Stylesheet -->
+    <link rel="stylesheet" href="../assets/css/partner-style.css">
+</head>
+
+<body class="partner-body dark-mode-active">
+
+    <!-- Mobile Top Navigation Header -->
+    <header class="partner-mobile-header">
+        <div class="partner-mobile-left">
+            <a href="./dashboard.html" class="partner-back-btn" aria-label="Back to Dashboard">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+            </a>
+            <span class="partner-mobile-title">Business Owner Management</span>
+        </div>
+        <button class="mobile-hamburger-btn" id="mobileMenuToggleBtn" aria-label="Toggle Navigation Menu" aria-expanded="false">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+    </header>
+
+    <!-- Fullscreen Mobile Navigation Menu (Matches Partner Navigation) -->
+    <div class="fullscreen-menu partner-fullscreen-menu" id="fullscreenMenu" aria-hidden="true">
+        <div class="fs-menu-header">
+            <a href="./dashboard.html" class="fs-logo-link">
+                <img src="../assets/images/header_logo.png" alt="PIOS BizGrowth Engine" class="fs-header-logo">
+            </a>
+            <button class="fs-menu-close-btn" id="fsMenuCloseBtn" aria-label="Close Menu">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+
+        <nav class="fs-nav-list">
+            <!-- Dashboard -->
+            <a href="./dashboard.html" class="fs-nav-item">
+                <svg class="fs-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="20" x2="18" y2="10"></line>
+                    <line x1="12" y1="20" x2="12" y2="4"></line>
+                    <line x1="6" y1="20" x2="6" y2="14"></line>
+                </svg>
+                <span>Dashboard</span>
+            </a>
+
+            <!-- Business Owner (Active) -->
+            <a href="./business-owner-management.html" class="fs-nav-item active">
+                <svg class="fs-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                </svg>
+                <span>Business Owner</span>
+            </a>
+
+            <!-- Customer -->
+            <a href="#customers" class="fs-nav-item">
+                <svg class="fs-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+                <span>Customer</span>
+            </a>
+
+            <!-- Fees -->
+            <a href="#fees" class="fs-nav-item">
+                <svg class="fs-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                    <line x1="1" y1="10" x2="23" y2="10"></line>
+                </svg>
+                <span>Fees</span>
+            </a>
+
+            <!-- Report -->
+            <a href="#reports" class="fs-nav-item">
+                <svg class="fs-nav-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                <span>Report</span>
+            </a>
+        </nav>
+
+        <div class="fs-menu-footer">
+            <div class="fs-darkmode-row">
+                <div class="fs-darkmode-label">
+                    <svg class="fs-icon-moon moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="fs-icon-sun sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <span>Dark mode</span>
+                </div>
+                <label class="fs-switch">
+                    <input type="checkbox" id="fsDarkModeToggle" checked>
+                    <span class="fs-slider"></span>
+                </label>
+            </div>
+
+            <div class="fs-user-profile">
+                <div class="fs-user-avatar">
+                    <img src="../assets/images/lenny_avatar.png" alt="Lenny Muller">
+                </div>
+                <div class="fs-user-details">
+                    <span class="fs-user-name">Lenny Muller</span>
+                    <span class="fs-user-role">Partner</span>
+                </div>
+                <a href="../login.html" class="fs-logout-btn" title="Sign out" aria-label="Sign out">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Layout Wrapper -->
+    <div class="partner-layout">
+
+        <!-- Sidebar (Desktop) -->
+        <aside class="partner-sidebar">
+            <a href="./dashboard.html" class="partner-brand" aria-label="PIOS Partner Panel">
+                <img src="../assets/images/header_logo.png" alt="PIOS BizGrowth Engine" class="partner-logo-img">
+            </a>
+
+            <!-- Navigation Menu -->
+            <nav class="partner-nav">
+                <!-- Dashboard -->
+                <a href="./dashboard.html" class="partner-nav-item">
+                    <svg class="partner-nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="20" x2="18" y2="10"></line>
+                        <line x1="12" y1="20" x2="12" y2="4"></line>
+                        <line x1="6" y1="20" x2="6" y2="14"></line>
+                    </svg>
+                    <span>Dashboard</span>
+                </a>
+
+                <!-- Business Owner (Active) -->
+                <a href="./business-owner-management.html" class="partner-nav-item active">
+                    <svg class="partner-nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                    </svg>
+                    <span>Business Owner</span>
+                </a>
+
+                <!-- Customer -->
+                <a href="#customers" class="partner-nav-item">
+                    <svg class="partner-nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                    <span>Customer</span>
+                </a>
+
+                <!-- Fees -->
+                <a href="#fees" class="partner-nav-item">
+                    <svg class="partner-nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                        <line x1="1" y1="10" x2="23" y2="10"></line>
+                    </svg>
+                    <span>Fees</span>
+                </a>
+
+                <!-- Report -->
+                <a href="#reports" class="partner-nav-item">
+                    <svg class="partner-nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                    <span>Report</span>
+                </a>
+            </nav>
+
+            <!-- Sidebar User Profile Footer -->
+            <div class="partner-sidebar-footer">
+                <div class="partner-user-badge">
+                    <img src="../assets/images/lenny_avatar.png" alt="Lenny Muller" class="partner-avatar-img">
+                    <span class="partner-user-name">Lenny Muller</span>
+                </div>
+                <a href="../login.html" class="partner-logout-btn" title="Sign out" aria-label="Sign out">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content View -->
+        <main class="partner-main">
+
+            <!-- Top Header Bar (Desktop & Tablet) -->
+            <div class="partner-topbar bo-topbar">
+                <div class="partner-topbar-left">
+                    <h1 class="partner-topbar-title">Business Owner Management</h1>
+                    <p class="partner-topbar-sub">Manage and support your registered business owners</p>
+                </div>
+                <div class="partner-topbar-right">
+                    <span class="partner-topbar-date" id="currentDateText">Fri, Aug 21, 2026</span>
+                    <div class="partner-status-pill">
+                        <span class="status-dot-green"></span>
+                        <span>Partner</span>
+                    </div>
+                    <button class="theme-toggle-btn partner-theme-toggle-btn" id="desktopThemeToggleBtn" aria-label="Toggle Dark / Light Theme" title="Toggle Dark / Light Theme">
+                        <svg class="theme-icon-moon moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                        <svg class="theme-icon-sun sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                    </button>
+                    <button class="partner-notif-btn notif-bell-btn" id="desktopNotifBtn" title="Notifications" aria-label="Notifications">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                        </svg>
+                        <span class="notif-badge-dot"></span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Action & Search Bar (Matches Figma & User Screenshot 1 & 2) -->
+            <div class="bo-action-bar">
+                <div class="bo-action-left">
+                    <div class="bo-search-wrapper">
+                        <svg class="bo-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                        <input type="text" id="boSearchInput" class="bo-search-input" placeholder="Search partners by name or contact..." autocomplete="off">
+                    </div>
+                    <div class="bo-filter-pills" id="boFilterPills">
+                        <button type="button" class="bo-pill active" data-filter="all">All</button>
+                        <button type="button" class="bo-pill" data-filter="active">Active</button>
+                        <button type="button" class="bo-pill" data-filter="overdue">Overdue</button>
+                        <button type="button" class="bo-pill mobile-only-pill" data-filter="suspended">Suspended</button>
+                        <button type="button" class="bo-pill" data-filter="pending">Pending</button>
+                    </div>
+                </div>
+                <button type="button" class="btn-register-bo" id="btnRegisterBO" aria-label="Register Business Owner">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                    <span>Register Business Owner</span>
+                </button>
+            </div>
+
+            <!-- 4-Card KPI Summary Metrics Grid (Matches Desktop Screenshot 1 & Mobile Screenshot 2) -->
+            <div class="bo-kpi-grid">
+                <!-- Total Business Owners -->
+                <div class="bo-kpi-card">
+                    <div class="bo-kpi-val" id="kpiTotalBO">10</div>
+                    <div class="bo-kpi-label">Total Business Owners</div>
+                </div>
+
+                <!-- Active -->
+                <div class="bo-kpi-card">
+                    <div class="bo-kpi-val num-green" id="kpiActiveBO">8</div>
+                    <div class="bo-kpi-label">Active</div>
+                </div>
+
+                <!-- Pending Setup -->
+                <div class="bo-kpi-card">
+                    <div class="bo-kpi-val num-amber" id="kpiPendingBO">1</div>
+                    <div class="bo-kpi-label">Pending Setup</div>
+                </div>
+
+                <!-- Overdue / Suspended -->
+                <div class="bo-kpi-card">
+                    <div class="bo-kpi-val num-orange" id="kpiOverdueBO">1</div>
+                    <div class="bo-kpi-label">Overdue / Suspended</div>
+                </div>
+            </div>
+
+            <!-- DESKTOP VIEW: Data Table Card (Matches Desktop Screenshot 1) -->
+            <div class="bo-table-card">
+                <div class="bo-table-wrapper">
+                    <table class="bo-table" id="businessOwnerTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Owner</th>
+                                <th>Business Name</th>
+                                <th>VIP</th>
+                                <th>Customers</th>
+                                <th>Revenue MTD</th>
+                                <th>Status</th>
+                                <th style="text-align: right;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="boTableBody">
+                            <!-- Populated dynamically via JS / Server-side rendered fallback -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="bo-table-footer" id="boTableFooter">
+                    Showing 10 of 10 business owners
+                </div>
+            </div>
+
+            <!-- MOBILE VIEW: Card List (Matches Mobile Screenshot 2) -->
+            <div class="bo-mobile-list-card">
+                <div id="boMobileListContainer">
+                    <!-- Populated dynamically via JS -->
+                </div>
+                <div class="bo-table-footer" id="boMobileFooter">
+                    Showing 10 of 10 business owners
+                </div>
+            </div>
+
+            <!-- Floating Action Button for Mobile -->
+            <button class="mobile-fab-register" id="mobileFabRegister" aria-label="Register Business Owner" title="Register Business Owner">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+            </button>
+
+        </main>
+    </div>
+
+    <!-- ======================================================================
+         MODAL 1: REGISTER BUSINESS OWNER MODAL
+         ====================================================================== -->
+    <div class="bo-modal-backdrop" id="registerBOModal" aria-hidden="true">
+        <div class="bo-modal-card">
+            <div class="bo-modal-header">
+                <h3 class="bo-modal-title">Register Business Owner</h3>
+                <button type="button" class="bo-modal-close" id="closeRegisterModalBtn" aria-label="Close Modal">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <form id="registerBOForm">
+                <div class="bo-modal-body">
+                    <div class="bo-form-grid">
+                        <div class="bo-form-group">
+                            <label class="bo-form-label" for="regOwnerName">Owner Full Name *</label>
+                            <input type="text" id="regOwnerName" class="bo-form-input" placeholder="e.g. Sarah Chen" required>
+                        </div>
+                        <div class="bo-form-group">
+                            <label class="bo-form-label" for="regOwnerEmail">Email Address *</label>
+                            <input type="email" id="regOwnerEmail" class="bo-form-input" placeholder="e.g. s.chen@chendigital.com" required>
+                        </div>
+                        <div class="bo-form-group">
+                            <label class="bo-form-label" for="regOwnerPhone">Phone Number</label>
+                            <input type="tel" id="regOwnerPhone" class="bo-form-input" placeholder="e.g. +60 12-345 6789">
+                        </div>
+                        <div class="bo-form-group">
+                            <label class="bo-form-label" for="regBizName">Business Name *</label>
+                            <input type="text" id="regBizName" class="bo-form-input" placeholder="e.g. Chen Digital Agency" required>
+                        </div>
+                        <div class="bo-form-group">
+                            <label class="bo-form-label" for="regStatus">Initial Status</label>
+                            <select id="regStatus" class="bo-form-select">
+                                <option value="Active">Active</option>
+                                <option value="Pending Setup">Pending Setup</option>
+                                <option value="Overdue">Overdue</option>
+                                <option value="Suspended">Suspended</option>
+                            </select>
+                        </div>
+                        <div class="bo-form-group">
+                            <label class="bo-form-label" for="regVIPCount">VIP Customers Count</label>
+                            <input type="number" id="regVIPCount" class="bo-form-input" placeholder="0" min="0" value="0">
+                        </div>
+                        <div class="bo-form-group">
+                            <label class="bo-form-label" for="regCustCount">Total Customers Count</label>
+                            <input type="number" id="regCustCount" class="bo-form-input" placeholder="0" min="0" value="0">
+                        </div>
+                        <div class="bo-form-group">
+                            <label class="bo-form-label" for="regRevMTD">Est. Monthly Revenue (RM)</label>
+                            <input type="number" id="regRevMTD" class="bo-form-input" placeholder="0" min="0" value="0">
+                        </div>
+                    </div>
+                </div>
+                <div class="bo-modal-footer">
+                    <button type="button" class="btn-modal-cancel" id="cancelRegisterModalBtn">Cancel</button>
+                    <button type="submit" class="btn-modal-submit" id="submitRegisterBtn">Register Business Owner</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ======================================================================
+         MODAL 2: VIEW BUSINESS OWNER DETAILS MODAL
+         ====================================================================== -->
+    <div class="bo-modal-backdrop" id="viewBODetailModal" aria-hidden="true">
+        <div class="bo-modal-card">
+            <div class="bo-modal-header">
+                <div>
+                    <h3 class="bo-modal-title" id="viewModalOwnerName">Business Owner Details</h3>
+                    <span style="font-size: 0.82rem; color: #94A3B8;" id="viewModalBOID">BO-001</span>
+                </div>
+                <button type="button" class="bo-modal-close" id="closeDetailModalBtn" aria-label="Close Modal">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="bo-modal-body">
+                <div class="bo-detail-row">
+                    <span class="bo-detail-label">Business Name</span>
+                    <span class="bo-detail-val" id="viewDetailBizName">-</span>
+                </div>
+                <div class="bo-detail-row">
+                    <span class="bo-detail-label">Status</span>
+                    <span class="bo-detail-val" id="viewDetailStatus">-</span>
+                </div>
+                <div class="bo-detail-row">
+                    <span class="bo-detail-label">Email Address</span>
+                    <span class="bo-detail-val" id="viewDetailEmail">-</span>
+                </div>
+                <div class="bo-detail-row">
+                    <span class="bo-detail-label">Phone Number</span>
+                    <span class="bo-detail-val" id="viewDetailPhone">-</span>
+                </div>
+                <div class="bo-detail-row">
+                    <span class="bo-detail-label">VIP Customers</span>
+                    <span class="bo-detail-val" id="viewDetailVIP">-</span>
+                </div>
+                <div class="bo-detail-row">
+                    <span class="bo-detail-label">Total Customers</span>
+                    <span class="bo-detail-val" id="viewDetailCustomers">-</span>
+                </div>
+                <div class="bo-detail-row">
+                    <span class="bo-detail-label">Revenue MTD</span>
+                    <span class="bo-detail-val" id="viewDetailRevenue" style="color: #10B981;">-</span>
+                </div>
+                <div class="bo-detail-row">
+                    <span class="bo-detail-label">Registration Date</span>
+                    <span class="bo-detail-val">Aug 12, 2026</span>
+                </div>
+            </div>
+            <div class="bo-modal-footer">
+                <a href="#" id="viewContactWABtn" target="_blank" class="btn-modal-cancel" style="display: inline-flex; align-items: center; gap: 6px; text-decoration: none;">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                    <span>WhatsApp</span>
+                </a>
+                <button type="button" class="btn-modal-submit" id="closeDetailActionBtn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Partner Shared Interaction Logic -->
+    <script src="../assets/js/partner.js"></script>
+</body>
+</html>

@@ -388,3 +388,117 @@ Sebelum melancarkan sebarang skrin atau komponen baharu, pastikan semakan beriku
 - [ ] Suis tema di Mobile Fullscreen Menu bertukar ikon Bulan dan Matahari dengan sepadan serta mematuhi `fsDarkModeToggle`.
 - [ ] Tema Light/Dark diselaraskan dengan storan tempatan `localStorage.getItem('pios_theme')`.
 - [ ] Modal menggunakan tema Light Mode (`#FFFFFF` & `#F8FAFC`).
+- [ ] Skrin Partner Portal (`partner/business-owner-management.html`) menepati spesifikasi Topbar `32px 36px 60px`, kotak carian lebar penuh (`flex: 1`), dan 4 butang penapis kemas.
+
+---
+
+## 🏢 10. Standard Modul Partner Portal & Business Owner Management
+
+Modul **Partner Portal** (`partner/dashboard.html` & `partner/business-owner-management.html`) dibina untuk membolehkan rakan kongsi sistem memantau pertumbuhan dan mengurus akaun Business Owner yang didaftarkan. Spesifikasi reka bentuk modul ini diselaraskan tepat dengan modul Business sedia ada:
+
+### A. Palet Warna & Tema Partner Portal
+Portal Partner menggunakan tema **Midnight Navy / Dark Blue** elegan:
+- **Latar Belakang Desktop (Dark Mode)**: `#0B1320` / `#0A0F1D`
+- **Sidebar Partner**: `#080E1A` (border kanan `#1E2D44`), lebar `240px`
+- **Permukaan Kad & Jadual**: `#111C2D` / `#141F35`
+- **Sempadan / Border**: `#1E2C48` / `#233454`
+- **Butang Tindakan Utama Desktop (`.btn-register-bo`)**: Ungu Diraja `#7C3AED` (hover `#6D28D9`, box-shadow `0 2px 8px rgba(124, 58, 237, 0.35)`)
+- **Aksen Metrik**: Emerald Green `#10B981` (Active), Amber `#F59E0B` (Pending Setup), Orange `#F97316` (Overdue / Suspended)
+- **Mod Cerah (Light Mode)**: Latar belakang `#F8FAFC`, kad putih `#FFFFFF`, teks gelap `#0F172A`, kapsyen `#64748B`, sempadan `#E2E8F0`.
+
+### B. Jajaran & Penyeragaman Topbar (Topbar Spacing Parity with Business)
+Jarak dan susun atur Topbar Partner diseragamkan tepat dengan standard modul Business (`customer.html` / `dashboard.html`):
+- **Padding Bekas Utama (`.partner-main`)**: `32px 36px 60px;` (tepat menyamai `.cust-main` / `.dash-main`).
+- **Susun Atur Topbar (`.partner-topbar` / `.bo-topbar`)**:
+  ```css
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  ```
+- **H1 Tajuk Halaman (`.partner-topbar-title`)**:
+  `font-family: var(--font-heading); font-size: 1.85rem; font-weight: 700; line-height: 1.2; margin-bottom: 4px;`
+- **Subtajuk Halaman (`.partner-topbar-sub`)**:
+  `font-size: 0.92rem; color: #64748B; margin-top: 0;`
+- **Elemen Kanan Topbar (`.partner-topbar-right`)**:
+  Tarikh (`0.88rem`, `#64748B`), Status Pill (`#17243C`, border `#233454`, dot hijau), Butang Toggle Tema, Butang Notifikasi berserta titik amaran (`gap: 14px`, `align-items: center`).
+
+### C. Bar Tindakan & Kotak Carian Lebar Penuh (Full Width Search Bar & Action Bar)
+Bagi mengelakkan sebarang ruang kosong di antara elemen seperti dalam reka bentuk Figma:
+```css
+.bo-action-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.bo-action-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    min-width: 0;
+}
+
+.bo-search-wrapper {
+    position: relative;
+    flex: 1;
+    width: 100%;
+    min-width: 200px;
+}
+
+.bo-search-input {
+    width: 100%;
+    height: 42px;
+    border-radius: 8px;
+    padding: 0 16px 0 42px;
+    font-size: 0.9rem;
+    box-sizing: border-box;
+}
+
+.bo-filter-pills {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.btn-register-bo {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #7C3AED;
+    color: #FFFFFF;
+    border-radius: 8px;
+    padding: 10px 18px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+```
+- **Prinsip Lebar Penuh (Full Width Expansion)**: Kotak carian mengembang secara dinamik (`flex: 1`) merentangi ruang sebelah kiri (~520px di atas Kad Metrik 1 & Kad Metrik 2), penapis penapisan terletak di atas Kad Metrik 3, dan butang `+ Register Business Owner` tersusun kemas di sebelah kanan di atas Kad Metrik 4.
+- **Penapis Desktop (4 Butang Standard)**: `All`, `Active`, `Overdue`, `Pending` (mematuhi Figma Desktop).
+- **Penapis Mobile (5 Butang Standard)**: `All`, `Active`, `Overdue`, `Suspended`, `Pending` (mematuhi Figma Mobile melalui kelas `.mobile-only-pill`).
+
+### D. 4 Kad Metrik Ringkasan KPI
+- **Grid 4-Lajur (Desktop)**: `grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px;`
+- **Grid 2-Lajur (Mobile)**: `grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 16px;`
+- Kad 1: **Total Business Owners** (10)
+- Kad 2: **Active** (8) - Teks `#10B981`
+- Kad 3: **Pending Setup** (1) - Teks `#F59E0B`
+- Kad 4: **Overdue / Suspended** (1) - Teks `#F97316`
+
+### E. Jadual Data Desktop & Senarai Kad Mobile
+- **Desktop Data Table (`.bo-table`)**:
+  - Kolum: `ID`, `Owner`, `Business Name`, `VIP`, `Customers`, `Revenue MTD`, `Status`, `Action`.
+  - Butang tindakan `View` bagi setiap baris membuka dialog modal butiran perniagaan.
+- **Mobile Card List (`.bo-mobile-item`)**:
+  - Memaparkan kad sentuh ringkas dengan ID, Hasil MTD, Nama Pemilik, Status Badge, Nama Perniagaan, bilangan Pelanggan dan penunjuk VIP Star.
+- **Borang Pendaftaran (`#boRegisterModal`)**:
+  - Dialog modal pendaftaran Business Owner baharu merangkumi Nama Pemilik, Nama Perniagaan, Nombor Telefon, Emel, Pakej Langganan, dan Status awal.
+
+### F. Pertukaran Ikon Tunggal Menu Mudah Alih (Single Dynamic Toggle)
+- Pada menu mudah alih Partner, ikon penunjuk tema bertukar secara dinamik: hanya **1 ikon** dipaparkan pada satu masa (ikon Matahari ☀️ ketika mod gelap aktif, atau ikon Bulan 🌙 ketika mod cerah aktif) bagi mengelakkan kekeliruan visual.
+

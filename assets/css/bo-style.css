@@ -90,9 +90,11 @@ body.dashboard-body {
    ========================================================================== */
 
 /* Hide Mobile-only elements on desktop */
-.mobile-dash-header,
-.fullscreen-menu {
-    display: none !important;
+@media (min-width: 992px) {
+    .mobile-dash-header,
+    .fullscreen-menu {
+        display: none !important;
+    }
 }
 
 .desktop-only {
@@ -662,7 +664,8 @@ body.dashboard-body {
         color: var(--text-white);
     }
 
-    .mobile-menu-toggle-btn {
+    .mobile-menu-toggle-btn,
+    .mobile-hamburger-btn {
         background: transparent;
         border: none;
         color: var(--text-white);
@@ -671,6 +674,17 @@ body.dashboard-body {
         display: flex;
         align-items: center;
         justify-content: center;
+        width: 36px;
+        height: 36px;
+        box-sizing: border-box;
+        border-radius: 6px;
+        transition: background-color 0.2s ease;
+    }
+
+    .mobile-menu-toggle-btn:active,
+    .mobile-hamburger-btn:active {
+        background-color: rgba(255, 255, 255, 0.1);
+        opacity: 0.8;
     }
 
     /* --- 6 KPI Cards (2 Columns x 3 Rows on Mobile) --- */
@@ -759,7 +773,8 @@ body.dashboard-body {
         overflow-y: auto;
     }
 
-    .fullscreen-menu.active {
+    .fullscreen-menu.active,
+    .fullscreen-menu.open {
         display: flex !important;
     }
 
@@ -1135,10 +1150,12 @@ body.customer-body {
    ========================================================================== */
 
 /* Hide mobile-specific components on desktop */
-.mobile-customer-header,
-.mobile-customer-view,
-.fullscreen-menu {
-    display: none !important;
+@media (min-width: 992px) {
+    .mobile-customer-header,
+    .mobile-customer-view,
+    .fullscreen-menu {
+        display: none !important;
+    }
 }
 
 .desktop-only {
@@ -3007,12 +3024,14 @@ body.products-body {
    ========================================================================== */
 
 /* Hide Mobile-only elements on desktop */
-.mobile-prod-header,
-.mobile-dash-header,
-.mobile-modal-header,
-.mobile-sticky-footer,
-.fullscreen-menu {
-    display: none !important;
+@media (min-width: 992px) {
+    .mobile-prod-header,
+    .mobile-dash-header,
+    .mobile-modal-header,
+    .mobile-sticky-footer,
+    .fullscreen-menu {
+        display: none !important;
+    }
 }
 
 .desktop-only {
@@ -4824,10 +4843,12 @@ body.transaction-body {
    ========================================================================== */
 
 /* Hide Mobile-only elements on desktop */
-.mobile-tx-header,
-.tx-mobile-list,
-.fullscreen-menu {
-    display: none !important;
+@media (min-width: 992px) {
+    .mobile-tx-header,
+    .tx-mobile-list,
+    .fullscreen-menu {
+        display: none !important;
+    }
 }
 
 .desktop-only {
@@ -6348,11 +6369,13 @@ body.fees-body {
 }
 
 /* Hide Mobile-only elements on desktop */
-.mobile-fees-header,
-.mobile-total-paid-banner,
-.fee-mobile-list,
-.fullscreen-menu {
-    display: none !important;
+@media (min-width: 992px) {
+    .mobile-fees-header,
+    .mobile-total-paid-banner,
+    .fee-mobile-list,
+    .fullscreen-menu {
+        display: none !important;
+    }
 }
 
 /* ==========================================================================
@@ -7778,9 +7801,11 @@ body.reports-body {
 }
 
 /* Hide Mobile-only elements on desktop */
-.mobile-rep-header,
-.fullscreen-menu {
-    display: none !important;
+@media (min-width: 992px) {
+    .mobile-rep-header,
+    .fullscreen-menu {
+        display: none !important;
+    }
 }
 
 /* ==========================================================================
